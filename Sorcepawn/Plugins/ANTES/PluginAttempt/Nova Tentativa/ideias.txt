@@ -1,0 +1,6 @@
+weapon_accuracy_nospread 1 - *Apenas para o player que estiver dentro do threshold.
+Mudar as equações para se adaptarem à arma equipada pelo player.
+	Corrigir a inconsistência do plugin
+	{
+		tentar 73 sem .1 ou tentar 73.10;	
+	}

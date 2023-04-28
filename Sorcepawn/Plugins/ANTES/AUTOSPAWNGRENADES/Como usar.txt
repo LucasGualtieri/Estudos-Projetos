@@ -1,0 +1,17 @@
+sm_gs_enabled 0 coloque no server.cfg
+
+No practicemode.cfg
+
+"grenadesOnRespawn"
+		{
+			"name"		"Grenades On Respawn"
+			"default"		"enabled"
+			"enabled"
+			{
+				"sm_gs_enabled" "1"
+			}
+			"disabled"
+			{
+				"sm_gs_enabled" "0"
+			}
+		}

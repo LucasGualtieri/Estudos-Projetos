@@ -1,0 +1,37 @@
+#include <sdkhooks.inc>
+
+ConVar g_ConVar_Friction;
+ConVar g_flClientFriction[1];
+
+public void OnPluginStart()
+{
+	g_ConVar_Friction = FindConVar( "weapon_accuracy_nospread" );
+	if ( g_ConVar_Friction == null )
+	{
+		SetFailState("Unable to find cvar handle for weapon_accuracy_nospread!");
+	}
+	int flags = GetConVarFlags( g_ConVar_Friction );
+    flags &= ~FCVAR_NOTIFY;
+    flags &= ~FCVAR_REPLICATED;
+    SetConVarFlags( g_ConVar_Friction, flags );
+}
+public void OnClientPutInServer( int client )
+{
+    g_flClientFriction[client] = 1;
+    SendNewFriction( client, 1 );
+    
+SDKHook( client, SDKHook_PreThinkPost, Event_PreThinkPost_Client );
+}
+public void Event_PreThinkPost_Client( int client )
+{
+    SetConVarFloat( g_ConVar_Friction, g_flClientFriction[client] );
+}
+stock void SendNewFriction( int client, float friction )
+{
+    char szValue[1];
+    FormatEx( szValue, sizeof( szValue ), "%0.f", friction );
+    
+    SendConVarValue( client, g_ConVar_Friction, szValue );
+} 
+
+https://forums.alliedmods.net/showthread.php?t=264235

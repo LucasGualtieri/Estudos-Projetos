@@ -1,0 +1,17 @@
+RegConsoleCmd("sm_kdr", PluginToggle, "Toggles plugin on/off");
+public Action PluginToggle(int client, int args)
+{
+	if(pluginToggle[client])
+	{
+		pluginToggle[client] = false;
+		ReplyToCommand(client, "KDR Helper disabled!");
+	}
+	else
+	{
+		kills[client] = GetClientFrags(client);
+		deaths[client] = GetClientDeaths(client);
+		pluginToggle[client] = true;
+		ReplyToCommand(client, "KDR Helper enabled!");
+	}
+	return Plugin_Handled;
+}

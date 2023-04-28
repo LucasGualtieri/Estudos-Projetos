@@ -1,0 +1,61 @@
+#include <sourcemod>
+#include <sdktools>
+
+#pragma semicolon 1
+#pragma newdecls required
+
+public Plugin myinfo =
+{
+	name = "My First Plugin",
+	author = "Lucas",
+	description = "Prints to server 'hello world'",
+	version = "1.0",
+	url = "forums.alliedmods.net"
+}
+
+bool isRunning = true;
+
+public void OnPluginStart()
+{
+	//stock float GetEntityVelocity(entity, fVelocity[3])
+	//{
+	//	GetEntPropVector(entity, Prop_Data, "m_vecVelocity", fVelocity);
+	//}
+	GetEntPropVector(entity, Prop_Data, "m_vecVelocity", fVelocity);
+	
+	
+	
+	
+	
+	/*while(isRunning)
+	{
+		GetEntPropVector(client, );
+		GetEntData(
+		GetClientButtons(
+		GetClientInfo(
+		GetClientWeapon(
+		GetClientsInRange(
+		GetClient
+	}*/
+	
+}
+
+
+
+public Action Command_Test1(int client, int args, Handle timer)
+{ 
+    float fVelocity[3];
+    float currentspeed;
+	
+    for (int i = 1; i <= MaxClients; i++) 
+    { 
+        if (IsClientInGame(i) && IsPlayerAlive(i)) 
+        {
+			GetEntPropVector(i, Prop_Data, "m_vecVelocity", fVelocity);
+			currentspeed = SquareRoot(Pow(fVelocity[0],2.0)+Pow(fVelocity[1],2.0));
+			PrintToChat(client, "%f", currentspeed);
+			
+			//PrintHintText(i, "[Lv. %d] %N   <font color='#FF1D8E'>XP: %d/%d</font>\n Time: <font color='#ff0000'>0:00:00</font> \n Speed: %.0f ", Level[i], i, XP[i], XP_Needed[i], currentspeed);
+			
+        } 
+    } 
