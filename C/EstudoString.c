@@ -11,6 +11,12 @@ int main() {
 	printf("Nome: %s\n", nome);
 	printf("Length: %d\n", (int)strlen(nome));
 
+	unsigned long CPFNumber = 13605269605;
+	String CPF = MaskCPF(CPFNumber);
+
+	printf("CPF: %s\n", CPF);
+	printf("CPF Len: %d\n", (int)strlen(CPF));
+
 	puts("\n******* | FIM DO PROGRAMA | *******\n");
 	return 0;
 }
