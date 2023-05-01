@@ -6,8 +6,7 @@ int main() {
 	scanf("%d", &idade);
 	printf("Idade: %d\n", idade);
 
-	String nome = getstr(0);
-	nome = substr(nome, 0, indexOf(nome, " "));
+	String nome = trim(getstr(0));
 	printf("Nome: %s\n", nome);
 	printf("Length: %d\n", (int)strlen(nome));
 
