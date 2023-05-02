@@ -2,21 +2,21 @@
 
 class String {
 public:
-	char* str = (char*)malloc(1);
+	char* str = (char*)malloc(2000);
 	// char* str;
-	String(const char arg[]) {
+	String(const char str[]) {
 
 		int sizeOfString = 0;
-		for (int i = 0; arg[i]; i++) { // arg[i] != '\0'
+		for (int i = 0; str[i]; i++) { // arg[i] != '\0'
 			sizeOfString++;
 		}
 
 		cout << sizeOfString << endl;
 
-		str = (char*)realloc(str, sizeOfString * sizeof(char));
+		this->str = (char*)realloc(this->str, sizeOfString * sizeof(char));
 
-		for (int i = 0; i < sizeOfString; i++) {
-			str[i] = arg[i];
+		for (int i = 0; i < sizeOfString + 1; i++) {
+			this->str[i] = str[i];
 		}
 	}
 
@@ -46,7 +46,6 @@ public:
 };
 
 int main() {
-	SetConsoleOutputCP(65001);
 
 	String nome;
 	nome = "Lucas Gualtieri";
