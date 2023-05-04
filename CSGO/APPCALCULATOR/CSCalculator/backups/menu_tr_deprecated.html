@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSGO Inventory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\menu_tr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container container-menu my-container">
+        <div class="WeaponsGrid">
+            <div class="Pistol">
+                <button class="btn btn-disabled" id="btnDeagle" disabled><img class="selector" src="../weapon_icons/DEAGLE.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnTec9" disabled><img class="selector" src="../weapon_icons/tec9.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnP250" disabled><img class="selector" src="../weapon_icons/p250.png" style="width: 75%"></button>
+            </div>
+            <div class="SMGs">
+                <button class="btn btn-disabled" id="btnUmp" disabled><img src="../weapon_icons/UMP.png" style="width: 75%"></button>
+                <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                <button class="btn btn-disabled" id="btnMac10" disabled><img class="selector" src="../weapon_icons/MAC10.png" style="width: 75%"></button>
+            </div>
+            <div class="Rifles">
+                <button class="btn btn-disabled" id="btnKrieg" disabled><img class="selector" src="../weapon_icons/KRIEG.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnAk47" disabled><img class="selector" src="../weapon_icons/ak.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnGalil" disabled><img class="selector" src="../weapon_icons/Galil.png" style="width: 75%"></button>
+            </div>
+            <div class="SniperRifles">
+                <button class="btn btn-disabled" id="btnAwp" disabled><img class="selector" src="../weapon_icons/awp.png" style="width: 75%"></button>
+                <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                <button class="btn btn-disabled" id="btnScout" disabled><img class="selector" src="../weapon_icons/SCOUT.png" style="width: 75%"></button>
+            </div>
+            <div class="VestHelm">
+                <button class="btn btn-disabled" id="btnColete2" disabled><img class="selector" src="../weapon_icons/VESTHELM1.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnColete1" disabled><img class="selector" src="../weapon_icons/vest.png" style="width: 75%"></button>
+            </div>
+            <div class="Grenades">
+                <button class="btn btn-disabled" id="btnSmoke" disabled><img class="selector" src="../weapon_icons/smoke.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnMolotov" disabled><img class="selector" src="../weapon_icons/molotov.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnHe" disabled><img class="selector" src="../weapon_icons/he.png" style="width: 75%"></button>
+                <div class="Bangs">
+                    <button class="btn btn-disabled" id="btnBang" disabled><img class="selector" src="../weapon_icons/BANG1.png" style="width: 75%"></button>
+                    <button class="btn btn-disabled" id="btnBang1" disabled><img class="selector" src="../weapon_icons/BANG1.png" style="width: 75%"></button>
+                </div>
+            </div>
+        </div>
+        <div class="UserInput">
+            <input type="number" style="text-align: center" placeholder="Grana do jogo..." id="txtbxGrana">
+            <div class="Preco">
+                <b><label style="color: white">Preço:</label></b>
+                <b><label style="color: white" id="lblPrecoValor">R$ 0</label></b>
+            </div>                
+            <div class="Budget">
+                <b><label style="color: white">Budget:</label></b></label></b>
+                <b><label style="color: white" id="lblBudgetValor">R$ 0</label></b>
+            </div>
+            <div class="Buttons">
+                <button class="btn btn-copy" id="btnCopy">Copy</button>
+                <button class="btn btn-copy" id="btnReload">Reset</button>
+                <a class="btn btn-enabled" href="menu_ct.html">CT</a>
+            </div>
+            <div>
+                <label style="color: white" id="lblMinNextRoundLabel">Min Next Round:</label><label style="color: white" id="lblMinNextRoundValue">1400</label>
+                <button id="btnLossBonus">Loss Bonus</button>
+                <label style="color: white" id="lblLossBonusLabel">Loss Bonus:</label>
+                <label style="color: white" id="lblLossBonusValue">0</label>
+                <label style="color: white" id="lblLossBonusValue1">1400</label>
+            </div>
+            <div>
+                <label style="color: white" id="lblMinIn2RoundsLabel">Min in 2 rounds:</label><label style="color: white" id="lblMinIn2RoundsValue">3300</label>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="dummyTextarea" style="position: absolute; margin-left: -99999999px;"></textarea>
+
+    <script>
+        $(document).ready(function () 
+        {
+            //console.log(typeof(minNextRound))
+            //Declaração de Variáveis "Globais":
+            let budget = 0
+            let preco = 0
+            let minNextRound = [1400,1400]
+            let minIn2Rounds = 0
+            let arrayLossBonus = [0,1400]
+            let granadas = 0
+
+            //LINK Armas TR
+            let arrayAwp = [false,4750]; //...4750
+            let kriegEnabled = false; //......3000
+            let ak47Enabled = false; //.......2700
+            let galilEnabled = false; //......1800
+            let scoutEnabled = false; //......1700
+            let umpEnabled = false; //........1200
+            let mac10Enabled = false; //......1050
+            let vestHelmEnabled = false; //...1000
+            let deagleEnabled = false; //......700
+            let vestEnabled = false; //........650
+            let tec9Enabled = false; //........500
+            let molotovEnabled = false; //.....400
+            let p250Enabled = false; //........300
+            let smokeEnabled = false; //.......300
+            let heEnabled = false; //..........300
+            let bangEnabled = false; //........200
+            let bang1Enabled = false; //.......200
+
+            function UpdatePrecoBudget ()
+            {
+                $("#lblBudgetValor").text("R$ " + budget);
+                $("#lblPrecoValor").text("R$ " + preco);
+            }
+
+            function AllButtonsOffBtn (string)
+            {
+                $(string).attr("disabled", "disabled");
+                $(string).removeClass('btn-enabled');
+                $(string).addClass('btn-disabled');
+            }
+
+            //LINK Compra
+            function Compra ()
+            {
+                function CompraBtn (string)
+                {
+                    $(string).removeAttr("disabled");
+                    $(string).removeClass('btn-disabled');
+                    $(string).removeClass('btn-enabled');
+                }
+                if(arrayAwp[0] == true)
+                {
+                    CompraBtn(btnAwp)
+                }
+                if(kriegEnabled == true)
+                {
+                    CompraBtn(btnKrieg)
+                }
+                if(ak47Enabled == true)
+                {
+                    CompraBtn(btnAk47)
+                }
+                if(galilEnabled == true)
+                {
+                    CompraBtn(btnGalil)
+                }
+                if(scoutEnabled == true)
+                {
+                    CompraBtn(btnScout)
+                }
+                if(umpEnabled == true)
+                {
+                    CompraBtn(btnUmp)
+                }
+                if(mac10Enabled == true)
+                {
+                    CompraBtn(btnMac10)
+                }
+                if(vestHelmEnabled == true)
+                {
+                    CompraBtn(btnColete2)
+                    CompraBtn(btnColete1)
+                    $('#btnColete1').addClass('btn-enabled');
+                }
+                if(deagleEnabled == true)
+                {
+                    CompraBtn(btnDeagle)
+                }
+
+                if(vestEnabled == true && budget >= 350)
+                {
+                    CompraBtn(btnColete1)
+                    CompraBtn(btnColete2)
+                    $('#btnColete2').addClass('btn-enabled');
+                }
+                else if (vestEnabled == true)
+                {
+                    CompraBtn(btnColete1)
+                }
+
+                if(tec9Enabled == true)
+                {
+                    CompraBtn(btnTec9)
+                }
+                if(molotovEnabled == true)
+                {
+                    CompraBtn(btnMolotov)
+                }
+                if(p250Enabled == true)
+                {
+                    CompraBtn(btnP250)
+                }
+                if(smokeEnabled == true)
+                {
+                    CompraBtn(btnSmoke)
+                }
+                if(heEnabled == true)
+                {
+                    CompraBtn(btnHe)
+                }
+                if(bangEnabled == true)
+                {
+                    CompraBtn(btnBang)
+                }
+                if(bang1Enabled == true)
+                {
+                    CompraBtn(btnBang1)
+                }
+                if(granadas == 4)
+                {
+                    if(molotovEnabled == false)
+                    {
+                        AllButtonsOffBtn(btnMolotov)
+                    }
+                    else if(smokeEnabled == false)
+                    {
+                        AllButtonsOffBtn(btnSmoke)
+                    }
+                    else if(heEnabled == false)
+                    {
+                        AllButtonsOffBtn(btnHe)
+                    }
+                    else if(bangEnabled == false)
+                    {
+                        AllButtonsOffBtn(btnBang)
+                    }
+                    else if(bang1Enabled == false)
+                    {
+                        AllButtonsOffBtn(btnBang1)
+                    }
+                }
+            }
+            
+            //LINK AllButtonsOff
+            function AllButtonsOff ()
+            {
+                AllButtonsOffBtn(btnAwp)
+                AllButtonsOffBtn(btnKrieg)
+                AllButtonsOffBtn(btnAk47)
+                AllButtonsOffBtn(btnGalil)
+                AllButtonsOffBtn(btnScout)
+                AllButtonsOffBtn(btnUmp)
+                AllButtonsOffBtn(btnMac10)
+                AllButtonsOffBtn(btnColete2)
+                AllButtonsOffBtn(btnDeagle)
+                AllButtonsOffBtn(btnColete1)
+                AllButtonsOffBtn(btnTec9)
+                AllButtonsOffBtn(btnMolotov)
+                AllButtonsOffBtn(btnP250)
+                AllButtonsOffBtn(btnSmoke)
+                AllButtonsOffBtn(btnHe)
+                AllButtonsOffBtn(btnBang)
+                AllButtonsOffBtn(btnBang1)
+            }
+
+            //LINK Disponibilidade
+            function Disponibilidade ()
+            {
+                UpdatePrecoBudget();
+                AllButtonsOff();
+                function btn (string)
+                {
+                    $(string).removeAttr("disabled")
+                    $(string).removeClass('btn-disabled')
+                    $(string).addClass('btn-enabled')
+                }
+                if(budget>=4750)
+                {
+                    btn(btnAwp)
+                    btn(btnKrieg)
+                    btn(btnAk47)
+                    btn(btnGalil)
+                    btn(btnScout)
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+
+                }
+                else if(budget >= 3000 && budget < 4750)
+                {
+                    btn(btnKrieg)
+                    btn(btnAk47)
+                    btn(btnGalil)
+                    btn(btnScout)
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 2700 && budget < 3000)
+                {
+                    btn(btnAk47)
+                    btn(btnGalil)
+                    btn(btnScout)
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 1800 && budget < 2900)
+                {
+                    btn(btnGalil)
+                    btn(btnScout)
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 1700 && budget < 1800)
+                {
+                    btn(btnScout)
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 1200 && budget < 1700)
+                {
+                    btn(btnUmp)
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 1050 && budget < 1200)
+                {
+                    btn(btnMac10)
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 1000 && budget < 1200)
+                {
+                    btn(btnColete2)
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 700 && budget < 1000)
+                {
+                    btn(btnDeagle)
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 650 && budget < 700)
+                {
+                    btn(btnColete1)
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 500 && budget < 650)
+                {
+                    btn(btnTec9)
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 400 && budget < 500)
+                {
+                    btn(btnMolotov)
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 300 && budget < 400)
+                {
+                    btn(btnP250)
+                    btn(btnSmoke)
+                    btn(btnHe)
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else if(budget >= 200 && budget < 300)
+                {
+                    btn(btnBang)
+                    btn(btnBang1)
+                }
+                else
+                {
+                    AllButtonsOff()
+                }
+                Compra()
+                minNextRound[0] = minNextRound[1] + budget
+                minIn2Rounds = arrayLossBonus[1] + arrayLossBonus[1] + 500 + budget
+                $("#lblMinNextRoundValue").text(minNextRound[0])
+                $("#lblMinIn2RoundsValue").text(minIn2Rounds)
+            }
+            
+            $("#btnReload").click(function()
+            {
+                location.reload(true);
+            });
+
+            //LINK Listener do input do usuario
+            $('#txtbxGrana').on('input', function ()
+            {
+                budget = parseInt($('#txtbxGrana').val())
+                if(budget > 16000)
+                {
+                    $('#txtbxGrana').val(16000)
+                    budget = 16000
+                }
+                Disponibilidade()
+            })
+
+            //LINK Botão Copy Paste
+            const dummyTextarea = document.getElementById("dummyTextarea")
+            const btnCopy = document.getElementById("btnCopy")
+            $('#btnCopy').click(function()
+            {
+                let copyPaste = "";
+
+                if(arrayAwp == true)
+                {
+                    copyPaste = copyPaste + "buy awp;";
+                }
+                if(kriegEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy sg556;";
+                }
+                if(ak47Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy ak47;";
+                }
+                if(galilEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy galilar;";
+                }
+                if(scoutEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy ssg08;";
+                }
+                if(umpEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy ump45;";
+                }
+                if(mac10Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy mac10;";
+                }
+                if(vestHelmEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy vesthelm;";
+                }
+                if(deagleEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy deagle;";
+                }
+                if(vestEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy vest;";
+                }
+                if(tec9Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy fn57;";
+                }
+                if(molotovEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy molotov;";
+                }
+                if(p250Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy p250;";
+                }
+                if(smokeEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy smokegrenade;";
+                }
+                if(heEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy hegrenade;";
+                }
+                if(bangEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+                if(bang1Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+
+                $("#dummyTextarea").val(copyPaste);
+                dummyTextarea.select();
+                document.execCommand('copy');
+            })
+
+            //LINK Botão de compra AWP
+            $('#btnAwp').click(function() 
+            {
+                if (arrayAwp[0] == false)
+                {
+                    arrayAwp[0] = true;
+                    budget = budget - arrayAwp[1];
+                    preco = preco + arrayAwp[1];
+                    minNextRound[0] = minNextRound[0] - arrayAwp[1];
+                    $('#btnAwp').removeClass('btn-enabled');
+                    $('#btnAwp').addClass('btn-bought');
+                }
+                else
+                { 
+                    arrayAwp[0] = false;
+                    budget = budget + arrayAwp[1];
+                    preco = preco - arrayAwp[1];
+                    minNextRound[0] = minNextRound[0] + arrayAwp[1];
+                    $('#btnAwp').removeClass('btn-bought');
+                    $('#btnAwp').addClass('btn-enabled'); 
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Krieg
+            $('#btnKrieg').click(function() 
+            {
+                if (kriegEnabled == false)
+                {
+                    kriegEnabled = true;
+                    budget = budget - 3000;
+                    preco = preco + 3000;
+                    minNextRound[0] = minNextRound[0] - 3000;
+                    $('#btnKrieg').removeClass('btn-enabled');
+                    $('#btnKrieg').addClass('btn-bought');
+                }
+                else
+                {
+                    kriegEnabled = false;
+                    budget = budget + 3000;
+                    preco = preco - 3000;
+                    minNextRound[0] = minNextRound[0] + 3000;
+                    $('#btnKrieg').removeClass('btn-bought');
+                    $('#btnKrieg').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Ak-47
+            $('#btnAk47').click(function() 
+            {
+                if (ak47Enabled == false)
+                {
+                    ak47Enabled = true;
+                    budget = budget - 2700;
+                    preco = preco + 2700;
+                    minNextRound[0] = minNextRound[0] - 2700;
+                    $('#btnAk47').removeClass('btn-enabled');
+                    $('#btnAk47').addClass('btn-bought');
+                }
+                else
+                {
+                    ak47Enabled = false;
+                    budget = budget + 2700;
+                    preco = preco - 2700;
+                    minNextRound[0] = minNextRound[0] + 2700;
+                    $('#btnAk47').removeClass('btn-bought');
+                    $('#btnAk47').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Galil
+            $('#btnGalil').click(function() 
+            {
+                if (galilEnabled == false)
+                {
+                    galilEnabled = true;
+                    budget = budget - 1800;
+                    preco = preco + 1800;
+                    minNextRound[0] = minNextRound[0] - 1800;
+                    $('#btnGalil').removeClass('btn-enabled');
+                    $('#btnGalil').addClass('btn-bought');
+                }
+                else
+                {
+                    galilEnabled = false;
+                    budget = budget + 1800;
+                    preco = preco - 1800;
+                    minNextRound[0] = minNextRound[0] + 1800;
+                    $('#btnGalil').removeClass('btn-bought');
+                    $('#btnGalil').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Scout
+            $('#btnScout').click(function() 
+            {
+                if (scoutEnabled == false)
+                {
+                    scoutEnabled = true;
+                    budget = budget-1700;
+                    preco = preco+1700;
+                    minNextRound[0] = minNextRound[0] - 1700;
+                    $('#btnScout').removeClass('btn-enabled');
+                    $('#btnScout').addClass('btn-bought');
+                }
+                else
+                {
+                    scoutEnabled = false;
+                    budget = budget + 1700;
+                    preco = preco - 1700;
+                    minNextRound[0] = minNextRound[0] + 1700;
+                    $('#btnScout').removeClass('btn-bought');
+                    $('#btnScout').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Ump
+            $('#btnUmp').click(function() 
+            {
+                if (umpEnabled == false)
+                {
+                    umpEnabled = true;
+                    budget = budget - 1200;
+                    preco = preco + 1200;
+                    minNextRound[0] = minNextRound[0] - 1200;
+                    $('#btnUmp').removeClass('btn-enabled');
+                    $('#btnUmp').addClass('btn-bought');
+                }
+                else
+                {
+                    umpEnabled = false;
+                    budget = budget + 1200;
+                    preco = preco - 1200;
+                    minNextRound[0] = minNextRound[0] + 1200;
+                    $('#btnUmp').removeClass('btn-bought');
+                    $('#btnUmp').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Mac 10
+            $('#btnMac10').click(function() 
+            {
+                if (mac10Enabled == true)
+                {
+                    mac10Enabled = false;
+                    budget = budget + 1050;
+                    preco = preco - 1050;
+                    minNextRound[0] = minNextRound[0] - 1050;
+                    $('#btnMac10').removeClass('btn-bought');
+                    $('#btnMac10').addClass('btn-enabled');
+                }
+                else
+                {
+                    mac10Enabled = true;
+                    budget = budget - 1050;
+                    preco = preco + 1050;
+                    minNextRound[0] = minNextRound[0] + 1050;
+                    $('#btnMac10').removeClass('btn-enabled');
+                    $('#btnMac10').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete2
+            $('#btnColete2').click(function() 
+            {
+                if (vestHelmEnabled == false)
+                {
+                    vestHelmEnabled = true;
+                    budget = budget - 1000;
+                    preco = preco + 1000;
+                    minNextRound[0] = minNextRound[0] - 1000;
+                    $('#btnColete2').removeClass('btn-enabled');
+                    $('#btnColete2').addClass('btn-bought');
+                    if(vestEnabled == true)
+                    {
+                        vestEnabled = false;
+                        budget = budget + 650;
+                        preco = preco - 650;
+                        minNextRound[0] = minNextRound[0] + 650;
+                        $('#btnColete1').removeClass('btn-bought');
+                        $('#btnColete1').addClass('btn-enabled');
+                    }
+                }
+                else
+                {
+                    vestHelmEnabled = false;
+                    budget = budget + 1000;
+                    preco = preco - 1000;
+                    minNextRound[0] = minNextRound[0] + 1000;
+                    $('#btnColete2').removeClass('btn-bought');
+                    $('#btnColete2').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Deagle
+            $('#btnDeagle').click(function() 
+            {
+                if (deagleEnabled == false)
+                {
+                    deagleEnabled = true;
+                    budget = budget - 700;
+                    preco = preco + 700;
+                    minNextRound[0] = minNextRound[0] - 700;
+                    $('#btnDeagle').removeClass('btn-enabled');
+                    $('#btnDeagle').addClass('btn-bought');
+                }
+                else
+                {
+                    deagleEnabled = false;
+                    budget = budget + 700;
+                    preco = preco - 700;
+                    minNextRound[0] = minNextRound[0] + 700;
+                    $('#btnDeagle').removeClass('btn-bought');
+                    $('#btnDeagle').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete1
+            $('#btnColete1').click(function() 
+            {
+                if (vestEnabled == false)
+                {
+                    vestEnabled = true;
+                    budget = budget - 650;
+                    preco = preco + 650;
+                    minNextRound[0] = minNextRound[0] - 650;
+                    $('#btnColete1').removeClass('btn-enabled');
+                    $('#btnColete1').addClass('btn-bought');
+                    if(vestHelmEnabled == true)
+                    {
+                        vestHelmEnabled = false;
+                        budget = budget + 1000;
+                        preco = preco - 1000;
+                        minNextRound[0] = minNextRound[0] + 1000;
+                        $('#btnColete2').removeClass('btn-bought');
+                        $('#btnColete2').addClass('btn-enabled');
+                    }
+                }
+                else
+                {
+                    vestEnabled = false;
+                    budget = budget + 650;
+                    preco = preco - 650;
+                    minNextRound[1] = minNextRound[1] + 650;
+                    $('#btnColete1').removeClass('btn-bought');
+                    $('#btnColete1').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Tec9
+            $('#btnTec9').click(function() 
+            {
+                if (tec9Enabled == false)
+                {
+                    tec9Enabled = true;
+                    budget = budget - 500;
+                    preco = preco + 500;
+                    minNextRound[0] = minNextRound[0] - 500;
+                    $('#btnTec9').removeClass('btn-enabled');
+                    $('#btnTec9').addClass('btn-bought');
+                }
+                else
+                {
+                    tec9Enabled = false;
+                    budget = budget + 500;
+                    preco = preco - 500;
+                    minNextRound[0] = minNextRound[0] + 500;
+                    $('#btnTec9').removeClass('btn-bought');
+                    $('#btnTec9').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Molotov
+            $('#btnMolotov').click(function() 
+            {
+                if (molotovEnabled == false)
+                {
+                    molotovEnabled = true;
+                    granadas++;
+                    budget = budget - 400;
+                    preco = preco + 400;
+                    minNextRound[0] = minNextRound[0] - 400;
+                    $('#btnMolotov').removeClass('btn-enabled');
+                    $('#btnMolotov').addClass('btn-bought');
+                }
+                else
+                {
+                    molotovEnabled = false;
+                    granadas--;
+                    budget = budget + 400;
+                    preco = preco - 400;
+                    minNextRound[0] = minNextRound[0] + 400;
+                    $('#btnMolotov').removeClass('btn-bought');
+                    $('#btnMolotov').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra P250
+            $('#btnP250').click(function() 
+            {
+                if (p250Enabled == false)
+                {
+                    p250Enabled = true;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    minNextRound[0] = minNextRound[0] - 300;
+                    $('#btnP250').removeClass('btn-enabled');
+                    $('#btnP250').addClass('btn-bought');
+                }
+                else
+                {
+                    p250Enabled = false;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    minNextRound[0] = minNextRound[0] + 300;
+                    $('#btnP250').removeClass('btn-bought');
+                    $('#btnP250').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });    
+
+            //LINK Botão de compra Smoke
+            $('#btnSmoke').click(function() 
+            {
+                if (smokeEnabled == false)
+                {
+                    smokeEnabled = true;
+                    granadas++;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    minNextRound[0] = minNextRound[0] - 300;
+                    $('#btnSmoke').removeClass('btn-enabled');
+                    $('#btnSmoke').addClass('btn-bought');
+                }
+                else
+                {
+                    smokeEnabled = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    minNextRound[0] = minNextRound[0] + 300;
+                    $('#btnSmoke').removeClass('btn-bought');
+                    $('#btnSmoke').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra He
+            $('#btnHe').click(function() 
+            {
+                if (heEnabled == false)
+                {
+                    heEnabled = true;
+                    granadas++;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    minNextRound[0] = minNextRound[0] - 300;
+                    $('#btnHe').removeClass('btn-enabled');
+                    $('#btnHe').addClass('btn-bought');
+                }
+                else
+                {
+                    heEnabled = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    minNextRound[0] = minNextRound[0] + 300;
+                    $('#btnHe').removeClass('btn-bought');
+                    $('#btnHe').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang
+            $('#btnBang').click(function() 
+            {
+                if (bangEnabled == false)
+                {
+                    granadas++;
+                    bangEnabled = true;
+                    preco = preco + 200;
+                    budget = budget - 200;
+                    minNextRound[0] = minNextRound[0] - 200;
+                    $('#btnBang').removeClass('btn-enabled');
+                    $('#btnBang').addClass('btn-bought');
+                }
+                else
+                {
+                    granadas--;
+                    bangEnabled = false;
+                    preco = preco - 200;
+                    budget = budget + 200;
+                    minNextRound[0] = minNextRound[0] + 200;
+                    $('#btnBang').removeClass('btn-bought');
+                    $('#btnBang').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang1
+            $('#btnBang1').click(function() 
+            {
+                if (bang1Enabled == false)
+                {
+                    bang1Enabled = true;
+                    granadas++;
+                    budget = budget - 200;
+                    preco = preco + 200;
+                    minNextRound[0] = minNextRound[0] - 200;
+                    $('#btnBang1').removeClass('btn-enabled');
+                    $('#btnBang1').addClass('btn-bought');
+                }
+                else
+                {
+                    bang1Enabled = false;
+                    granadas--;
+                    budget = budget + 200;
+                    preco = preco - 200;
+                    minNextRound[0] = minNextRound[0] + 200;
+                    $('#btnBang1').removeClass('btn-bought');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão Loss Bonus
+            $('#btnLossBonus').click(function() 
+            {
+                arrayLossBonus[0] ++;
+                minNextRound[0] = minNextRound[0] + 500;
+                minNextRound[1] = minNextRound[1] + 500;
+                arrayLossBonus[1] = arrayLossBonus[1] + 500;
+                if(arrayLossBonus[0] == 5)
+                {
+                    arrayLossBonus[0] = 0;
+                    arrayLossBonus[1] = 1400;
+                    minNextRound[0] = minNextRound[0] - 2500;
+                    minNextRound[1] = minNextRound[1] - 2500;
+                    $("#lblLossBonusValue").text(arrayLossBonus);
+                    $("#lblMinNextRoundValue").text(minNextRound);
+                }
+                $("#lblLossBonusValue").text(arrayLossBonus[0]);
+                $("#lblLossBonusValue1").text(arrayLossBonus[1]);
+                $("#lblMinNextRoundValue").text(minNextRound[0]);
+                Disponibilidade();
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Total confirmed kills: 9
+Total confirmed deaths: 24
+Total interactions: 33

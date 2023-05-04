@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSGO Inventory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .container
+        {
+            display: grid;
+            grid-template-columns: 0.3fr 2.4fr 0.3fr;
+            grid-template-rows: 0.2fr 1.4fr 1fr 1.4fr;
+            grid-auto-columns: 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            justify-content: center;
+            grid-template-areas:
+            ". . ."
+            ". WeaponsGrid ."
+            ". UserInput ."
+            ". . .";
+        }
+
+        .WeaponsGrid
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            gap: 3px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Grenades Grenades Grenades Grenades Grenades";
+            grid-area: WeaponsGrid;
+        }
+
+        .Pistol
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: Pistol;
+        }
+
+        .SMGs
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: SMGs;
+        }
+
+        .Rifles
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-auto-columns: 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: Rifles;
+        }
+
+        .SniperRifles
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: SniperRifles;
+        }
+
+        .VestHelm
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            ".";
+            grid-area: VestHelm;
+        }
+
+        .Grenades
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". . . Bangs";
+            grid-area: Grenades;
+        }
+
+        .Bangs
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". .";
+            grid-area: Bangs;
+        }
+
+        .UserInput
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "Preco"
+            "Budget"
+            "Buttons";
+            justify-self: center;
+            align-self: stretch;
+            grid-area: UserInput;
+        }
+
+        .Preco
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            align-items: end;
+            grid-template-areas:
+            ". .";
+            justify-self: center;
+            grid-area: Preco;
+        }
+
+        .Budget
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            align-items: start;
+            grid-template-areas:
+            ". .";
+            justify-self: center;
+            grid-area: Budget;
+        }
+
+        .Buttons
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". . .";
+            grid-area: Buttons;
+        }
+        /* Esse codigo tira as setinhas do input de grana */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button
+        {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .selector
+        {
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container container-menu my-container">
+        <div class="WeaponsGrid">
+            <div class="Pistol">
+                <button class="btn btn-disabled" id="btnDeagle" disabled><img class="selector" src="../weapon_icons/DEAGLE.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnTec9" disabled><img class="selector" src="../weapon_icons/tec9.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnP250" disabled><img class="selector" src="../weapon_icons/p250.png" style="width: 75%"></button>
+            </div>
+            <div class="SMGs">
+                <button class="btn btn-disabled" id="btnUmp" disabled><img src="../weapon_icons/UMP.png" style="width: 75%"></button>
+                <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                <button class="btn btn-disabled" id="btnMac10" disabled><img class="selector" src="../weapon_icons/MAC10.png" style="width: 75%"></button>
+            </div>
+            <div class="Rifles">
+                <button class="btn btn-disabled" id="btnKrieg" disabled><img class="selector" src="../weapon_icons/KRIEG.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnAk47" disabled><img class="selector" src="../weapon_icons/ak.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnGalil" disabled><img class="selector" src="../weapon_icons/Galil.png" style="width: 75%"></button>
+            </div>
+            <div class="SniperRifles">
+                <button class="btn btn-disabled" id="btnAwp" disabled><img class="selector" src="../weapon_icons/awp.png" style="width: 75%"></button>
+                <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                <button class="btn btn-disabled" id="btnScout" disabled><img class="selector" src="../weapon_icons/SCOUT.png" style="width: 75%"></button>
+            </div>
+            <div class="VestHelm">
+                <button class="btn btn-disabled" id="btnColete2" disabled><img class="selector" src="../weapon_icons/VESTHELM1.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnColete1" disabled><img class="selector" src="../weapon_icons/vest.png" style="width: 75%"></button>
+            </div>
+            <div class="Grenades">
+                <button class="btn btn-disabled" id="btnSmoke" disabled><img class="selector" src="../weapon_icons/smoke.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnMolotov" disabled><img class="selector" src="../weapon_icons/molotov.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnHe" disabled><img class="selector" src="../weapon_icons/he.png" style="width: 75%"></button>
+                <div class="Bangs">
+                    <button class="btn btn-disabled" id="btnBang" disabled><img class="selector" src="../weapon_icons/BANG1.png" style="width: 75%"></button>
+                    <button class="btn btn-disabled" id="btnBang1" disabled><img class="selector" src="../weapon_icons/BANG1.png" style="width: 75%"></button>
+                </div>
+            </div>
+        </div>
+        <div class="UserInput">
+            <input type="number" style="text-align: center" placeholder="Grana do jogo..." id="txtbxGrana">
+            <div class="Preco">
+                <b><label style="color: white">Preço:</label></b>
+                <b><label style="color: white" id="lblPrecoValor">R$ 0</label></b>
+            </div>                
+            <div class="Budget">
+                <b><label style="color: white">Budget:</label></b></label></b>
+                <b><label style="color: white" id="lblBudgetValor">R$ 0</label></b>
+            </div>
+            <div class="Buttons">
+                <button class="btn btn-copy" id="btnCopy">Copy</button>
+                <button class="btn btn-copy" id="btnReload">Reset</button>
+                <a class="btn btn-enabled" href="menu_ct.html">CT</a>
+            </div>
+        </div>
+    </div>
+
+    <button id="btnConfirm">Confirma</button>
+    <label style="color: white" id="lblMinNextRoundLabel">Min Next Round:</label><label style="color: white" id="lblMinNextRoundValue">1400</label>
+    <button id="btnLossBonus">Loss Bonus</button>
+    <label style="color: white" id="lblLossBonusLabel">Loss Bonus:</label>
+    <label style="color: white" id="lblLossBonusValue">0</label>
+    <label style="color: white" id="lblMinNextRoundValue">1400</label>
+
+    <textarea id="dummyTextarea" style="position: absolute; margin-left: -9999999px">dwa</textarea>
+
+    <script>
+        $(document).ready(function () 
+        {
+
+            //Declaração de Variáveis "Globais":
+            let budget = 0;
+            let preco = 0;
+            let minNextRound = 1400;
+            let lossBonus = 0;
+            let granadas = 0;
+
+            //LINK Armas TR
+            let arrayAwp = [false,4750]; //4750
+            let kriegEnabled = false; //3000
+            let ak47Enabled = false; //2700
+            let galilEnabled = false; //1800
+            let scoutEnabled = false; //1700
+            let umpEnabled = false; //1200
+            let mac10Enabled = false; //1050
+            let vestHelmEnabled = false; //1000
+            let deagleEnabled = false; //700
+            let vestEnabled = false; //650
+            let tec9Enabled = false; //500
+            let molotovEnabled = false; //400
+            let p250Enabled = false; //300
+            let smokeEnabled = false; //300
+            let heEnabled = false; //300
+            let bangEnabled = false; //200
+            let bang1Enabled = false; //200
+
+            function UpdatePrecoBudget ()
+            {
+                $("#lblBudgetValor").text("R$ " + budget);
+                $("#lblPrecoValor").text("R$ " + preco);
+            }
+
+            //LINK Compra
+            function Compra ()
+            {
+                if(arrayAwp[0] == true)
+                {
+                    $("#btnAwp").removeAttr("disabled");
+                    $('#btnAwp').removeClass('btn-disabled');
+                    $('#btnAwp').removeClass('btn-enabled');
+                }
+                if(kriegEnabled == true)
+                {
+                    $("#btnKrieg").removeAttr("disabled"); 
+                    $('#btnKrieg').removeClass('btn-disabled');
+                    $('#btnKrieg').removeClass('btn-enabled');
+                }
+                if(ak47Enabled == true)
+                {
+                    $("#btnAk47").removeAttr("disabled");
+                    $('#btnAk47').removeClass('btn-disabled');
+                    $('#btnAk47').removeClass('btn-enabled');
+                }
+                if(galilEnabled == true)
+                {
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').removeClass('btn-enabled');
+                }
+                if(scoutEnabled == true)
+                {
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').removeClass('btn-enabled');
+                }
+                if(umpEnabled == true)
+                {
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').removeClass('btn-enabled');
+                }
+                if(mac10Enabled == true)
+                {
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').removeClass('btn-enabled');
+                }
+                if(vestHelmEnabled == true)
+                {
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').removeClass('btn-enabled');
+
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                }
+                if(deagleEnabled == true)
+                {
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').removeClass('btn-enabled');
+                }
+                if(vestEnabled == true)
+                {
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').removeClass('btn-enabled');
+                }
+                if(tec9Enabled == true)
+                {
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').removeClass('btn-enabled');
+                }
+                if(molotovEnabled == true)
+                {
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').removeClass('btn-enabled');
+                }
+                if(p250Enabled == true)
+                {
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').removeClass('btn-enabled');
+                }
+                if(smokeEnabled == true)
+                {
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').removeClass('btn-enabled');
+                }
+                if(heEnabled == true)
+                {
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').removeClass('btn-enabled');
+                }
+                if(bangEnabled == true)
+                {
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').removeClass('btn-enabled');
+                }
+                if(bang1Enabled == true)
+                {
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').removeClass('btn-enabled');
+                }
+                if(vestEnabled == true && budget >= 350)
+                {
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                }
+                if(granadas == 4)
+                {
+                    if(molotovEnabled == false)
+                    {
+                        $('#btnMolotov').removeClass('btn-enabled');
+                        $('#btnMolotov').removeClass('btn-bought');
+                        $('#btnMolotov').addClass('btn-disabled');
+                        $('#btnMolotov').attr('disabled', 'disabled');
+                    }
+                    else if(smokeEnabled == false)
+                    {
+                        $('#btnSmoke').removeClass('btn-enabled');
+                        $('#btnSmoke').removeClass('btn-bought');
+                        $('#btnSmoke').addClass('btn-disabled');
+                        $('#btnSmoke').attr('disabled', 'disabled');
+                    }
+                    else if(heEnabled == false)
+                    {
+                        $('#btnHe').removeClass('btn-enabled');
+                        $('#btnHe').removeClass('btn-bought');
+                        $('#btnHe').addClass('btn-disabled');
+                        $('#btnHe').attr('disabled', 'disabled');
+                    }
+                    else if(bangEnabled == false)
+                    {
+                        $('#btnBang').removeClass('btn-enabled');
+                        $('#btnBang').removeClass('btn-bought');
+                        $('#btnBang').addClass('btn-disabled');
+                        $('#btnBang').attr('disabled', 'disabled');
+                    }
+                    else if(bang1Enabled == false)
+                    {
+                        $('#btnBang1').removeClass('btn-enabled');
+                        $('#btnBang1').removeClass('btn-bought');
+                        $('#btnBang1').addClass('btn-disabled');
+                        $('#btnBang1').attr('disabled', 'disabled');
+                    }
+                }
+            }
+            
+            //LINK AllButtonsOff
+            function AllButtonsOff ()
+            {
+                $("#btnAwp").attr("disabled", "disabled");
+                $('#btnAwp').removeClass('btn-enabled');
+                $('#btnAwp').addClass('btn-disabled');
+
+                $("#btnKrieg").attr("disabled", "disabled");
+                $('#btnKrieg').removeClass('btn-enabled');
+                $('#btnKrieg').addClass('btn-disabled');
+
+                $("#btnAk47").attr("disabled", "disabled"); 
+                $('#btnAk47').removeClass('btn-enabled');
+                $('#btnAk47').addClass('btn-disabled');
+
+                $("#btnGalil").attr("disabled", "disabled"); 
+                $('#btnGalil').removeClass('btn-enabled');
+                $('#btnGalil').addClass('btn-disabled');
+
+                $("#btnScout").attr("disabled", "disabled");
+                $('#btnScout').removeClass('btn-enabled');
+                $('#btnScout').addClass('btn-disabled');
+
+                $("#btnUmp").attr("disabled", "disabled");
+                $('#btnUmp').removeClass('btn-enabled');
+                $('#btnUmp').addClass('btn-disabled');
+
+                $("#btnMac10").attr("disabled", "disabled");
+                $('#btnMac10').removeClass('btn-enabled');
+                $('#btnMac10').addClass('btn-disabled');
+
+                $("#btnColete2").attr("disabled", "disabled");
+                $('#btnColete2').removeClass('btn-enabled');
+                $('#btnColete2').addClass('btn-disabled');
+
+                $("#btnDeagle").attr("disabled", "disabled");
+                $('#btnDeagle').removeClass('btn-enabled');
+                $('#btnDeagle').addClass('btn-disabled');
+
+                $("#btnColete1").attr("disabled", "disabled");
+                $('#btnColete1').removeClass('btn-enabled');
+                $('#btnColete1').addClass('btn-disabled');
+
+                $("#btnTec9").attr("disabled", "disabled");
+                $('#btnTec9').removeClass('btn-enabled');
+                $('#btnTec9').addClass('btn-disabled');
+
+                $("#btnMolotov").attr("disabled", "disabled");
+                $('#btnMolotov').removeClass('btn-enabled');
+                $('#btnMolotov').addClass('btn-disabled');
+                
+                $("#btnP250").attr("disabled", "disabled");
+                $('#btnP250').removeClass('btn-enabled');
+                $('#btnP250').addClass('btn-disabled');
+
+                $("#btnSmoke").attr("disabled", "disabled");
+                $('#btnSmoke').removeClass('btn-enabled');
+                $('#btnSmoke').addClass('btn-disabled');
+
+                $("#btnHe").attr("disabled", "disabled");
+                $('#btnHe').removeClass('btn-enabled');
+                $('#btnHe').addClass('btn-disabled');
+
+                $("#btnBang").attr("disabled", "disabled");
+                $('#btnBang').removeClass('btn-enabled');
+                $('#btnBang').addClass('btn-disabled');
+
+                $("#btnBang1").attr("disabled", "disabled");
+                $('#btnBang1').removeClass('btn-enabled');
+                $('#btnBang1').addClass('btn-disabled');
+            }
+
+            //LINK Disponibilidade
+            function Disponibilidade ()
+            {
+                UpdatePrecoBudget();
+                AllButtonsOff();
+                function Awp ()
+                {
+                        $('#btnAwp').removeAttr("disabled");
+                        $('#btnAwp').removeClass('btn-disabled');
+                        $('#btnAwp').addClass('btn-enabled');
+                }
+                function Krieg ()
+                {
+                    $('#btnKrieg').removeAttr("disabled");
+                    $('#btnKrieg').removeClass('btn-disabled');
+                    $('#btnKrieg').addClass('btn-enabled');
+                }
+                function Ak47 ()
+                {
+                    $('#btnAk47').removeAttr("disabled");
+                    $('#btnAk47').removeClass('btn-disabled');
+                    $('#btnAk47').addClass('btn-enabled');
+                }
+                function Galil ()
+                {
+                    $('#btnGalil').removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').addClass('btn-enabled');
+                }
+                function Scout ()
+                {
+                    $('#btnScout').removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                }
+                function Ump ()
+                {
+                    $('#btnUmp').removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                }
+                function Mac10 ()
+                {
+                    $('#btnMac10').removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                }
+                function Colete2 ()
+                {
+                    $('#btnColete2').removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                }
+                function Deagle ()
+                {
+                    $('#btnDeagle').removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                }
+                function Colete1 ()
+                {
+                    $('#btnColete1').removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                }
+                function Tec9 ()
+                {
+                    $('#btnTec9').removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                }
+                function Molotov ()
+                {
+                    $('#btnMolotov').removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                }
+                function P250andSomeNades ()
+                {
+                    $('#btnP250').removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $('#btnSmoke').removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $('#btnHe').removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                }
+                function Bang ()
+                {
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                if(budget>=4750)
+                {
+                    Awp();
+                    Krieg();
+                    Ak47();
+                    Galil();
+                    Scout();
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+
+                }
+                else if(budget >= 3000 && budget < 4750)
+                {
+                    Krieg();
+                    Ak47();
+                    Galil();
+                    Scout();
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 2700 && budget < 3000)
+                {
+                    Ak47();
+                    Galil();
+                    Scout();
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 1800 && budget < 2900)
+                {
+                    Galil();
+                    Scout();
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 1700 && budget < 1800)
+                {
+                    Scout();
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 1200 && budget < 1700)
+                {
+                    Ump();
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 1050 && budget < 1200)
+                {
+                    Mac10();
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang(); 
+                }
+                else if(budget >= 1000 && budget < 1200)
+                {
+                    Colete2();
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();             
+                }
+                else if(budget >= 700 && budget < 1000)
+                {
+                    Deagle();
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang(); 
+                }
+                else if(budget >= 650 && budget < 700)
+                {
+                    Colete1();
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 500 && budget < 650)
+                {
+                    Tec9();
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 400 && budget < 500)
+                {
+                    Molotov();
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 300 && budget < 400)
+                {
+                    P250andSomeNades();
+                    Bang();
+                }
+                else if(budget >= 200 && budget < 300)
+                {
+                    Bang();
+                }
+                else
+                {
+                    AllButtonsOff();
+                }
+                Compra();
+                $("#lblMinNextRoundValue").text(minNextRound);
+            }
+
+            //LINK Botão de compra AWP
+            $('#btnAwp').click(function() 
+            {
+                if (arrayAwp[0] == false)
+                {
+                    arrayAwp[0] = true;
+                    budget = budget - arrayAwp[1];
+                    preco = preco + arrayAwp[1];
+                    minNextRound = minNextRound - arrayAwp[1];
+                    $('#btnAwp').removeClass('btn-enabled');
+                    $('#btnAwp').addClass('btn-bought');
+                    
+                }
+                else
+                { 
+                    arrayAwp[0] = false;
+                    budget = budget + arrayAwp[1];
+                    preco = preco - arrayAwp[1];
+                    minNextRound = minNextRound + arrayAwp[1];
+                    $('#btnAwp').removeClass('btn-bought');
+                    $('#btnAwp').addClass('btn-enabled'); 
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Krieg
+            $('#btnKrieg').click(function() 
+            {
+                if (kriegEnabled == false)
+                {
+                    kriegEnabled = true;
+                    budget = budget - 3000;
+                    preco = preco + 3000;
+                    $('#btnKrieg').removeClass('btn-enabled');
+                    $('#btnKrieg').addClass('btn-bought');
+                }
+                else
+                {
+                    kriegEnabled = false;
+                    budget = budget + 3000;
+                    preco = preco - 3000;
+                    $('#btnKrieg').removeClass('btn-bought');
+                    $('#btnKrieg').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Ak-47
+            $('#btnAk47').click(function() 
+            {
+                if (ak47Enabled == false)
+                {
+                    ak47Enabled = true;
+                    budget = budget - 2700;
+                    preco = preco + 2700;
+                    $('#btnAk47').removeClass('btn-enabled');
+                    $('#btnAk47').addClass('btn-bought');
+                }
+                else
+                {
+                    ak47Enabled = false;
+                    budget = budget + 2700;
+                    preco = preco - 2700;
+                    $('#btnAk47').removeClass('btn-bought');
+                    $('#btnAk47').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Galil
+            $('#btnGalil').click(function() 
+            {
+                if (galilEnabled == false)
+                {
+                    galilEnabled = true;
+                    budget = budget - 1800;
+                    preco = preco + 1800;
+                    $('#btnGalil').removeClass('btn-enabled');
+                    $('#btnGalil').addClass('btn-bought');
+                }
+                else
+                {
+                    galilEnabled = false;
+                    budget = budget + 1800;
+                    preco = preco - 1800;
+                    $('#btnGalil').removeClass('btn-bought');
+                    $('#btnGalil').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Scout
+            $('#btnScout').click(function() 
+            {
+                if (scoutEnabled == false)
+                {
+                    scoutEnabled = true;
+                    $('#btnScout').removeClass('btn-enabled');
+                    $('#btnScout').addClass('btn-bought');
+                    budget = budget-1700;
+                    preco = preco+1700;
+                }
+                else
+                {
+                    scoutEnabled = false;
+                    budget = budget + 1700;
+                    preco = preco - 1700;
+                    $('#btnScout').removeClass('btn-bought');
+                    $('#btnScout').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Ump
+            $('#btnUmp').click(function() 
+            {
+                if (umpEnabled == false)
+                {
+                    umpEnabled = true;
+                    budget = budget - 1200;
+                    preco = preco + 1200;
+                    $('#btnUmp').removeClass('btn-enabled');
+                    $('#btnUmp').addClass('btn-bought');
+                }
+                else
+                {
+                    umpEnabled = false;
+                    budget = budget + 1200;
+                    preco = preco - 1200;
+                    $('#btnUmp').removeClass('btn-bought');
+                    $('#btnUmp').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Mac 10
+            $('#btnMac10').click(function() 
+            {
+                if (mac10Enabled == true)
+                {
+                    mac10Enabled = false;
+                    budget = budget + 1050;
+                    preco = preco - 1050;
+                    $('#btnMac10').removeClass('btn-bought');
+                    $('#btnMac10').addClass('btn-enabled');
+                }
+                else
+                {
+                    mac10Enabled = true;
+                    budget = budget - 1050;
+                    preco = preco + 1050;
+                    $('#btnMac10').removeClass('btn-enabled');
+                    $('#btnMac10').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete2
+            $('#btnColete2').click(function() 
+            {
+                if (vestHelmEnabled == false)
+                {
+                    vestHelmEnabled = true;
+                    budget = budget - 1000;
+                    preco = preco + 1000;
+                    $('#btnColete2').removeClass('btn-enabled');
+                    $('#btnColete2').addClass('btn-bought');
+                    if(vestEnabled == true)
+                    {
+                        vestEnabled = false;
+                        budget = budget + 650;
+                        preco = preco - 650;
+                        $('#btnColete1').removeClass('btn-bought');
+                        $('#btnColete1').addClass('btn-enabled');
+                    }
+                }
+                else
+                {
+                    vestHelmEnabled = false;
+                    budget = budget + 1000;
+                    preco = preco - 1000;
+                    $('#btnColete2').removeClass('btn-bought');
+                    $('#btnColete2').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Deagle
+            $('#btnDeagle').click(function() 
+            {
+                if (deagleEnabled == false)
+                {
+                    deagleEnabled = true;
+                    budget = budget - 700;
+                    preco = preco + 700;
+                    $('#btnDeagle').removeClass('btn-enabled');
+                    $('#btnDeagle').addClass('btn-bought');
+                }
+                else
+                {
+                    deagleEnabled = false;
+                    budget = budget + 700;
+                    preco = preco - 700;
+                    $('#btnDeagle').removeClass('btn-bought');
+                    $('#btnDeagle').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete1
+            $('#btnColete1').click(function() 
+            {
+                if (vestEnabled == false)
+                {
+                    vestEnabled = true;
+                    budget = budget - 650;
+                    preco = preco + 650;
+                    $('#btnColete1').removeClass('btn-enabled');
+                    $('#btnColete1').addClass('btn-bought');
+                    if(vestHelmEnabled == true)
+                    {
+                        vestHelmEnabled = false;
+                        budget = budget + 1000;
+                        preco = preco - 1000;
+                        $('#btnColete2').removeClass('btn-bought');
+                        $('#btnColete2').addClass('btn-enabled');
+                    }
+                }
+                else
+                {
+                    vestEnabled = false;
+                    budget = budget + 650;
+                    preco = preco - 650;
+                    $('#btnColete1').removeClass('btn-bought');
+                    $('#btnColete1').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Tec9
+            $('#btnTec9').click(function() 
+            {
+                if (tec9Enabled == false)
+                {
+                    tec9Enabled = true;
+                    budget = budget - 500;
+                    preco = preco + 500;
+                    $('#btnTec9').removeClass('btn-enabled');
+                    $('#btnTec9').addClass('btn-bought');
+                }
+                else
+                {
+                    tec9Enabled = false;
+                    budget = budget + 500;
+                    preco = preco - 500;
+                    $('#btnTec9').removeClass('btn-bought');
+                    $('#btnTec9').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra P250
+            $('#btnP250').click(function() 
+            {
+                if (p250Enabled == false)
+                {
+                    p250Enabled = true;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    $('#btnP250').removeClass('btn-enabled');
+                    $('#btnP250').addClass('btn-bought');
+                }
+                else
+                {
+                    p250Enabled = false;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnP250').removeClass('btn-bought');
+                    $('#btnP250').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Molotov
+            $('#btnMolotov').click(function() 
+            {
+                if (molotovEnabled == false)
+                {
+                    molotovEnabled = true;
+                    granadas++;
+                    budget = budget - 400;
+                    preco = preco + 400;
+                    $('#btnMolotov').removeClass('btn-enabled');
+                    $('#btnMolotov').addClass('btn-bought');
+                }
+                else
+                {
+                    molotovEnabled = false;
+                    granadas--;
+                    budget = budget + 400;
+                    preco = preco - 400;
+                    $('#btnMolotov').removeClass('btn-bought');
+                    $('#btnMolotov').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Smoke
+            $('#btnSmoke').click(function() 
+            {
+                if (smokeEnabled == false)
+                {
+                    smokeEnabled = true;
+                    granadas++;
+                    $('#btnSmoke').removeClass('btn-enabled');
+                    $('#btnSmoke').addClass('btn-bought');
+                    budget = budget - 300;
+                    preco = preco + 300;
+                }
+                else
+                {
+                    smokeEnabled = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnSmoke').removeClass('btn-bought');
+                    $('#btnSmoke').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra He
+            $('#btnHe').click(function() 
+            {
+                if (heEnabled == false)
+                {
+                    heEnabled = true;
+                    granadas++;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    $('#btnHe').removeClass('btn-enabled');
+                    $('#btnHe').addClass('btn-bought');
+                }
+                else
+                {
+                    heEnabled = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnHe').removeClass('btn-bought');
+                    $('#btnHe').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang
+            $('#btnBang').click(function() 
+            {
+                if (bangEnabled == false)
+                {
+                    bangEnabled = true;
+                    granadas++;
+                    budget = budget - 200;
+                    preco = preco + 200;
+                    $('#btnBang').removeClass('btn-enabled');
+                    $('#btnBang').addClass('btn-bought');
+                }
+                else
+                {
+                    bangEnabled = false;
+                    granadas--;
+                    budget = budget + 200;
+                    preco = preco - 200;
+                    $('#btnBang').removeClass('btn-bought');
+                    $('#btnBang').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang1
+            $('#btnBang1').click(function() 
+            {
+                if (bang1Enabled == false)
+                {
+                    bang1Enabled = true;
+                    granadas++;
+                    budget = budget - 200;
+                    preco = preco + 200;
+                    $('#btnBang1').removeClass('btn-enabled');
+                    $('#btnBang1').addClass('btn-bought');
+                }
+                else
+                {
+                    bang1Enabled = false;
+                    granadas--;
+                    budget = budget + 200;
+                    preco = preco - 200;
+                    $('#btnBang1').removeClass('btn-bought');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão Loss Bonus
+            $('#btnLossBonus').click(function() 
+            {
+                lossBonus++;
+                minNextRound = minNextRound + 500;
+                if(lossBonus == 5)
+                {
+                    lossBonus = 0;
+                    $("#lblLossBonusValue").text(lossBonus);
+                    minNextRound = 1400;
+                    $("#lblMinNextRoundValue").text(minNextRound);
+                }
+                $("#lblLossBonusValue").text(lossBonus);
+                $("#lblMinNextRoundValue").text(minNextRound);
+            });
+
+            //LINK Botão Confirm
+            $('#btnConfirm').click(function() 
+            {
+                minNextRound = minNextRound + budget;
+                $("#lblMinNextRoundValue").text(minNextRound);
+                $("#btnConfirm").attr("disabled", "disabled");
+            });
+
+            //LINK Listener do input do usuario
+            $('#txtbxGrana').on('change keyup paste', function ()
+            {
+                budget = parseInt($('#txtbxGrana').val())
+                Disponibilidade()
+            })
+
+            //LINK Botão Copy Paste
+            const dummyTextarea = document.getElementById("dummyTextarea")
+            const btnCopy = document.getElementById("btnCopy")
+            $('#btnCopy').click(function()
+            {
+                let copyPaste = "";
+
+                if(arrayAwp == true)
+                {
+                    copyPaste = copyPaste + "buy awp;";
+                }
+                if(kriegEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy sg556;";
+                }
+                if(ak47Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy ak47;";
+                }
+                if(galilEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy galilar;";
+                }
+                if(scoutEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy ssg08;";
+                }
+                if(umpEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy ump45;";
+                }
+                if(mac10Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy mac10;";
+                }
+                if(vestHelmEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy vesthelm;";
+                }
+                if(deagleEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy deagle;";
+                }
+                if(vestEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy vest;";
+                }
+                if(tec9Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy fn57;";
+                }
+                if(molotovEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy molotov;";
+                }
+                if(p250Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy p250;";
+                }
+                if(smokeEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy smokegrenade;";
+                }
+                if(heEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy hegrenade;";
+                }
+                if(bangEnabled == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+                if(bang1Enabled == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+
+                $("#dummyTextarea").val(copyPaste);
+                dummyTextarea.select();
+                document.execCommand('copy');
+            })
+
+            $("#btnReload").click(function()
+            {
+                location.reload(true);
+            });
+
+        });
+    </script>
+</body>
+</html>

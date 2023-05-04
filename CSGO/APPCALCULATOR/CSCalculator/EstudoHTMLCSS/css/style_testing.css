@@ -1,0 +1,235 @@
+html {
+    margin: 0px 0px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0px 0px;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.dunno {
+    display: grid; 
+    grid-template-columns: auto 55% auto ; 
+    grid-template-rows: auto 50% auto; 
+    gap: 3px 3px; 
+    grid-template-areas: 
+      ". . ."
+      ". WeaponsGrid ."
+      ". . ."; 
+    background-color: #181818ff;
+    height: 100%;
+    width: 100%;
+  }
+
+.WeaponsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Grenades Grenades Grenades Grenades Grenades"
+    "UserInput UserInput UserInput UserInput UserInput";
+    grid-area: WeaponsGrid;
+    /* background-color: #00ff00; */
+    height: 100%;
+    width: 100%;
+    /* background-color: red; */
+}
+
+.Pistol {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    "."
+    ".";
+    grid-area: Pistol;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color:blue; */
+}
+
+.SMGs {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    "."
+    ".";
+    grid-area: SMGs;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: blueviolet; */
+}
+
+.Rifles {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    "."
+    ".";
+    grid-area: Rifles;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: cadetblue; */
+}
+
+.SniperRifles {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    "."
+    ".";
+    grid-area: SniperRifles;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: chartreuse; */
+}
+
+.VestHelm {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    ".";
+    grid-area: VestHelm;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: rgb(255, 251, 0); */
+}
+
+.Grenades {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    ". . . Bangs";
+    grid-area: Grenades;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: darkgreen; */
+}
+
+.Bangs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    ". .";
+    grid-area: Bangs;
+    justify-items: center; 
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.UserInput {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 3px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "."
+    "Preco"
+    "Budget"
+    "Buttons";
+    grid-area: UserInput;
+    height: 100%;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    justify-items: center;
+    /* background-color: goldenrod; */
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 0px;
+    background-color: aqua;
+}
+
+.dunno .btn-disabled
+{
+    background-color:#666666;
+    /* border-color: red; */
+}
+
+.dunno .btn-enabled
+{
+    background-color:#cccccccc;
+    /* border-color: green; */
+}
+
+.dunno .btn-bought
+{
+    background-color:#00ff00FF;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn.btn-primary:active,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background-color: orange !important;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    /* height: 100%; */
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

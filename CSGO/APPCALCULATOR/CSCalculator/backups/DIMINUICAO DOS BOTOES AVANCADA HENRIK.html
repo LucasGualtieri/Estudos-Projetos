@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\menu_tr.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <title>CSGO Inventory</title>
+</head>
+<body>
+    <div class="container container-menu my-container">
+        <div class="WeaponsGrid">
+            <div class="Rifles">
+                <button class="btn btn-disabled" id="btnKrieg" disabled><img class="selector" src="../weapon_icons/KRIEG.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnAk47" disabled><img class="selector" src="../weapon_icons/ak.png" style="width: 75%"></button>
+                <button class="btn btn-disabled" id="btnGalil" disabled><img class="selector" src="../weapon_icons/Galil.png" style="width: 75%"></button>
+            </div>
+        </div>
+        <div class="UserInput">
+            <input type="number" style="text-align: center" placeholder="Grana do jogo..." id="txtbxGrana">
+            <div class="Preco">
+                <b><label style="color: white">Preço:</label></b>
+                <b><label style="color: white" id="lblPrecoValor">R$ 0</label></b>
+            </div>                
+            <div class="Budget">
+                <b><label style="color: white">Budget:</label></b></label></b>
+                <b><label style="color: white" id="lblBudgetValor">R$ 0</label></b>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="dummyTextarea" style="position: absolute; margin-left: -9999999px">dwa</textarea>
+
+    <script>
+        $(document).ready(function()
+        {
+            //console.log(typeof(minNextRound))
+            //Declaração de Variáveis "Globais":
+            //let arrayKrieg = [false,3000] //...3000
+            let budget = 0
+            let preco = 0
+            let arrayArma
+            const itens = {
+                krieg: [false, 3000, "btnKrieg"],
+                ak47: [false, 2700, "btnak47"],
+                galil: [false, 1800, "galil"]
+            };
+
+            let arrayKrieg = [false,3000] //...3000
+            let arrayAk47 = [false,2700] //....2700
+            let arrayGalil = [false,1800] //...1800
+
+            const precoKrieg = 3000
+            const precoAk = 2700
+            const precoGalil = 1800
+            
+            function UpdatePrecoBudget ()
+            {
+                $("#lblBudgetValor").text("R$ " + budget)
+                $("#lblPrecoValor").text("R$ " + preco)
+            }
+
+            function AllButtonsOffBtn (string)
+            {
+                $(string).attr("disabled", "disabled")
+                $(string).removeClass('btn-enabled')
+                $(string).addClass('btn-disabled')
+            }
+
+            //LINK Compra
+            function Compra ()
+            {
+                function CompraBtn (btnArma)
+                {
+                    $(btnArma).removeAttr("disabled")
+                    $(btnArma).removeClass('btn-disabled')
+                    $(btnArma).removeClass('btn-enabled')
+                }
+
+                for(const item in itens){
+                    console.log({item})
+                    if(item[0])
+                    {
+                        CompraBtn(item[2]) 
+                    }
+                }
+            }
+            //itens.ak47[0];
+            
+            //LINK AllButtonsOff
+            function AllButtonsOff ()
+            {
+                AllButtonsOffBtn(btnKrieg)
+                AllButtonsOffBtn(btnAk47)
+                AllButtonsOffBtn(btnGalil)
+            }
+
+            //LINK diponibilidade
+            function diponibilidade ()
+            {
+                UpdatePrecoBudget()
+                AllButtonsOff()
+                function btn (string)
+                {
+                    $(string).removeAttr("disabled")
+                    $(string).removeClass('btn-disabled')
+                    $(string).addClass('btn-enabled')
+                }
+
+                if(budget >= 1800)
+                {
+                    btn(btnGalil)
+                }
+
+                if(budget >= 2700)
+                {
+                    btn(btnAk47)
+                }
+                if(budget >= 3000)
+                {
+                    btn(btnKrieg)
+                }
+                Compra()
+            }
+            
+            //LINK Listener do input do usuario
+            $('#txtbxGrana').on('input', function ()
+            {
+                budget = parseInt($('#txtbxGrana').val())
+                if(budget > 16000)
+                {
+                    $('#txtbxGrana').val(16000)
+                    budget = 16000
+                }
+                diponibilidade()
+            })
+            
+            
+            function botaoArmaCompra({precoArma,armaEnabled, btnArma})
+            {
+                armaEnabled = true
+                budget -= precoArma
+                preco += precoArma
+                $(btnArma).removeClass('btn-enabled')
+                $(btnArma).addClass('btn-bought')
+                diponibilidade()
+            }
+            function botaoArmaVenda(precoArma, armaEnabled, btnArma)
+            {
+                armaEnabled = false
+                budget += precoArma
+                preco -= precoArma
+                $(btnArma).removeClass('btn-bought')
+                $(btnArma).addClass('btn-enabled')
+                diponibilidade()
+            }
+
+            //LINK Botão de compra Krieg
+            $('#btnKrieg').click(function()
+            {
+                if(kriegEnabled == false)
+                {
+                    botaoArmaCompra({
+                        precoArma : precoKrieg,
+                        armaEnable : kriegEnabled,
+                        btnArma : "#btnKrieg"
+                    })
+                }
+                else
+                {
+                    botaoArmaVenda({precoArma : precoKrieg, armaEnable : kriegEnabled, btnArma : "#btnKrieg"})
+                }
+            })
+            //LINK Botão de compra Ak47
+            $('#btnAk47').click(function() 
+            {
+                if(ak47Enabled == false)
+                {
+                    botaoArmaCompra(precoAk, ak47Enabled, "#btnAk47")
+                }
+                else
+                {
+                    botaoArmaVenda(precoAk, ak47Enabled, "#btnAk47")
+                }
+            })
+            //LINK Botão de compra Galil
+            $('#btnGalil').click(function() 
+            {
+                if(galilEnabled == false)
+                {
+                    botaoArmaCompra(item.galil[1], gitem.galil[0], item.galil[2])
+                }
+                else
+                {
+                    botaoArmaVenda(item.galil[1], gitem.galil[0], item.galil[2])
+                }
+            })
+        })
+    </script>
+</body>
+</html>

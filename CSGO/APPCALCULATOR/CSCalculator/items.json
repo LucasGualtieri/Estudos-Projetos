@@ -1,0 +1,104 @@
+{
+	"bang1": {
+		"isEnabled": false,
+		"price": 200,
+		"btnId": "#btnBang1",
+		"conslComm": "buy flashbang"
+	},
+	"bang": {
+		"isEnabled": false,
+		"price": 200,
+		"btnId": "#btnBang",
+		"conslComm": "buy flashbang"
+	},
+	"smoke": {
+		"isEnabled": false,
+		"price": 300,
+		"btnId": "#btnSmoke",
+		"conslComm": "buy smokegrenade"
+	},
+	"he": {
+		"isEnabled": false,
+		"price": 300,
+		"btnId": "#btnHe",
+		"conslComm": "buy hegrenade"
+	},
+	"molotov": {
+		"isEnabled": false,
+		"price": 400,
+		"btnId": "#btnMolotov",
+		"conslComm": "buy molotov"
+	},
+	"p250": {
+		"isEnabled": false,
+		"price": 300,
+		"btnId": "#btnP250",
+		"conslComm": "buy p250"
+	},
+	"tec9": {
+		"isEnabled": false,
+		"price": 500,
+		"btnId": "#btnTec9",
+		"conslComm": "buy fn57"
+	},
+	"deagle": {
+		"isEnabled": false,
+		"price": 700,
+		"btnId": "#btnDeagle",
+		"conslComm": "buy deagle"
+	},
+	"vest": {
+		"isEnabled": false,
+		"price": 650,
+		"btnId": "#btnVest",
+		"conslComm": "buy vest"
+	},
+	"vestHelm": {
+		"isEnabled": false,
+		"price": 1000,
+		"btnId": "#btnVestHelm",
+		"conslComm": "buy vesthelm"
+	},
+	"mac10": {
+		"isEnabled": false,
+		"price": 1050,
+		"btnId": "#btnMac10",
+		"conslComm": "buy mac10"
+	},
+	"ump": {
+		"isEnabled": false,
+		"price": 1200,
+		"btnId": "#btnUmp",
+		"conslComm": "buy ump45"
+	},
+	"galil": {
+		"isEnabled": false,
+		"price": 1800,
+		"btnId": "#btnGalil",
+		"conslComm": "buy galilar"
+	},
+	"ak": {
+		"isEnabled": false,
+		"price": 2700,
+		"btnId": "#btnAk",
+		"conslComm": "buy ak47"
+	},
+	"krieg": {
+		"isEnabled": false,
+		"price": 3000,
+		"btnId": "#btnKrieg",
+		"conslComm": "buy sg556"
+	},
+	"scout": {
+		"isEnabled": false,
+		"price": 1700,
+		"btnId": "#btnScout",
+		"conslComm": "buy ssg08"
+	},
+	"awp": {
+		"isEnabled": false,
+		"price": 4750,
+		"btnId": "#btnAwp",
+		"conslComm": "buy awp"
+	}
+}

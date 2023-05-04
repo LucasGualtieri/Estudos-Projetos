@@ -1,0 +1,198 @@
+.container
+        {
+            display: grid;
+            grid-template-columns: 0.3fr 2.4fr 0.3fr;
+            grid-template-rows: 0.2fr 1.4fr 1fr 1.4fr;
+            grid-auto-columns: 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            justify-content: center;
+            grid-template-areas:
+            ". . ."
+            ". WeaponsGrid ."
+            ". UserInput ."
+            ". . .";
+        }
+
+        .WeaponsGrid
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            gap: 3px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Pistol SMGs Rifles SniperRifles VestHelm"
+            "Grenades Grenades Grenades Grenades Grenades";
+            grid-area: WeaponsGrid;
+        }
+
+        .Pistol
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: Pistol;
+        }
+
+        .SMGs
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: SMGs;
+        }
+
+        .Rifles
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-auto-columns: 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: Rifles;
+        }
+
+        .SniperRifles
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: SniperRifles;
+        }
+
+        .VestHelm
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "."
+            ".";
+            grid-area: VestHelm;
+        }
+
+        .Grenades
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". . . Bangs";
+            grid-area: Grenades;
+        }
+
+        .Bangs
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". .";
+            grid-area: Bangs;
+        }
+
+        .UserInput
+        {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            gap: 3px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "."
+            "Preco"
+            "Budget"
+            "Buttons";
+            justify-self: center;
+            align-self: stretch;
+            grid-area: UserInput;
+        }
+
+        .Preco
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            align-items: end;
+            grid-template-areas:
+            ". .";
+            justify-self: center;
+            grid-area: Preco;
+        }
+
+        .Budget
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            align-items: start;
+            grid-template-areas:
+            ". .";
+            justify-self: center;
+            grid-area: Budget;
+        }
+
+        .Buttons
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 3px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            ". . .";
+            grid-area: Buttons;
+        }
+        /* Esse codigo tira as setinhas do input de grana */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button
+        {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Esse codigo faz com que as armas não sejam arrastaveis */
+        .selector
+        {
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }

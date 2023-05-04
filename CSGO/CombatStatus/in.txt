@@ -1,0 +1,386 @@
+jota
+-------------------------
+Damage Given to "lila" - 14 in 1 hit
+Damage Given to "็็็☂  A" - 32 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lila" - 92 in 1 hit
+Damage Taken from "jota" - 103 in 1 hit
+Player: Gualtier1 - Damage Given
+-------------------------
+Damage Given to "lila" - 14 in 1 hit
+Damage Given to "็็็☂  A" - 32 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lila" - 92 in 1 hit
+Damage Taken from "jota" - 103 in 1 hit
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Telling Steam not to update the app for the next 900 seconds
+DispatchAsyncEvent backlog, failed to dispatch all this frame. 63 of 76 remaining
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+* jota changed name to lecrazilife?
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+ConVarRef voice_chat_bubble_show_volume doesn't point to an existing ConVar
+ConVarRef voice_vox_current_peak doesn't point to an existing ConVar
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "shaole" - 15 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "shaole" - 116 in 4 hits
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "shaole" - 15 in 1 hit
+* lecrazilife? changed name to marreco brabo
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "shaole" - 116 in 4 hits
+Host_WriteConfiguration: Wrote cfg/config.cfg
+"cl_crosshairsize" = "999" ( def. "5" ) client archive ss                       
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 110 in 2 hits
+Damage Given to "็็็☂  A" - 110 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 26 in 1 hit
+Damage Taken from "lila" - 102 in 7 hits
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+volume .15
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 110 in 2 hits
+Damage Given to "็็็☂  A" - 110 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 26 in 1 hit
+Damage Taken from "lila" - 102 in 7 hits
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+usage: buy <item>
+  glock
+  hkp2000
+  usp_silencer
+  elite
+  p250
+  tec9
+  fn57
+  deagle
+  galilar
+  famas
+  ak47
+  m4a1
+  m4a1_silencer
+  ssg08
+  aug
+  sg556
+  awp
+  scar20
+  g3sg1
+  nova
+  xm1014
+  mag7
+  m249
+  negev
+  mac10
+  mp9
+  mp7
+  ump45
+  p90
+  bizon
+  vest
+  vesthelm
+  taser
+  defuser
+  heavyarmor
+  molotov
+  incgrenade
+  decoy
+  flashbang
+  hegrenade
+  smokegrenade
+Telling Steam not to update the app for the next 900 seconds
+Certificate expires in 22h41m at 1681004335 (current time 1680922655), will renew in 20h41m
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "็็็☂  A" - 62 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 164 in 2 hits
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "็็็☂  A" - 62 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 164 in 2 hits
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 135 in 4 hits
+Damage Given to "shaole" - 26 in 1 hit
+Damage Given to "marreco brabo" - 35 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 103 in 1 hit
+Telling Steam not to update the app for the next 900 seconds
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+SignalXWriteOpportunity(3)
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 135 in 4 hits
+Damage Given to "shaole" - 26 in 1 hit
+Damage Given to "marreco brabo" - 35 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 103 in 1 hit
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Telling Steam not to update the app for the next 900 seconds
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "shaole" - 100 in 4 hits
+Damage Given to "pzk" - 78 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "shaole" - 27 in 1 hit
+Host_WriteConfiguration: Wrote cfg/config.cfg
+"cl_crosshairsize" = "999" ( def. "5" ) client archive ss                       
+"cl_crosshairsize" = "2.2" ( def. "5" ) client archive ss                       
+"cl_crosshairsize" = "999" ( def. "5" ) client archive ss                       
+"cl_crosshairsize" = "2.2" ( def. "5" ) client archive ss                       
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+"cl_crosshairsize" = "999" ( def. "5" ) client archive ss                       
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 163 in 6 hits
+Damage Given to "็็็☂  A" - 100 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "(1)a" - 28 in 8 hits
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "็็็☂  A" - 176 in 3 hits
+Damage Given to "marreco brabo" - 8 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 53 in 2 hits
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "shaole" - 27 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 132 in 4 hits
+Telling Steam not to update the app for the next 900 seconds
+window resized
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "shaole" - 27 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 132 in 4 hits
+DispatchAsyncEvent backlog, failed to dispatch all this frame. 54 of 517 remaining
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Certificate expires in 22h31m at 1681004335 (current time 1680923255), will renew in 20h31m
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 14 in 1 hit
+Damage Given to "shaole" - 22 in 1 hit
+Damage Given to "็็็☂  A" - 107 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "pzk" - 117 in 4 hits
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+Relay tyo1#18 (155.133.245.34:27032) is going offline in 505 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 14 in 1 hit
+Damage Given to "shaole" - 22 in 1 hit
+Damage Given to "็็็☂  A" - 107 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "pzk" - 117 in 4 hits
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 6 in 2 hits
+Damage Given to "shaole" - 108 in 5 hits
+Damage Given to "marreco brabo" - 69 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 47 in 8 hits
+Damage Taken from "marreco brabo" - 139 in 1 hit
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 6 in 2 hits
+Damage Given to "shaole" - 108 in 5 hits
+Damage Given to "marreco brabo" - 69 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 47 in 8 hits
+Damage Taken from "marreco brabo" - 139 in 1 hit
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 65 in 9 hits
+Damage Given to "marreco brabo" - 74 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 240 in 6 hits
+Telling Steam not to update the app for the next 900 seconds
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+Telling Steam not to update the app for the next 900 seconds
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 81 in 11 hits
+Damage Given to "marreco brabo" - 74 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 240 in 6 hits
+DispatchAsyncEvent backlog, failed to dispatch all this frame. 56 of 448 remaining
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 108 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 100 in 4 hits
+SignalXWriteOpportunity(3)
+0:  Reinitialized 2 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "pzk" - 108 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "marreco brabo" - 100 in 4 hits
+DispatchAsyncEvent backlog, failed to dispatch all this frame. 56 of 431 remaining
+0:  Reinitialized 4 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Telling Steam not to update the app for the next 900 seconds
+Telling Steam not to update the app for the next 900 seconds
+SignalXWriteOpportunity(3)
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 129 in 6 hits
+Damage Given to "็็็☂  A" - 116 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 88 in 3 hits
+Damage Taken from "marreco brabo" - 27 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 129 in 6 hits
+Damage Given to "็็็☂  A" - 116 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "็็็☂  A" - 88 in 3 hits
+Damage Taken from "marreco brabo" - 27 in 1 hit
+DispatchAsyncEvent backlog, failed to dispatch all this frame. 59 of 428 remaining
+0:  Reinitialized 4 predictable entities
+Host_WriteConfiguration: Wrote cfg/config.cfg
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+usage: buy <item>
+  glock
+  hkp2000
+  usp_silencer
+  elite
+  p250
+  tec9
+  fn57
+  deagle
+  galilar
+  famas
+  ak47
+  m4a1
+  m4a1_silencer
+  ssg08
+  aug
+  sg556
+  awp
+  scar20
+  g3sg1
+  nova
+  xm1014
+  mag7
+  m249
+  negev
+  mac10
+  mp9
+  mp7
+  ump45
+  p90
+  bizon
+  vest
+  vesthelm
+  taser
+  defuser
+  heavyarmor
+  molotov
+  incgrenade
+  decoy
+  flashbang
+  hegrenade
+  smokegrenade
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Telling Steam not to update the app for the next 900 seconds
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lila" - 115 in 5 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "pzk" - 167 in 2 hits

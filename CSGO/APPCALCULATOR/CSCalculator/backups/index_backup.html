@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSGO Inventory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #181818ff;">
+    <br><br><br><br><br><br><br>
+    <div class="container container-menu">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <a href="#" class="btn" id="btnBuyAk">AK47</a>
+                <a href="#" class="btn" id="btnBuyKevlar1">Colete 1</a>
+                <a href="#" class="btn" id="btnBuyKevlar2">Colete 2</a>
+                <br><br><b><label style="color: white">Dinheiro:</label></b>
+                <input type="number" style="text-align: center" placeholder="Grana do jogo..." name="wallet" id="userWallet">
+                <br><br><b><label style="color: white">Preço:</label></b><b><label style="color: white">R$ 0</label></b>
+                <br><b><label style="color: white">Budget:</label></b></label></b><b><label style="color: white">R$ 0</label></b>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            //Declaração de Variáveis:
+            $('#userWallet').val('0');
+            $('#currentWallet').val('0');
+
+            let arrayAk47 = [2700, "AK-47", 0]
+            let arrayKevlar1 = [650, "Kevlar: Armor", 0]
+            let arrayKevlar2 = [1000, "Kevlar: Armor + Helmet", 0]
+            
+            //GRANADAS
+            let arrayMolotv = [2700, "AK-47", 0]
+            let arrayFlashbang = [2700, "AK-47", 0]
+            let arraySmoke = [2700, "AK-47", 0]
+            let arrayHe = [2700, "AK-47", 0]
+
+            updateItens(currentWalletValue);
+
+            // Quando compra qualquer utilty
+            if (arrayMolotv[2] + arrayFlashbang[2] + arraySmoke[2] + arrayHe[2] < 4) {
+                // procede com a compra1
+            }
+            else {
+                // Bloqueia a compra
+            }
+
+            //quando compra arrayFlashbang
+            if (arrayFlashbang[2] < 2) {
+                // procede com a compra1
+            }
+            else {
+                // Bloqueia a compra
+            }
+
+
+            function getCurrentWallet() {
+                return $('#currentWallet').val();
+            }
+
+            function updateWallet(newValue) {
+                $('#currentWallet').val(newValue);
+                currentWalletValue = newValue;
+                updateItens(currentWalletValue);
+            }
+
+            function updateItens(walletValue) {
+
+                //Valida valor inputado pelo usuario
+                if (walletValue >= arrayAk47[0]) {
+                    $('#btnBuyAk').removeClass('btn-disabled');
+                    $('#btnBuyAk').addClass('btn-buy');
+                }
+                else {
+                    $('#btnBuyAk').removeClass('btn-buy');
+                    $('#btnBuyAk').addClass('btn-disabled');
+                }
+
+                if (walletValue >= arrayKevlar1[0]) {
+                    $('#btnBuyKevlar1').removeClass('btn-disabled');
+                    $('#btnBuyKevlar1').addClass('btn-buy');
+                }
+                else {
+                    $('#btnBuyKevlar1').removeClass('btn-buy');
+                    $('#btnBuyKevlar1').addClass('btn-disabled');
+                }
+
+                if (walletValue >= arrayKevlar2[0]) {
+                    $('#btnBuyKevlar2').removeClass('btn-disabled');
+                    $('#btnBuyKevlar2').addClass('btn-buy');
+                }
+                else {
+                    $('#btnBuyKevlar2').removeClass('btn-buy');
+                    $('#btnBuyKevlar2').addClass('btn-disabled');
+                }
+            }
+
+
+            // Listener do input do usuario
+            $('#userWallet').on('change keyup paste', function () {
+
+                let typedValue = $('#userWallet').val();
+                updateWallet(typedValue);
+
+            })
+
+            //Botão de compra AK 47
+            $('#btnBuyAk').click(function () {
+
+                let value = getCurrentWallet();
+                if (value >= arrayAk47[0]) {
+                    arrayAk47[2]++;
+                    $(".inventory").append("<a href='#' id='akinv" + String(arrayAk47[2]) + "'>" + arrayAk47[1] + "</a></br>");
+                    updateWallet(value - arrayAk47[0]);
+                }
+            });
+
+            //Evento de click botao Kevlar1
+            $('#btnBuyKevlar1').click(function () {
+
+                let value = getCurrentWallet();
+                if (value >= arrayKevlar1[0]) {
+                    $(".inventory").append("<p>" + arrayKevlar1[1] + "</p>");
+                    updateWallet(value - arrayKevlar1[0]);
+                }
+            });
+
+            //Evento de click botao Kevlar2
+            $('#btnBuyKevlar2').click(function () {
+
+                let value = getCurrentWallet();
+                if (value >= arrayKevlar2[0]) {
+                    $(".inventory").append("<p>" + arrayKevlar2[1] + "</p>");
+                    updateWallet(value - arrayKevlar2[0]);
+                }
+            });
+
+            //Evento de click botao de venda
+            $(".inventory").on('click', 'a', function (e) {
+
+
+                for (cont = 0; cont < 6; cont++) {
+                    if (e.target.id == 'akinv' + cont) {
+                        let value = getCurrentWallet();
+                        updateWallet(parseInt(value) + 2700);
+                    }
+                }
+
+                $(this).remove();
+
+            });
+            //Evento de click novo modificado
+            
+            /*$(".inventory").on('click', 'a', function (e) {
+
+
+                for (cont = 0; cont < 6; cont++) {
+                    if (e.target.id == 'akinv' + cont) {
+                        let value = getCurrentWallet();
+                        updateWallet(parseInt(value) + 2700);
+                    }
+                }
+
+                $(this).remove();
+
+            });*/
+        });
+
+    </script>
+</body>
+
+</html>

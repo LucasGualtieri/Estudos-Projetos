@@ -1,0 +1,8 @@
+Como salvar as binds
+O que fazer com o som
+Desbugar o som
+Trocar para outro som?
+teclas bind e exit "tabáveis"
+tirar o foco qundo apertar os botões
+App Icon
+Compilar! :)

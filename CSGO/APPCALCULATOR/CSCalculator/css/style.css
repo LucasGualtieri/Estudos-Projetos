@@ -1,0 +1,52 @@
+/* :root {
+    
+}
+
+.container-menu {
+
+} */
+body
+{
+    background-color: #181818ff;
+    color: white;
+}
+
+.container-menu .btn{
+    background-color: aqua;
+}
+
+.container-menu .btn-disabled
+{
+    background-color:#cccccccc;
+    color: #666666;
+    width: 100%;
+    /* border-color: red; */
+}
+
+.container-menu .btn-enabled
+{
+    background-color:#cccccccc;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    /* border-color: green; */
+}
+/* button:focus{
+    border-radius: 50%;
+    outline: ;
+} */
+
+.container-menu .btn-bought
+{
+    background-color:#00ff00FF;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+}
+
+.container-menu .btn-copy
+{
+    background-color:#cccccccc;
+    color: black;
+    font-weight: bold;
+}

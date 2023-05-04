@@ -1,0 +1,3 @@
+Total kills: 0
+Total deaths: 14
+Total interactions: 14

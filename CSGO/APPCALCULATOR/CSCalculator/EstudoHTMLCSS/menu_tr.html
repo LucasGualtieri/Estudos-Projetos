@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="css\style.css">
+    <!-- <link rel="stylesheet" href="css\menu_tr.css"> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../menu_tr.js"></script>
+
+    <title>CSGO Inventory</title>
+</head>
+<body>
+   <div class="grid">
+      <div class="WeaponsGrid">
+         <div class="Pistol">
+            <button class="btn btn-disabled" id="btnDeagle" disabled><img class="selector" src="./weapon_icons/DEAGLE.png"></button>
+            <button class="btn btn-disabled" id="btnTec9" disabled><img class="selector" src="./weapon_icons/tec9.png"></button>
+            <button class="btn btn-disabled" id="btnP250" disabled><img class="selector" src="./weapon_icons/p250.png"></button>
+         </div>
+         <div class="SMGs">
+            <button class="btn btn-disabled" id="btnUmp" disabled><img src="./weapon_icons/UMP.png"></button>
+            <button class="btn btn-disabled" style="background-color: #181818ff;" disabled></button>
+            <button class="btn btn-disabled" id="btnMac10" disabled><img class="selector" src="./weapon_icons/MAC10.png"></button>
+         </div>
+         <div class="Rifles">
+            <button class="btn btn-disabled" id="btnKrieg" disabled><img class="selector" src="./weapon_icons/KRIEG.png"></button>
+            <button class="btn btn-disabled" id="btnAk" disabled><img class="selector" src="./weapon_icons/ak.png"></button>
+            <button class="btn btn-disabled" id="btnGalil" disabled><img class="selector" src="./weapon_icons/Galil.png"></button>
+         </div>
+         <div class="SniperRifles">
+            <button class="btn btn-disabled" id="btnAwp" disabled><img class="selector" src="./weapon_icons/awp.png"></button>
+            <button class="btn btn-disabled" style="background-color: #181818ff;" disabled></button>
+            <button class="btn btn-disabled" id="btnScout" disabled><img class="selector" src="./weapon_icons/SCOUT.png"></button>
+         </div>
+         <div class="VestHelm">
+            <button class="btn btn-disabled" id="btnVestHelm" disabled><img class="selector" src="./weapon_icons/VESTHELM1.png"></button>
+            <button class="btn btn-disabled" id="btnVest" disabled><img class="selector" src="./weapon_icons/vest.png"></button>
+         </div>
+         <div class="Grenades">
+            <button class="btn btn-disabled" id="btnSmoke" disabled><img class="selector" src="./weapon_icons/smoke.png"></button>
+            <button class="btn btn-disabled" id="btnMolotov" disabled><img class="selector" src="./weapon_icons/molotov.png"></button>
+            <button class="btn btn-disabled" id="btnHe" disabled><img class="selector" src="./weapon_icons/molotov.png"></button>
+            <div class="Bangs">
+               <button class="btn btn-disabled" id="btnBang" disabled><img class="selector" src="./weapon_icons/BANG1.png"></button>
+               <button class="btn btn-disabled" id="btnBang1" disabled><img class="selector" src="./weapon_icons/BANG1.png"></button>
+            </div>
+         </div>
+         <div class="UserInput">
+            <div class="InputBox">
+               <input type="number" placeholder="Grana do jogo..." id="txtbxGrana">
+            </div>
+            <div class="Preco">
+               <label>Preço: <label>0</label></label>
+            </div>
+            <div class="Budget">
+               <label>Budget: <label>0</label></label>
+            </div>
+            <div class="Buttons">
+               <button class="btn btn-teste" style="width: auto;"></button>
+               <button class="btn" style="width: auto;"></button>
+               <button class="btn" style="width: auto;"></button>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

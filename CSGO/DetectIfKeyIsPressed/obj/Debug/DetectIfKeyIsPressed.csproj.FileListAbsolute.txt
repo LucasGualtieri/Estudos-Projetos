@@ -1,0 +1,70 @@
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.config
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.pdb
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.AssemblyReference.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Form1.resources
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Properties.Resources.resources
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.GenerateResource.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.pdb
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.application
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.application
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.AssemblyReference.cache
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Form1.resources
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Properties.Resources.resources
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.GenerateResource.cache
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.CoreCompileInputs.cache
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.pdb
+E:\Lucas\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.config
+E:\Lucas\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.manifest
+E:\Lucas\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.application
+E:\Lucas\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe
+E:\Lucas\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.pdb
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe.manifest
+E:\Lucas\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.application
+C:\Development\Nova pasta\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.config
+C:\Development\Nova pasta\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Development\Nova pasta\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.application
+C:\Development\Nova pasta\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe
+C:\Development\Nova pasta\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.pdb
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.AssemblyReference.cache
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Form1.resources
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Properties.Resources.resources
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.GenerateResource.cache
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.CoreCompileInputs.cache
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.application
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe
+C:\Development\Nova pasta\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.pdb
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.AssemblyReference.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Form1.resources
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Properties.Resources.resources
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.GenerateResource.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.pdb
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.config
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.application
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.pdb
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe.manifest
+C:\Users\Lucas\Desktop\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.application
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.config
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe.manifest
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.application
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.exe
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\bin\Debug\DetectIfKeyIsPressed.pdb
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.AssemblyReference.cache
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Form1.resources
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.Properties.Resources.resources
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.GenerateResource.cache
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.csproj.CoreCompileInputs.cache
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe.manifest
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.application
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.exe
+E:\Lucas\PROJETOS PROGRAMAS\DetectIfKeyIsPressed\obj\Debug\DetectIfKeyIsPressed.pdb

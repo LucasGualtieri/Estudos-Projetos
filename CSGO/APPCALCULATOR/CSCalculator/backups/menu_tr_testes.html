@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSGO Inventory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+.GRIDLEGAL {
+  display: grid;
+  grid-template-columns: 80%;
+  grid-template-rows: auto;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-content: space-evenly;
+  align-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-template-areas:
+    "TESTE";
+}
+
+.TESTE {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: 75% 25%;
+  gap: 3px 3px;
+  grid-auto-flow: row;
+  justify-items: stretch;
+  grid-template-areas:
+    "PISTOLS SMGs RIFLES SNIPER-RIFLES COLETES"
+    "GRANADAS GRANADAS GRANADAS GRANADAS GRANADAS";
+  justify-self: stretch;
+  align-self: stretch;
+  grid-area: TESTE;
+  width: 100%;
+  height: 100%;
+}
+
+.PISTOLS {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: PISTOLS;
+  width: 100%;
+  height: 100%;
+}
+
+.SMGs {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  justify-items: start;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: SMGs;
+}
+
+.RIFLES {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: RIFLES;
+}
+
+.SNIPER-RIFLES {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: SNIPER-RIFLES;
+}
+
+.COLETES {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  justify-items: start;
+  grid-template-areas:
+    "."
+    ".";
+  grid-area: COLETES;
+}
+
+.GRANADAS {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . BANGS";
+  grid-area: GRANADAS;
+}
+
+.BANGS {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". .";
+  grid-area: BANGS;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+<div class="GRIDLEGAL container-menu my-container container">
+    <div class="TESTE">
+        <div class="PISTOLS">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Deagle</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>TEC9</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>P250</button>
+        </div>
+        <div class="SMGs">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>UMP</button>
+            <button class="btn"style="background-color: #181818ff;" disabled></button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>MAC10</button>
+        </div>
+        <div class="RIFLES">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Krieg</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Ak-47</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Galil</button>
+        </div>
+        <div class="SNIPER-RIFLES">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>AWP</button>
+            <button class="btn"style="background-color: #181818ff;" disabled></button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Scout</button>
+        </div>
+        <div class="COLETES">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Colete2</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Colete1</button>
+        </div>
+        <div class="GRANADAS">
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Smoke</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>Molotov</button>
+            <button class="btn btn-disabled" id="btnDeagle" disabled>HE</button>
+            <div class="BANGS">
+                <button class="btn btn-disabled" id="btnDeagle" disabled>Bang</button>
+                <button class="btn btn-disabled" id="btnDeagle" disabled>Bang</button>
+            </div>
+        </div>    
+    <script>
+        $(document).ready(function () 
+        {
+
+            //Declaração de Variáveis "Globais":
+            let budget = 0;
+            let preco = 0;
+            let granadas = 0;
+
+            //0 = Weapon Enabled
+            //1 = Weapon Bought
+
+            //LINK Armas TR
+            let arrayAwp = [false,false]; //4750
+            let arrayAug = [false,false]; // 3300
+            let arrayKrieg = [false,false]; //3000
+            let arrayColt = [false,false]; //2900
+            let arrayAk = [false,false]; //2700
+            let arrayGalil = [false,false]; //1800
+            let arrayFamas = [false,false]; //2050
+            let arrayScout = [false,false]; //1700
+            let arrayMp9 = [false,false]; //1250
+            let arrayUmp = [false,false]; //1200
+            let arrayMac10 = [false,false]; //1050
+            let arrayColete2 = [false,false]; //1000
+            let arrayDeagle = [false,false]; //700
+            let arrayColete1 = [false,false]; //650
+            let arrayIncendiary = [false,false]; //600
+            let arrayTec9 = [false,false]; //500
+            let arrayMolotov = [false,false]; //400
+            let arrayP250 = [false,false]; //300
+            let arraySmoke = [false,false]; //300
+            let arrayHe = [false,false]; //300
+            let arrayBang = [false,false]; //200
+            let arrayBang1 = [false,false]; //200
+
+            function UpdatePrecoBudget ()
+            {
+                $("#lblBudgetValor").text("R$ " + budget);
+                $("#lblPrecoValor").text("R$ " + preco);
+            }
+
+            //LINK Compra
+            function Compra ()
+            {
+                if(arrayAwp[1] == true)
+                {
+                    $("#btnAwp").removeAttr("disabled");
+                    $('#btnAwp').removeClass('btn-disabled');
+                    $('#btnAwp').removeClass('btn-enabled');
+                }
+                if(arrayKrieg[1] == true)
+                {
+                    $("#btnKrieg").removeAttr("disabled"); 
+                    $('#btnKrieg').removeClass('btn-disabled');
+                    $('#btnKrieg').removeClass('btn-enabled');
+                }
+                if(arrayAk[1] == true)
+                {
+                    $("#btnAk").removeAttr("disabled");
+                    $('#btnAk').removeClass('btn-disabled');
+                    $('#btnAk').removeClass('btn-enabled');
+                }
+                if(arrayGalil[1] == true)
+                {
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').removeClass('btn-enabled');
+                }
+                if(arrayScout[1] == true)
+                {
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').removeClass('btn-enabled');
+                }
+                if(arrayUmp[1] == true)
+                {
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').removeClass('btn-enabled');
+                }
+                if(arrayMac10[1] == true)
+                {
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').removeClass('btn-enabled');
+                }
+                if(arrayColete2[1] == true)
+                {
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').removeClass('btn-enabled');
+                }
+                if(arrayDeagle[1] == true)
+                {
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').removeClass('btn-enabled');
+                }
+                if(arrayColete1[1] == true)
+                {
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').removeClass('btn-enabled');
+                }
+                if(arrayTec9[1] == true)
+                {
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').removeClass('btn-enabled');
+                }
+                if(arrayMolotov[1] == true)
+                {
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').removeClass('btn-enabled');
+                }
+                if(arrayP250[1] == true)
+                {
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').removeClass('btn-enabled');
+                }
+                if(arraySmoke[1] == true)
+                {
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').removeClass('btn-enabled');
+                }
+                if(arrayHe[1] == true)
+                {
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').removeClass('btn-enabled');
+                }
+                if(arrayBang[1] == true)
+                {
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').removeClass('btn-enabled');
+                }
+                if(arrayBang1[1] == true)
+                {
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').removeClass('btn-enabled');
+                }
+                if(arrayColete2[0] == true)
+                {
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                }
+                if(arrayColete1[0] == true && budget >= 350)
+                {
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                }
+                if(granadas == 4)
+                {
+                    if(arrayMolotov[0] == false)
+                    {
+                        $('#btnMolotov').removeClass('btn-enabled');
+                        $('#btnMolotov').removeClass('btn-bought');
+                        $('#btnMolotov').addClass('btn-disabled');
+                        $('#btnMolotov').attr('disabled', 'disabled');
+                    }
+                    else if(arraySmoke[0] == false)
+                    {
+                        $('#btnSmoke').removeClass('btn-enabled');
+                        $('#btnSmoke').removeClass('btn-bought');
+                        $('#btnSmoke').addClass('btn-disabled');
+                        $('#btnSmoke').attr('disabled', 'disabled');
+                    }
+                    else if(arrayHe[0] == false)
+                    {
+                        $('#btnHe').removeClass('btn-enabled');
+                        $('#btnHe').removeClass('btn-bought');
+                        $('#btnHe').addClass('btn-disabled');
+                        $('#btnHe').attr('disabled', 'disabled');
+                    }
+                    else if(arrayBang[0] == false)
+                    {
+                        $('#btnBang').removeClass('btn-enabled');
+                        $('#btnBang').removeClass('btn-bought');
+                        $('#btnBang').addClass('btn-disabled');
+                        $('#btnBang').attr('disabled', 'disabled');
+                    }
+                    else if(arrayBang1[0] == false)
+                    {
+                        $('#btnBang1').removeClass('btn-enabled');
+                        $('#btnBang1').removeClass('btn-bought');
+                        $('#btnBang1').addClass('btn-disabled');
+                        $('#btnBang1').attr('disabled', 'disabled');
+                    }
+                }
+            }
+            
+            //LINK AllButtonsOff
+            function AllButtonsOff ()
+            {
+                $("#btnAwp").attr("disabled", "disabled");
+                $('#btnAwp').removeClass('btn-enabled');
+                $('#btnAwp').addClass('btn-disabled');
+
+                $("#btnKrieg").attr("disabled", "disabled");
+                $('#btnKrieg').removeClass('btn-enabled');
+                $('#btnKrieg').addClass('btn-disabled');
+
+                $("#btnAk").attr("disabled", "disabled"); 
+                $('#btnAk').removeClass('btn-enabled');
+                $('#btnAk').addClass('btn-disabled');
+
+                $("#btnGalil").attr("disabled", "disabled"); 
+                $('#btnGalil').removeClass('btn-enabled');
+                $('#btnGalil').addClass('btn-disabled');
+
+                $("#btnScout").attr("disabled", "disabled");
+                $('#btnScout').removeClass('btn-enabled');
+                $('#btnScout').addClass('btn-disabled');
+
+                $("#btnUmp").attr("disabled", "disabled");
+                $('#btnUmp').removeClass('btn-enabled');
+                $('#btnUmp').addClass('btn-disabled');
+
+                $("#btnMac10").attr("disabled", "disabled");
+                $('#btnMac10').removeClass('btn-enabled');
+                $('#btnMac10').addClass('btn-disabled');
+
+                $("#btnColete2").attr("disabled", "disabled");
+                $('#btnColete2').removeClass('btn-enabled');
+                $('#btnColete2').addClass('btn-disabled');
+
+                $("#btnDeagle").attr("disabled", "disabled");
+                $('#btnDeagle').removeClass('btn-enabled');
+                $('#btnDeagle').addClass('btn-disabled');
+
+                $("#btnColete1").attr("disabled", "disabled");
+                $('#btnColete1').removeClass('btn-enabled');
+                $('#btnColete1').addClass('btn-disabled');
+
+                $("#btnTec9").attr("disabled", "disabled");
+                $('#btnTec9').removeClass('btn-enabled');
+                $('#btnTec9').addClass('btn-disabled');
+
+                $("#btnMolotov").attr("disabled", "disabled");
+                $('#btnMolotov').removeClass('btn-enabled');
+                $('#btnMolotov').addClass('btn-disabled');
+                
+                $("#btnP250").attr("disabled", "disabled");
+                $('#btnP250').removeClass('btn-enabled');
+                $('#btnP250').addClass('btn-disabled');
+
+                $("#btnSmoke").attr("disabled", "disabled");
+                $('#btnSmoke').removeClass('btn-enabled');
+                $('#btnSmoke').addClass('btn-disabled');
+
+                $("#btnHe").attr("disabled", "disabled");
+                $('#btnHe').removeClass('btn-enabled');
+                $('#btnHe').addClass('btn-disabled');
+
+                $("#btnBang").attr("disabled", "disabled");
+                $('#btnBang').removeClass('btn-enabled');
+                $('#btnBang').addClass('btn-disabled');
+
+                $("#btnBang1").attr("disabled", "disabled");
+                $('#btnBang1').removeClass('btn-enabled');
+                $('#btnBang1').addClass('btn-disabled');
+            }
+
+            //LINK Disponibilidade
+            function Disponibilidade ()
+            {
+                UpdatePrecoBudget();
+                AllButtonsOff();
+                if(budget>=4750)
+                {
+                    $("#btnAwp").removeAttr("disabled");
+                    $('#btnAwp').removeClass('btn-disabled');
+                    $('#btnAwp').addClass('btn-enabled');
+                    $("#btnKrieg").removeAttr("disabled");
+                    $('#btnKrieg').removeClass('btn-disabled');
+                    $('#btnKrieg').addClass('btn-enabled');
+                    $("#btnAk").removeAttr("disabled");
+                    $('#btnAk').removeClass('btn-disabled');
+                    $('#btnAk').addClass('btn-enabled');
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').addClass('btn-enabled');
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 3000 && budget < 4750)
+                {
+                    $("#btnKrieg").removeAttr("disabled");
+                    $('#btnKrieg').removeClass('btn-disabled');
+                    $('#btnKrieg').addClass('btn-enabled');
+                    $("#btnAk").removeAttr("disabled");
+                    $('#btnAk').removeClass('btn-disabled');
+                    $('#btnAk').addClass('btn-enabled');
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').addClass('btn-enabled');
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 2700 && budget < 3000)
+                {
+                    $("#btnAk").removeAttr("disabled");
+                    $('#btnAk').removeClass('btn-disabled');
+                    $('#btnAk').addClass('btn-enabled');
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').addClass('btn-enabled');
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 1800 && budget < 2700)
+                {
+                    $("#btnGalil").removeAttr("disabled");
+                    $('#btnGalil').removeClass('btn-disabled');
+                    $('#btnGalil').addClass('btn-enabled');
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 1700 && budget < 1800)
+                {
+                    $("#btnScout").removeAttr("disabled");
+                    $('#btnScout').removeClass('btn-disabled');
+                    $('#btnScout').addClass('btn-enabled');
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 1200 && budget < 1700)
+                {
+                    $("#btnUmp").removeAttr("disabled");
+                    $('#btnUmp').removeClass('btn-disabled');
+                    $('#btnUmp').addClass('btn-enabled');
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 1050 && budget < 1200)
+                {
+                    $("#btnMac10").removeAttr("disabled");
+                    $('#btnMac10').removeClass('btn-disabled');
+                    $('#btnMac10').addClass('btn-enabled');
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 1000 && budget < 1050)
+                {
+                    $("#btnColete2").removeAttr("disabled");
+                    $('#btnColete2').removeClass('btn-disabled');
+                    $('#btnColete2').addClass('btn-enabled');
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 700 && budget < 1050)
+                {
+                    $("#btnDeagle").removeAttr("disabled");
+                    $('#btnDeagle').removeClass('btn-disabled');
+                    $('#btnDeagle').addClass('btn-enabled');
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 650 && budget < 700)
+                {
+                    $("#btnColete1").removeAttr("disabled");
+                    $('#btnColete1').removeClass('btn-disabled');
+                    $('#btnColete1').addClass('btn-enabled');
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 500 && budget < 650)
+                {
+                    $("#btnTec9").removeAttr("disabled");
+                    $('#btnTec9').removeClass('btn-disabled');
+                    $('#btnTec9').addClass('btn-enabled');
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 400 && budget < 500)
+                {
+                    $("#btnMolotov").removeAttr("disabled");
+                    $('#btnMolotov').removeClass('btn-disabled');
+                    $('#btnMolotov').addClass('btn-enabled');
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 300 && budget < 400)
+                {
+                    $("#btnP250").removeAttr("disabled");
+                    $('#btnP250').removeClass('btn-disabled');
+                    $('#btnP250').addClass('btn-enabled');
+                    $("#btnSmoke").removeAttr("disabled");
+                    $('#btnSmoke').removeClass('btn-disabled');
+                    $('#btnSmoke').addClass('btn-enabled');
+                    $("#btnHe").removeAttr("disabled");
+                    $('#btnHe').removeClass('btn-disabled');
+                    $('#btnHe').addClass('btn-enabled');
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else if(budget >= 200 && budget < 300)
+                {
+                    $("#btnBang").removeAttr("disabled");
+                    $('#btnBang').removeClass('btn-disabled');
+                    $('#btnBang').addClass('btn-enabled');
+                    $("#btnBang1").removeAttr("disabled");
+                    $('#btnBang1').removeClass('btn-disabled');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else
+                {
+                    AllButtonsOff();
+                }
+                Compra();
+            }
+
+            //LINK Botão de compra AWP
+            $('#btnAwp').click(function() 
+            {
+                if (arrayAwp[0] == true)
+                {
+                    arrayAwp[0] = false;
+                    arrayAwp[1] = false;
+                    budget = budget + 4750;
+                    preco = preco - 4750;
+                    $('#btnAwp').removeClass('btn-bought');
+                    $('#btnAwp').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayAwp[0] = true;
+                    arrayAwp[1] = true;
+                    budget = budget - 4750;
+                    preco = preco + 4750;
+                    $('#btnAwp').removeClass('btn-enabled');
+                    $('#btnAwp').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Krieg
+            $('#btnKrieg').click(function() 
+            {
+                if (arrayKrieg[0] == true)
+                {
+                    arrayKrieg[0] = false;
+                    arrayKrieg[1] = false;
+                    budget = budget + 3000;
+                    preco = preco - 3000;
+                    $('#btnKrieg').removeClass('btn-bought');
+                    $('#btnKrieg').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayKrieg[0] = true;
+                    arrayKrieg[1] = true;
+                    budget = budget - 3000;
+                    preco = preco + 3000;
+                    $('#btnKrieg').removeClass('btn-enabled');
+                    $('#btnKrieg').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra AK-47
+            $('#btnAk').click(function() 
+            {
+                if (arrayAk[0] == true)
+                {
+                    arrayAk[0] = false;
+                    arrayAk[1] = false;
+                    budget = budget + 2700;
+                    preco = preco - 2700;
+                    $('#btnAk').removeClass('btn-bought');
+                    $('#btnAk').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayAk[0] = true;
+                    arrayAk[1] = true;
+                    budget = budget - 2700;
+                    preco = preco + 2700;
+                    $('#btnAk').removeClass('btn-enabled');
+                    $('#btnAk').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Galil
+            $('#btnGalil').click(function() 
+            {
+                if (arrayGalil[0] == true)
+                {
+                    arrayGalil[0] = false;
+                    arrayGalil[1] = false;
+                    budget = budget + 1800;
+                    preco = preco - 1800;
+                    $('#btnGalil').removeClass('btn-bought');
+                    $('#btnGalil').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayGalil[0] = true;
+                    arrayGalil[1] = true;
+                    budget = budget - 1800;
+                    preco = preco + 1800;
+                    $('#btnGalil').removeClass('btn-enabled');
+                    $('#btnGalil').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Scout
+            $('#btnScout').click(function() 
+            {
+                if (arrayScout[0] == true)
+                {
+                    arrayScout[0] = false;
+                    arrayScout[1] = false;
+                    budget = budget + 1700;
+                    preco = preco - 1700;
+                    $('#btnScout').removeClass('btn-bought');
+                    $('#btnScout').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayScout[0] = true;
+                    arrayScout[1] = true;
+                    $('#btnScout').removeClass('btn-enabled');
+                    $('#btnScout').addClass('btn-bought');
+                    budget = budget-1700;
+                    preco = preco+1700;
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Ump
+            $('#btnUmp').click(function() 
+            {
+                if (arrayUmp[0] == true)
+                {
+                    arrayUmp[0] = false;
+                    arrayUmp[1] = false;
+                    budget = budget + 1200;
+                    preco = preco - 1200;
+                    $('#btnUmp').removeClass('btn-bought');
+                    $('#btnUmp').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayUmp[0] = true;
+                    arrayUmp[1] = true;
+                    budget = budget - 1200;
+                    preco = preco + 1200;
+                    $('#btnUmp').removeClass('btn-enabled');
+                    $('#btnUmp').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Mac10
+            $('#btnMac10').click(function() 
+            {
+                if (arrayMac10[0] == true)
+                {
+                    arrayMac10[0] = false;
+                    arrayMac10[1] = false;
+                    budget = budget + 1050;
+                    preco = preco - 1050;
+                    $('#btnMac10').removeClass('btn-bought');
+                    $('#btnMac10').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayMac10[0] = true;
+                    arrayMac10[1] = true;
+                    budget = budget - 1050;
+                    preco = preco + 1050;
+                    $('#btnMac10').removeClass('btn-enabled');
+                    $('#btnMac10').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete2
+            $('#btnColete2').click(function() 
+            {
+                if (arrayColete2[0] == true)
+                {
+                    arrayColete2[0] = false;
+                    arrayColete2[1] = false;
+                    budget = budget + 1000;
+                    preco = preco - 1000;
+                    $('#btnColete2').removeClass('btn-bought');
+                    $('#btnColete2').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayColete2[0] = true;
+                    arrayColete2[1] = true;
+                    budget = budget - 1000;
+                    preco = preco + 1000;
+                    $('#btnColete2').removeClass('btn-enabled');
+                    $('#btnColete2').addClass('btn-bought');
+                    if(arrayColete1[0] == true)
+                    {
+                        arrayColete1[0] = false;
+                        arrayColete1[1] = false;
+                        budget = budget + 650;
+                        preco = preco - 650;
+                        $('#btnColete1').removeClass('btn-bought');
+                        $('#btnColete1').addClass('btn-enabled');
+                    }
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Deagle
+            $('#btnDeagle').click(function() 
+            {
+                if (arrayDeagle[0] == true)
+                {
+                    arrayDeagle[0] = false;
+                    arrayDeagle[1] = false;
+                    budget = budget + 700;
+                    preco = preco - 700;
+                    $('#btnDeagle').removeClass('btn-bought');
+                    $('#btnDeagle').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayDeagle[0] = true;
+                    arrayDeagle[1] = true;
+                    budget = budget - 700;
+                    preco = preco + 700;
+                    $('#btnDeagle').removeClass('btn-enabled');
+                    $('#btnDeagle').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Colete1
+            $('#btnColete1').click(function() 
+            {
+                if (arrayColete1[0] == true)
+                {
+                    arrayColete1[0] = false;
+                    arrayColete1[1] = false;
+                    budget = budget + 650;
+                    preco = preco - 650;
+                    $('#btnColete1').removeClass('btn-bought');
+                    $('#btnColete1').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayColete1[0] = true;
+                    arrayColete1[1] = true;
+                    budget = budget - 650;
+                    preco = preco + 650;
+                    $('#btnColete1').removeClass('btn-enabled');
+                    $('#btnColete1').addClass('btn-bought');
+                    if(arrayColete2[0] == true)
+                    {
+                        arrayColete2[0] = false;
+                        arrayColete2[1] = false;
+                        budget = budget + 1000;
+                        preco = preco - 1000;
+                        $('#btnColete2').removeClass('btn-bought');
+                        $('#btnColete2').addClass('btn-enabled');
+                    }
+                }
+                Disponibilidade();
+            });
+            
+            //LINK Botão de compra Tec9
+            $('#btnTec9').click(function() 
+            {
+                if (arrayTec9[0] == true)
+                {
+                    arrayTec9[0] = false;
+                    arrayTec9[1] = false;
+                    budget = budget + 500;
+                    preco = preco - 500;
+                    $('#btnTec9').removeClass('btn-bought');
+                    $('#btnTec9').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayTec9[0] = true;
+                    arrayTec9[1] = true;
+                    budget = budget - 500;
+                    preco = preco + 500;
+                    $('#btnTec9').removeClass('btn-enabled');
+                    $('#btnTec9').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Molotov
+            $('#btnMolotov').click(function() 
+            {
+                if (arrayMolotov[0] == true)
+                {
+                    arrayMolotov[0] = false;
+                    arrayMolotov[1] = false;
+                    granadas--;
+                    budget = budget + 400;
+                    preco = preco - 400;
+                    $('#btnMolotov').removeClass('btn-bought');
+                    $('#btnMolotov').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayMolotov[0] = true;
+                    arrayMolotov[1] = true;
+                    granadas++;
+                    budget = budget - 400;
+                    preco = preco + 400;
+                    $('#btnMolotov').removeClass('btn-enabled');
+                    $('#btnMolotov').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra P250
+            $('#btnP250').click(function() 
+            {
+                if (arrayP250[0] == true)
+                {
+                    arrayP250[0] = false;
+                    arrayP250[1] = false;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnP250').removeClass('btn-bought');
+                    $('#btnP250').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayP250[0] = true;
+                    arrayP250[1] = true;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    $('#btnP250').removeClass('btn-enabled');
+                    $('#btnP250').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Smoke
+            $('#btnSmoke').click(function() 
+            {
+                if (arraySmoke[0] == true)
+                {
+                    arraySmoke[0] = false;
+                    arraySmoke[1] = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnSmoke').removeClass('btn-bought');
+                    $('#btnSmoke').addClass('btn-enabled');
+                }
+                else
+                {
+                    arraySmoke[0] = true;
+                    arraySmoke[1] = true;
+                    granadas++;
+                    $('#btnSmoke').removeClass('btn-enabled');
+                    $('#btnSmoke').addClass('btn-bought');
+                    budget = budget - 300;
+                    preco = preco + 300;
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra He
+            $('#btnHe').click(function() 
+            {
+                if (arrayHe[0] == true)
+                {
+                    arrayHe[0] = false;
+                    arrayHe[1] = false;
+                    granadas--;
+                    budget = budget + 300;
+                    preco = preco - 300;
+                    $('#btnHe').removeClass('btn-bought');
+                    $('#btnHe').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayHe[0] = true;
+                    arrayHe[1] = true;
+                    granadas++;
+                    budget = budget - 300;
+                    preco = preco + 300;
+                    $('#btnHe').removeClass('btn-enabled');
+                    $('#btnHe').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang
+            $('#btnBang').click(function() 
+            {
+                if (arrayBang[0] == true)
+                {
+                    arrayBang[0] = false;
+                    arrayBang[1] = false;
+                    granadas--;
+                    budget = budget + 200;
+                    preco = preco - 200;
+                    $('#btnBang').removeClass('btn-bought');
+                    $('#btnBang').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayBang[0] = true;
+                    arrayBang[1] = true;
+                    granadas++;
+                    budget = budget - 200;
+                    preco = preco + 200;
+                    $('#btnBang').removeClass('btn-enabled');
+                    $('#btnBang').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Botão de compra Bang1
+            $('#btnBang1').click(function() 
+            {
+                if (arrayBang1[0] == true)
+                {
+                    arrayBang1[0] = false;
+                    arrayBang1[1] = false;
+                    granadas--;
+                    budget = budget + 200;
+                    preco = preco - 200;
+                    $('#btnBang1').removeClass('btn-bought');
+                    $('#btnBang1').addClass('btn-enabled');
+                }
+                else
+                {
+                    arrayBang1[0] = true;
+                    arrayBang1[1] = true;
+                    granadas++;
+                    budget = budget - 200;
+                    preco = preco + 200;
+                    $('#btnBang1').removeClass('btn-enabled');
+                    $('#btnBang1').addClass('btn-bought');
+                }
+                Disponibilidade();
+            });
+
+            //LINK Listener do input do usuario
+            $('#txtbxGrana').on('change keyup paste', function ()
+            {
+                budget = $('#txtbxGrana').val();
+                Disponibilidade()
+            })
+
+            //LINK Botão Copy Paste
+            const dummyTextarea = document.getElementById("dummyTextarea")
+            const btnCopy = document.getElementById("btnCopy")
+            $('#btnCopy').click(function()
+            {
+                let copyPaste = "";
+                if(arrayAwp[0] == true)
+                {
+                    copyPaste = copyPaste + "buy awp;";
+                }
+                if(arrayKrieg[0] == true)
+                {
+                    copyPaste = copyPaste + "buy sg556;";
+                }
+                if(arrayAk[0] == true)
+                {
+                    copyPaste = copyPaste + "buy ak47;";
+                }
+                if(arrayGalil[0] == true)
+                {
+                    copyPaste = copyPaste + "buy galilar;";
+                }
+                if(arrayScout[0] == true)
+                {
+                    copyPaste = copyPaste + "buy ssg08;";
+                }
+                if(arrayUmp[0] == true)
+                {
+                    copyPaste = copyPaste + "buy ump45;";
+                }
+                if(arrayMac10[0] == true)
+                {
+                    copyPaste = copyPaste + "buy mac10;";
+                }
+                if(arrayColete2[0] == true)
+                {
+                    copyPaste = copyPaste + "buy vesthelm;";
+                }
+                if(arrayDeagle[0] == true)
+                {
+                    copyPaste = copyPaste + "buy deagle;";
+                }
+                if(arrayColete1[0] == true)
+                {
+                    copyPaste = copyPaste + "buy vest;";
+                }
+                if(arrayTec9[0] == true)
+                {
+                    copyPaste = copyPaste + "buy fn57;";
+                }
+                if(arrayMolotov[0] == true)
+                {
+                    copyPaste = copyPaste + "buy molotov;";
+                }
+                if(arrayP250[0] == true)
+                {
+                    copyPaste = copyPaste + "buy p250;";
+                }
+                if(arraySmoke[0] == true)
+                {
+                    copyPaste = copyPaste + "buy smokegrenade;";
+                }
+                if(arrayHe[0] == true)
+                {
+                    copyPaste = copyPaste + "buy hegrenade;";
+                }
+                if(arrayBang[0] == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+                if(arrayBang1[0] == true)
+                {
+                    copyPaste = copyPaste + "buy flashbang;";
+                }
+
+                $("#dummyTextarea").val(copyPaste);
+                dummyTextarea.select();
+                document.execCommand('copy');
+            })
+
+            $("#btnReload").click(function()
+            {
+                location.reload(true);
+            });
+
+        });
+    </script>
+</body>
+</html>

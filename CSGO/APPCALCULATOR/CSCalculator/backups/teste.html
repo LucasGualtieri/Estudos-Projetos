@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSGO Inventory</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style>
+.container {
+  display: grid;
+  grid-template-columns: 0.3fr 2.4fr 0.3fr;
+  grid-template-rows: 0.2fr 1.4fr 1fr 1.4fr;
+  grid-auto-columns: 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  justify-content: center;
+  grid-template-areas:
+    ". . ."
+    ". WeaponsGrid ."
+    ". UserInput ."
+    ". . .";
+}
+
+.WeaponsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 3px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Pistol SMGs Rifles SniperRifles VestHelm"
+    "Grenades Grenades Grenades Grenades Grenades";
+  grid-area: WeaponsGrid;
+}
+
+.Pistol {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: Pistol;
+}
+
+.SMGs {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: SMGs;
+}
+
+.Rifles {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: Rifles;
+}
+
+.SniperRifles {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+  grid-area: SniperRifles;
+}
+
+.VestHelm {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    ".";
+  grid-area: VestHelm;
+}
+
+.Grenades {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . Bangs";
+  grid-area: Grenades;
+}
+
+.Bangs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". .";
+  grid-area: Bangs;
+}
+
+.UserInput {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 3px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "Preco"
+    "Budget"
+    "Buttons";
+  justify-self: center;
+  align-self: stretch;
+  grid-area: UserInput;
+}
+
+.Preco {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  align-items: end;
+  grid-template-areas:
+    ". .";
+  justify-self: center;
+  grid-area: Preco;
+}
+
+.Budget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  align-items: start;
+  grid-template-areas:
+    ". .";
+  justify-self: center;
+  grid-area: Budget;
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". .";
+  grid-area: Buttons;
+}
+
+</style>
+    </head>
+    <body>
+        <div class="container container-menu my-container">
+            <div class="WeaponsGrid">
+                <div class="Pistol">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Deagle</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Tec9</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>P250</button>
+                </div>
+                <div class="SMGs">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>UMP</button>
+                    <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>MAC10</button>
+                </div>
+                <div class="Rifles">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Krieg</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Ak-47</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Galil</button>
+                </div>
+                <div class="SniperRifles">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>AWP</button>
+                    <button class="btn btn-disabled"style="background-color: #181818ff;" disabled></button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Scout</button>
+                </div>
+                <div class="VestHelm">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Colete2</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Colete1</button>
+                </div>
+                <div class="Grenades">
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Smoke</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>Molotov</button>
+                    <button class="btn btn-disabled" id="btnDeagle" disabled>HE</button>
+                    <div class="Bangs">
+                        <button class="btn btn-disabled" id="btnDeagle" disabled>Bang</button>
+                        <button class="btn btn-disabled" id="btnDeagle" disabled>Bang</button>
+                    </div>
+                </div>
+            </div>
+            <div class="UserInput">
+                <input type="number" style="text-align: center" placeholder="Grana do jogo..." id="txtbxGrana">
+                <div class="Preco">
+                    <b><label style="color: white">Preço:</label></b>
+                    <b><label style="color: white" id="lblPrecoValor">R$ 0</label></b>
+                </div>                
+                <div class="Budget">
+                    <b><label style="color: white">Budget:</label></b></label></b>
+                    <b><label style="color: white" id="lblBudgetValor">R$ 0</label></b>
+                </div>
+                <div class="Buttons">
+                    <button class="btn btn-copy" id="btnCopy">Copy</button>
+                    <button class="btn btn-copy" id="btnReload">Reset</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

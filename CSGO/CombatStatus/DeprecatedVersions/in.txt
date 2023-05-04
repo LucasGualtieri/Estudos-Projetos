@@ -1,0 +1,500 @@
+"lqk"
+-------------------------
+Damage Given to "ダーク" - 111 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "rxxxxxxxxxxxxxxxx" - 134 in 3 hits
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "ダーク" - 111 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "rxxxxxxxxxxxxxxxx" - 134 in 3 hits
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 1 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "ダーク" - 100 in 4 hits
+maT connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 1 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "ダーク" - 100 in 4 hits
+0:  Reinitialized 7 predictable entities
+lqk connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "ダーク" - 110 in 1 hit
+Damage Given to "VICTINHO" - 109 in 1 hit
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 137 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+XM1014.exe connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "ダーク" - 110 in 1 hit
+Damage Given to "lqk" - 137 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "ダーク" - 6 in 1 hit
+Damage Taken from "lqk" - 24 in 1 hit
+Damage Taken from "PerdeXitanDo VÃO PAGAR" - 72 in 3 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "ダーク" - 110 in 1 hit
+Damage Given to "lqk" - 137 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "ダーク" - 6 in 1 hit
+Damage Taken from "lqk" - 24 in 1 hit
+Damage Taken from "PerdeXitanDo VÃO PAGAR" - 72 in 3 hits
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 109 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 120 in 5 hits
+0:  Reinitialized 6 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 109 in 1 hit
+Damage Given to "VICTINHO" - 47 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 120 in 5 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 110 in 1 hit
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 110 in 1 hit
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 100 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 131 in 2 hits
+Kyojin connected.
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 100 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 131 in 2 hits
+0:  Reinitialized 6 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "XM1014.exe" - 137 in 2 hits
+Damage Given to "outrocs shiba" - 53 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "outrocs shiba" - 111 in 1 hit
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "XM1014.exe" - 137 in 2 hits
+Damage Given to "outrocs shiba" - 53 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "outrocs shiba" - 111 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 128 in 3 hits
+Damage Given to "XM1014.exe" - 85 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 136 in 2 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 128 in 3 hits
+Damage Given to "XM1014.exe" - 85 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "XM1014.exe" - 136 in 2 hits
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 109 in 1 hit
+Damage Given to "outrocs shiba" - 123 in 2 hits
+Damage Given to "XM1014.exe" - 125 in 7 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 113 in 2 hits
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 109 in 1 hit
+Damage Given to "outrocs shiba" - 123 in 2 hits
+Damage Given to "XM1014.exe" - 125 in 7 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 113 in 2 hits
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 109 in 1 hit
+Damage Given to "VICTINHO" - 110 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 22 in 1 hit
+Damage Taken from "VICTINHO" - 60 in 2 hits
+Damage Taken from "outrocs shiba" - 18 in 1 hit
+Resource materials\panorama\images\icons\equipment\.svg failed to load.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 109 in 1 hit
+Damage Given to "VICTINHO" - 110 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 22 in 1 hit
+Damage Taken from "VICTINHO" - 60 in 2 hits
+Damage Taken from "outrocs shiba" - 18 in 1 hit
+0:  Reinitialized 7 predictable entities
+Resource materials\panorama\images\icons\equipment\world.svg failed to load.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 102 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 86 in 3 hits
+Damage Taken from "XM1014.exe" - 442 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 102 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 86 in 3 hits
+Damage Taken from "XM1014.exe" - 442 in 1 hit
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 100 in 6 hits
+Damage Given to "XM1014.exe" - 143 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 75 in 3 hits
+Damage Given to "XM1014.exe" - 137 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 4 hits
+Certificate expires in 13h00m at 1671483086 (current time 1671436231), will renew in 11h00m
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 75 in 3 hits
+Damage Given to "XM1014.exe" - 137 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 4 hits
+0:  Reinitialized 7 predictable entities
+"cl_crosshairsize" = "999" ( def. "5" ) client archive ss                       
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 81 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "VICTINHO" - 437 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 81 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "VICTINHO" - 437 in 1 hit
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 4 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 4 hits
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 8 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 110 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Don't yet support elliptical arc  rendering
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 8 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 110 in 1 hit
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "outrocs shiba" - 438 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "outrocs shiba" - 438 in 1 hit
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 147 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 134 in 2 hits
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 147 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 134 in 2 hits
+0:  Reinitialized 7 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+0:  Reinitialized 6 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 108 in 4 hits
+Damage Given to "lqk" - 33 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 108 in 4 hits
+Damage Given to "lqk" - 33 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 1 hit
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 109 in 1 hit
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+DayviesMV connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 114 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "VICTINHO" - 109 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 114 in 3 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "VICTINHO" - 109 in 1 hit
+0:  Reinitialized 7 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+clapz connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 1 hit
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 108 in 1 hit
+0:  Reinitialized 5 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 44 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 101 in 5 hits
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+SEU PAI, O FUMANTE connected.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "outrocs shiba" - 44 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 101 in 5 hits
+0:  Reinitialized 6 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 69 in 3 hits
+Damage Given to "outrocs shiba" - 103 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "VICTINHO" - 108 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+C_EconWearableGib must never render without parent (models/weapons/w_models/arms/w_glove_slick.mdl) models/weapons/w_models/arms/w_glove_slick.mdl slick_jaguar_white
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 58 in 2 hits
+Damage Given to "lqk" - 108 in 1 hit
+Damage Given to "SEU PAI, O FUMANTE" - 26 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 24 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 115 in 4 hits
+Damage Given to "shiba" - 122 in 4 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 110 in 1 hit
+Damage Given to "SEU PAI, O FUMANTE" - 24 in 1 hit
+Damage Given to "clapz" - 105 in 1 hit
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 138 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Certificate expires in 12h50m at 1671483086 (current time 1671436831), will renew in 10h50m
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 109 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "SEU PAI, O FUMANTE" - 25 in 1 hit
+Damage Taken from "World" - 2 in 1 hit
+Damage Taken from "clapz" - 108 in 2 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "PerdeXitanDo VÃO PAGAR" - 109 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "SEU PAI, O FUMANTE" - 25 in 1 hit
+Damage Taken from "World" - 2 in 1 hit
+Damage Taken from "clapz" - 108 in 2 hits
+0:  Reinitialized 6 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "clapz" - 108 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "clapz" - 108 in 1 hit
+0:  Reinitialized 6 predictable entities
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Can't use cheat cvar cl_showpos in multiplayer, unless the server has sv_cheats set to 1.
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "clapz" - 27 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "clapz" - 66 in 3 hits
+Damage Taken from "SEU PAI, O FUMANTE" - 48 in 2 hits
+0:  Reinitialized 5 predictable entities
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "clapz" - 27 in 1 hit
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "clapz" - 66 in 3 hits
+Damage Taken from "SEU PAI, O FUMANTE" - 48 in 2 hits
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "lqk" - 104 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "lqk" - 26 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "SEU PAI, O FUMANTE" - 136 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "SEU PAI, O FUMANTE" - 86 in 1 hit
+Damage Taken from "XM1014.exe" - 24 in 1 hit
+Player: Gualtieri - Damage Given
+-------------------------
+Damage Given to "SEU PAI, O FUMANTE" - 136 in 2 hits
+Player: Gualtieri - Damage Taken
+-------------------------
+Damage Taken from "SEU PAI, O FUMANTE" - 86 in 1 hit
+Damage Taken from "XM1014.exe" - 24 in 1 hit
+0:  Reinitialized 5 predictable entities
