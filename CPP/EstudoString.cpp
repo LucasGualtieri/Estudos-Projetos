@@ -2,9 +2,10 @@
 
 class String {
 public:
-	char* str = (char*)malloc(2000);
+	char* str;
 	// char* str;
-	String(const char str[]) {
+	String(const char* str) {
+		this->str = (char*)malloc(2000);
 
 		int sizeOfString = 0;
 		for (int i = 0; str[i]; i++) { // arg[i] != '\0'
@@ -40,7 +41,9 @@ public:
 	}
 
 	friend istream& operator>>(istream& Cin, String& object) {
-		Cin >> object.str;
+		// Cin >> object.str;
+		free(object.str);
+		object.str = getstr(stdin);
 		return Cin;
 	}
 };
@@ -49,7 +52,7 @@ int main() {
 
 	String nome;
 	nome = "Lucas Gualtieri";
-	// cin >> nome; // Ainda não consegui fazer funcionar.
+	cin >> nome; // Ainda não consegui fazer funcionar. // Parece que agora consegui
 
 	cout << nome << endl;
 	cout << nome.length() << endl;

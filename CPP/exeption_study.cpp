@@ -1,15 +1,15 @@
 #include <biblioteca_cpp.h>
-#include <exception>
+// #include <exception>
 
 class ExcecaoCustomizada : public exception {
-	string _msg;
+	string msg;
 
 public:
 	ExcecaoCustomizada(string msg) {
-		_msg = msg;
+		this->msg = msg;
 	}
 	virtual string what() { // Sobrecarga de um metodo de exception
-		return _msg;
+		return msg;
 	}
 };
 
@@ -24,7 +24,6 @@ int divisao(int nominador, int denominador) {
 }
 
 int main() {
-	SetConsoleOutputCP(65001);
 
 	try {
 		cout << half(0) << endl;
