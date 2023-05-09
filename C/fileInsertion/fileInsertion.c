@@ -26,6 +26,7 @@ void fileInsertion(const char* string, int position, const char* directory) {
 		}
 	}
 
+	free(arrayOfLines);
 	fclose(file);
 }
 
