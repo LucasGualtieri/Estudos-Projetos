@@ -46,6 +46,10 @@ public:
 		object.str = getstr(stdin);
 		return Cin;
 	}
+
+	~String() {
+		free(str);
+	}
 };
 
 int main() {
