@@ -21,7 +21,8 @@ void fileInsertion(const char* string, int position, const char* directory) {
 			i--;
 			flag = true;
 		} else {
-			fprintf(file, "%s%s", arrayOfLines[i], i < sizeOfArray - 1 ? "\n" : "");
+			fprintf(file, "%s", arrayOfLines[i]);
+			if (i < sizeOfArray - 1) fprintf(file, "\n");
 			free(arrayOfLines[i]);
 		}
 	}
