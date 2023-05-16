@@ -12,12 +12,11 @@ char* readPassword() {
 	char* string = (char*)malloc(MaxStringLength * sizeof(char));
 
 	int stringLength = 0;
-	for (int i = 0; true; i++) {
+	while (true) {
 		char c = getchar();
 
 		if (c == '\n') {
 			printf("\n");
-			string[i] = '\0';
 			break;
 		} else if (c == 127) {
 			if (stringLength > 0) {
@@ -26,9 +25,9 @@ char* readPassword() {
 			}
 		} else {
 			string[stringLength++] = c;
-			string[stringLength] = 0;
 			putchar('*');
 		}
+		string[stringLength] = '\0';
 	}
 
 	string = (char*)realloc(string, (strlen(string) + 1) * sizeof(char));
@@ -124,7 +123,7 @@ int LendoEscolha() {
 	do {
 		if (invalid) printf("Valor inválido (o valor deve ser >= 0 e < 3): ");
 		scanf("%d%*c", &escolha); // %d%*c will clear the STDIN
-	} while (invalid = escolha < 0 || escolha > 2);
+	} while ((invalid = escolha < 0 || escolha > 2));
 
 	return escolha;
 }
@@ -142,7 +141,6 @@ int MenuDeOpcoes() {
 		CadastrarSenha();
 		break;
 	case 2:
-
 		ValidarSenha();
 		break;
 	}
