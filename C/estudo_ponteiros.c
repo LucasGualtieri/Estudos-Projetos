@@ -10,7 +10,7 @@ int main() {
 	printf("xPtr[1]: %d\n", xPtr[1]);
 	printf("*xPtr + 1: %d\n", *(xPtr + 1));
 	printf("x[1]: %d\n", x[1]);
-	// printf("*xPtrPtr[1]: %d\n", *(xPtrPtr[1])); Não é assimm que faz
+	// printf("*xPtrPtr[1]: %d\n", *(xPtrPtr[1])); Não é assim que faz
 	printf("*(*xPtrPtr + 1): %d\n", *(*xPtrPtr + 1));
 
 	printf("\n******* | FIM DO PROGRAMA | *******\n\n");
