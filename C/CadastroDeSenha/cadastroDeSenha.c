@@ -60,7 +60,7 @@ void CadastrarSenha() {
 		printf("Confirme sua senha: ");
 		passwordConfirmation = readPassword();
 
-		divergent = (strcmp(password, passwordConfirmation));
+		divergent = strcmp(password, passwordConfirmation);
 
 	} while (divergent && chances < 3);
 
@@ -150,7 +150,7 @@ int MenuDeOpcoes() {
 
 int main() {
 
-	while (MenuDeOpcoes()) { }
+	while (MenuDeOpcoes()) { } // while (MenuDeOpcoes() != 0);
 
 	puts("\n******* | FIM DO PROGRAMA | *******\n");
 
