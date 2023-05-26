@@ -2,6 +2,14 @@
 
 // clear && gcc combat_status.c -o combat_status && ./combat_status < pub.in > out.txt
 
+void hasEnemyChangedName(string fileInput, string& enemyName) {
+	string enemyChangedName = "* " + enemyName + " changed name to";
+
+	if (fileInput.substr(0, 18 + enemyName.length()) == enemyChangedName) {
+		enemyName = fileInput.substr(19 + enemyName.length());
+	}
+}
+
 bool hasDied(string fileInput, string enemyName, fstream& fileIn) {
 	int totalDmgTaken = 0;
 	string lastDamager;
@@ -58,16 +66,12 @@ int main() {
 	fstream fileIn;
 	fileIn.open("in.txt", ios::in);
 
-	fileIn >> enemyName; // Skips the first line, the name of the enemy.
+	// Attributes the enemy name and skips the first line
+	fileIn >> enemyName;
 
 	while (!fileIn.eof()) {
 
-		// Checking if enemy changed name
-		string enemyChangedName = "* " + enemyName + " changed name to";
-
-		if (fileInput.substr(0, 18 + enemyName.length()) == enemyChangedName) {
-			enemyName = fileInput.substr(19 + enemyName.length());
-		}
+		hasEnemyChangedName(fileInput, enemyName);
 
 		if (fileInput.substr(0, 15) == "Damage Given to") {
 			// Reading Damage Given

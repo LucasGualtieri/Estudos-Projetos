@@ -1,0 +1,25 @@
+what's a "generic" in c++?
+ChatGPT
+In C++, the term "generic" typically refers to a programming concept known as "generic programming" or "generics." Generics allow you to write reusable code that can work with different data types without sacrificing type safety.
+
+In C++, one common way to achieve generics is through templates. Templates allow you to define functions, classes, or data structures that can operate on various types. By using template parameters, you can create code that is independent of a specific type and can be instantiated with different types at compile time.
+
+Here's a simple example of a generic function in C++ using templates:
+
+cpp
+Copy code
+template<typename T>
+T maximum(T a, T b) {
+    return (a > b) ? a : b;
+}
+In this example, the function maximum is a generic function because it can operate on different types. The template parameter T represents a placeholder for the actual type. When you call the maximum function, the compiler generates a version of the function specifically for the types you provide.
+
+For instance, you can use the maximum function with different types:
+
+cpp
+Copy code
+int result1 = maximum(5, 10);       // instantiates maximum<int>(int, int)
+double result2 = maximum(3.14, 2.71); // instantiates maximum<double>(double, double)
+In the first call, the compiler generates a version of maximum with the int type, and in the second call, it generates a version with the double type.
+
+Generics provide flexibility and code reuse in C++, allowing you to write generic algorithms and data structures that work with various types without duplicating code.
