@@ -21,6 +21,7 @@ String NomeDoJogador(FILE* listaIn) {
 		for (int i = 0; jogador[i] != '\0'; i++) {
 			if (strchr("aeiouAEIOU", jogador[i]) != NULL) {
 				readAgain = false;
+				break;
 			}
 		}
 	}
@@ -62,3 +63,6 @@ int main() {
 	puts("\n\n******* | FIM DO PROGRAMA | *******\n");
 	return 0;
 }
+
+// Fazer o mesmo programa usando C++ implementando uma lista, um método que preenche a lista,
+// um método que ordena lexograficamente (opcional só pelo desafio) e um último método que printa a lista
