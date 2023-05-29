@@ -1,73 +1,112 @@
 #include <biblioteca_cpp.h>
 
+int SizeOfStr(const char* string) {
+	int length = 0;
+	while (string[length++] != '\0') { }
+	return length;
+}
+
 class String {
+	char* buffer;
+
 public:
-	char* str;
-	// char* str;
 	String(const char* str) {
-		this->str = (char*)malloc(2000);
+		// cout << "Constructor being called" << endl;
 
-		int sizeOfString = 0;
-		for (int i = 0; str[i]; i++) { // arg[i] != '\0'
-			sizeOfString++;
-		}
+		// Allocate memory for the new string
+		this->buffer = new char[SizeOfStr(str)];
 
-		cout << sizeOfString << endl;
-
-		this->str = (char*)realloc(this->str, sizeOfString * sizeof(char));
-
-		for (int i = 0; i < sizeOfString + 1; i++) {
-			this->str[i] = str[i];
-		}
+		// Copy the string
+		strcpy(this->buffer, str);
 	}
 
-	String() { }
+	String() {
+		this->buffer = NULL;
+		// cout << "Constructor empty param being called" << endl;
+	}
 
 	int length() {
 		int cont = 0;
-		for (int i = 0; str[i] != '\0'; i++) {
+		for (int i = 0; buffer[i] != '\0'; i++) {
 			cont++;
 		}
 		return cont;
 	}
 
-	char* getString() {
-		return str;
+	// char* getString() {
+	// 	return buffer;
+	// }
+
+	String& operator=(const char* str) {
+		// Check for self-assignment
+		if (this->buffer == str) {
+			return *this;
+		}
+
+		// Deallocate existing data if any
+		delete[] this->buffer;
+
+		// Allocate memory for the new string
+		this->buffer = new char[SizeOfStr(str)];
+
+		// Copy the string
+		strcpy(this->buffer, str);
+
+		return *this; // Return the assigned object
 	}
 
 	friend ostream& operator<<(ostream& Cout, String& object) {
-		Cout << object.str;
+		Cout << object.buffer;
 		return Cout;
 	}
 
 	friend istream& operator>>(istream& Cin, String& object) {
-		// Cin >> object.str;
-		free(object.str);
-		object.str = getstr(stdin);
+
+		delete[] object.buffer;
+
+		object.buffer = new char[2000];
+
+		Cin >> object.buffer;
+
+		char* temp = new char[SizeOfStr(object.buffer)];
+
+		strcpy(temp, object.buffer);
+
+		delete[] object.buffer;
+
+		object.buffer = temp;
+
+		// object.buffer = getstr(stdin);
 		return Cin;
 	}
 
 	~String() {
-		free(str);
+		// cout << "Descructor being called" << endl;
+		delete[] this->buffer;
 	}
 };
 
 int main() {
 
-	String nome;
-	nome = "Lucas Gualtieri";
-	cin >> nome; // Ainda não consegui fazer funcionar. // Parece que agora consegui
+	{
+		// String nome = "Lucas Gualtieri";
+		String nome;
+		// nome = "Lucas Gualtieri";
+		cin >> nome; // Ainda não consegui fazer funcionar. // Parece que agora consegui
 
-	cout << nome << endl;
-	cout << nome.length() << endl;
-
-	{ // Outros estudos.
-		char c = '4';
-		int idade = ctoi(c);
-		cout << idade << endl;
-
-		cout << Rand(4) << endl;
+		cout << "Nome: " << nome << endl;
+		cout << nome.length() << endl;
+		nome = "Lucas Gualtieri";
+		cout << nome << endl;
 	}
+
+	// { // Outros estudos.
+	// 	char c = '4';
+	// 	int idade = ctoi(c);
+	// 	cout << idade << endl;
+
+	// 	cout << Rand(4) << endl;
+	// }
 
 	cout << "\n******* | FIM DO PROGRAMA | *******\n\n";
 	return 0;
