@@ -1,1 +1,0 @@
-array.get() + i
