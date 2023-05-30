@@ -7,10 +7,10 @@
 using namespace std;
 
 class Person {
-public:
 	string name;
 	int age;
 
+public:
 	Person(string name, int age) {
 		this->name = name;
 		this->age = age;
@@ -19,6 +19,15 @@ public:
 		name = "Fulano";
 		age = 0;
 	}
+
+	string getName() {
+		return name;
+	}
+
+	int getAge() {
+		return age;
+	}
+
 	~Person() {
 		// cout << name << " estou indo de berço" << endl;
 	}
@@ -38,8 +47,8 @@ void List<shared_ptr<Person>>::print() {
 
 	for (int i = 0; i < size; i++) {
 		cout << index++ << " ";
-		cout << array.get()[i]->name << " ";
-		cout << array.get()[i]->age << endl;
+		cout << array.get()[i]->getName() << " ";
+		cout << array.get()[i]->getAge() << endl;
 	}
 }
 
@@ -48,7 +57,7 @@ void List<shared_ptr<Person>>::sort() {
 	for (int i = 0; i < size - 1; i++) {
 		int menor = i;
 		for (int j = i + 1; j < size; j++) {
-			if (array[menor]->age > array[j]->age) menor = j;
+			if (array[menor]->getAge() > array[j]->getAge()) menor = j;
 		}
 		shared_ptr<Person> swap = array[menor];
 		array[menor] = array[i];
