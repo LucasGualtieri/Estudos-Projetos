@@ -9,10 +9,6 @@ int main() {
 	List<shared_ptr<Person>> people;
 	people.initialize(size);
 
-	// Aqui estamos tendo vazamentos de memória!
-	// Quero usar shared pointers pra não ter que me preocupar
-	// com a liberação da memória
-
 	people.insertBeggining(NewPerson("Lucas", 21));
 	people.insertEnd(NewPerson("Arjuna", 20));
 	people.insertBeggining(NewPerson("Michael Jackson", 500));
