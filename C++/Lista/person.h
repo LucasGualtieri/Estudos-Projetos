@@ -22,7 +22,7 @@ public:
 };
 
 template <>
-void List<Person*>::print() {
+void List<shared_ptr<Person>>::print() {
 	int index = 1;
 
 	for (int i = 0; i < size; i++) {
@@ -33,13 +33,13 @@ void List<Person*>::print() {
 }
 
 template <>
-void List<Person*>::sort() {
+void List<shared_ptr<Person>>::sort() {
 	for (int i = 0; i < size - 1; i++) {
 		int menor = i;
 		for (int j = i + 1; j < size; j++) {
 			if (array[menor]->idade > array[j]->idade) menor = j;
 		}
-		Person* swap = array[menor];
+		shared_ptr<Person> swap = array[menor];
 		array[menor] = array[i];
 		array[i] = swap;
 	}
