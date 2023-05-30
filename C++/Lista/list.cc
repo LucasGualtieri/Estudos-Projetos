@@ -6,21 +6,29 @@ int main() {
 
 	int size = 5;
 
-	// List<int> integers(new int[size], size);
 	List<Person*> people;
 	people.initialize(size);
 
+	// Aqui estamos tendo vazamentos de memória!
+	// Quero usar shared pointers pra não ter que me preocupar
+	// com a liberação da memória
+
 	people.insertBeggining(new Person("Lucas", 21));
-	people.insertBeggining(new Person("Arjuna", 20));
+	people.insertEnd(new Person("Arjuna", 20));
+	people.insertBeggining(new Person("Michael Jackson", 500));
 	people.insertBeggining(new Person("Gontcha", 19));
 	people.insert(new Person, 2);
-	people.insertEnd(new Person("Michael Jackson", 500));
 
 	people.print();
 
 	people.removeBeggining();
 
 	cout << "--------------" << endl;
+
+	people.print();
+
+	cout << "--------------" << endl;
+	people.sort();
 
 	people.print();
 

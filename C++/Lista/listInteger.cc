@@ -19,6 +19,10 @@ int main() {
 
 	integers.print();
 
+	integers.sort();
+
+	integers.print();
+
 	cout << "\n******* | FIM DO PROGRAMA | *******\n\n";
 	return 0;
 }
