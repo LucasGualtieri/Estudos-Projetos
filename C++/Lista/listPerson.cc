@@ -13,11 +13,11 @@ int main() {
 	// Quero usar shared pointers pra não ter que me preocupar
 	// com a liberação da memória
 
-	people.insertBeggining(make_shared<Person>("Lucas", 21));
-	people.insertEnd(make_shared<Person>("Arjuna", 20));
-	people.insertBeggining(make_shared<Person>("Michael Jackson", 500));
-	people.insertBeggining(make_shared<Person>("Gontcha", 19));
-	people.insert(make_shared<Person>(), 2);
+	people.insertBeggining(NewPerson("Lucas", 21));
+	people.insertEnd(NewPerson("Arjuna", 20));
+	people.insertBeggining(NewPerson("Michael Jackson", 500));
+	people.insertBeggining(NewPerson("Gontcha", 19));
+	people.insert(NewPerson(), 2);
 
 	people.print();
 
