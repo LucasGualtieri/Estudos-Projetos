@@ -5,13 +5,17 @@ int main() {
 
 	int size = 5;
 
-	List<int> integers(size, false);
+	List<int> integers(size);
 
 	integers.insertBeggining(1);
 	integers.insertBeggining(2);
 	integers.insertBeggining(3);
 	integers.insertEnd(4);
 	integers.insert(5, 2);
+
+	integers.print();
+
+	integers.removeBeggining();
 
 	integers.print();
 

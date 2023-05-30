@@ -32,12 +32,4 @@ void List<Person*>::print() {
 	}
 }
 
-template <>
-void List<Person*>::FullFree() {
-	for (int i = 0; i < size; i++) {
-		delete array[i];
-	}
-	delete[] array;
-}
-
 #endif

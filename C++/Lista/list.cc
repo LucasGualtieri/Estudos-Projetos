@@ -13,8 +13,14 @@ int main() {
 	people.insertBeggining(new Person("Lucas", 21));
 	people.insertBeggining(new Person("Arjuna", 20));
 	people.insertBeggining(new Person("Gontcha", 19));
-	people.insertEnd(new Person);
-	people.insert(new Person("Michael Jackson", 500), 2);
+	people.insert(new Person, 2);
+	people.insertEnd(new Person("Michael Jackson", 500));
+
+	people.print();
+
+	people.removeBeggining();
+
+	cout << "--------------" << endl;
 
 	people.print();
 
