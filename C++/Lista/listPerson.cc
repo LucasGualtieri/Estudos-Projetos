@@ -6,14 +6,14 @@ int main() {
 
 	int size = 5;
 
-	List<shared_ptr<Person>> people;
-	people.initialize(size);
+	List<shared_ptr<Person>> people(size);
+	// people.initialize(size);
 
 	people.insertBeggining(NewPerson("Lucas", 21));
 	people.insertEnd(NewPerson("Arjuna", 20));
-	people.insertBeggining(NewPerson("Michael Jackson", 500));
-	people.insertBeggining(NewPerson("Gontcha", 19));
-	people.insert(NewPerson(), 2);
+	people.insertBeggining(NewPerson("Michael Jackson", 64));
+	people.insertBeggining(NewPerson());
+	people.insert(NewPerson("Gontcha", 19), 2);
 
 	people.print();
 
