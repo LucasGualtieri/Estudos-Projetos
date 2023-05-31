@@ -7,6 +7,7 @@ int main() {
 	int size = 5;
 
 	List<shared_ptr<Person>> people(size);
+
 	// people.initialize(size);
 
 	people.insertBeggining(NewPerson("Lucas", 21));
@@ -16,14 +17,13 @@ int main() {
 	people.insert(NewPerson("Gontcha", 19), 2);
 
 	people.print();
+	cout << "--------------" << endl;
 
 	people.removeBeggining();
 
-	cout << "--------------" << endl;
-
 	people.print();
-
 	cout << "--------------" << endl;
+
 	people.sort();
 
 	people.print();

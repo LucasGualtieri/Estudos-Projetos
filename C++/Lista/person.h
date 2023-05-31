@@ -29,7 +29,7 @@ public:
 	}
 
 	~Person() {
-		// cout << name << " estou indo de berço" << endl;
+		cout << name << " estou indo de berço" << endl;
 	}
 };
 
@@ -47,8 +47,8 @@ void List<shared_ptr<Person>>::print() {
 
 	for (int i = 0; i < size; i++) {
 		cout << index++ << " ";
-		cout << array.get()[i]->getName() << " ";
-		cout << array.get()[i]->getAge() << endl;
+		cout << array[i]->getName() << " ";
+		cout << array[i]->getAge() << endl;
 	}
 }
 
