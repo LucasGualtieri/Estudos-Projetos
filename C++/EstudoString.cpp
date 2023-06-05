@@ -21,7 +21,7 @@ public:
 	}
 
 	String() {
-		this->buffer = NULL;
+		this->buffer = nullptr;
 		// cout << "Constructor empty param being called" << endl;
 	}
 
