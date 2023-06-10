@@ -1,5 +1,9 @@
 #include <biblioteca_c.h>
 
+// Problema com nomes com espaço
+// Pegar o nome entre a primeira letra alpha numerica e o segundo espaço o /n
+// adicinar os nomes em uma lista e printar a lista dps
+
 void ListaDeConfirmacao(FILE* listaIn, FILE* listaOut) {
 	String string = (char*)malloc(2000 * sizeof(char));
 
