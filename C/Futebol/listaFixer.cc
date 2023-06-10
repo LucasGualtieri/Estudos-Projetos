@@ -92,7 +92,7 @@ void List<string>::print(bool printIndices) {
 
 int main() {
 
-	List<string> listaJogadores(25);
+	List<string> listaJogadores(24);
 
 	listaJogadores.populate();
 
