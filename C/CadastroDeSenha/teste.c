@@ -5,12 +5,21 @@ void teste() {
 }
 
 int main() {
-    puts("Olá mundo!");
 
-    int* teste = 2;
-    int  idade = 1;
+    char* string = "Literal";
 
-    if (*teste == 1) printf("Ola\n");
+    int testVar = 2;
+    int idade   = 1;
+
+    if (testVar == 1) printf("Ola\n");
+
+    printf("Idade: ");
+    scanf("%d%*c", &idade);
+    printf("Idade: %d\n", idade);
+
+    Pause();
+
+    printf("Ola mundo\n");
 
     puts("\n------- | FIM DO PROGRAMA | -------\n");
     return 0;
