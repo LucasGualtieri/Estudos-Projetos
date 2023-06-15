@@ -1,26 +1,26 @@
 #include <biblioteca_c.h>
 
 void teste() {
-    printf("Ola\n");
+	printf("Ola\n");
 }
 
 int main() {
 
-    char* string = "Literal";
+	char* string = "Literal";
 
-    int testVar = 2;
-    int idade   = 1;
+	int testVar = 2;
+	int idade	= 1;
 
-    if (testVar == 1) printf("Ola\n");
+	if (testVar == 1) printf("Ola\n");
 
-    printf("Idade: ");
-    scanf("%d%*c", &idade);
-    printf("Idade: %d\n", idade);
+	printf("Idade: ");
+	scanf("%d%*c", &idade);
+	printf("Idade: %d\n", idade);
 
-    Pause();
+	Pause(0);
 
-    printf("Ola mundo\n");
+	printf("Ola mundo\n");
 
-    puts("\n------- | FIM DO PROGRAMA | -------\n");
-    return 0;
+	puts("\n------- | FIM DO PROGRAMA | -------\n");
+	return 0;
 }
