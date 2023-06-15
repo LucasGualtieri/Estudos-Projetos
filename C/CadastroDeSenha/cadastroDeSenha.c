@@ -9,28 +9,23 @@ char* readPassword() {
 	term.c_lflag &= ~(ICANON | ECHO);
 	tcsetattr(fileno(stdin), TCSAFLUSH, &term);
 
-	char* string = (char*)malloc(MaxStringLength * sizeof(char));
+	char c, *string = (char*)malloc(MaxStringLength * sizeof(char));
 
 	int stringLength = 0;
-	while (true) {
-		char c = getchar();
+	while ((c = getchar()) != '\n') {
 
-		if (c == '\n') {
-			printf("\n");
-			break;
-		} else if (c == 127) {
-			if (stringLength > 0) {
-				printf("\b \b"); // Moves the cursor back by one position
-				stringLength--;
-			}
-		} else {
+		if (c == 127 && stringLength > 0) {
+			printf("\b \b"); // Moves the cursor back by one position
+			stringLength--;
+		} else if (c != 127) {
 			string[stringLength++] = c;
 			putchar('*');
 		}
-		string[stringLength] = '\0';
 	}
+	printf("\n");
 
-	string = (char*)realloc(string, (strlen(string) + 1) * sizeof(char));
+	string[stringLength] = '\0';
+	string = (char*)realloc(string, stringLength * sizeof(char));
 
 	// Restore terminal buffering and echoing
 	term.c_lflag |= (ICANON | ECHO);
@@ -121,7 +116,7 @@ int LendoEscolha() {
 	bool invalid = false;
 
 	do {
-		if (invalid) printf("Valor inválido (o valor deve ser >= 0 e < 3): ");
+		if (invalid) printf("Valor inválido, tente novamente: ");
 		scanf("%d%*c", &escolha); // %d%*c will clear the STDIN
 	} while ((invalid = escolha < 0 || escolha > 2));
 
@@ -150,9 +145,10 @@ int MenuDeOpcoes() {
 
 int main() {
 
-	while (MenuDeOpcoes()) { } // while (MenuDeOpcoes() != 0);
+	while (MenuDeOpcoes())
+		;
 
-	puts("\n******* | FIM DO PROGRAMA | *******\n");
+	puts("\n------- | FIM DO PROGRAMA | -------\n");
 
 	return 0;
 }
