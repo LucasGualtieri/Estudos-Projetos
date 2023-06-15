@@ -1,6 +1,8 @@
 #include <biblioteca_c.h>
 #include <termios.h>
 
+#define backspace 127
+
 // Toggles the visibility of the input characters.
 void ToggleConsole() {
 
@@ -28,11 +30,10 @@ char* readPassword() {
 
 	int stringLength = 0;
 	while ((c = getchar()) != '\n') {
-
-		if (c == 127 && stringLength > 0) {
+		if (c == backspace && stringLength > 0) {
 			printf("\b \b"); // Moves the cursor back by one position
 			stringLength--;
-		} else if (c != 127) {
+		} else if (c != backspace) {
 			string[stringLength++] = c;
 			putchar('*');
 		}
