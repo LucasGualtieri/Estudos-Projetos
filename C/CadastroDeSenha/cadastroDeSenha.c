@@ -5,164 +5,160 @@
 
 // Toggles the visibility of the input characters.
 void ToggleConsole() {
+    static bool enabled = true;
 
-	static bool enabled = true;
+    static struct termios term;
+    tcgetattr(fileno(stdin), &term);
 
-	static struct termios term;
-
-	if (enabled) {
-		tcgetattr(fileno(stdin), &term);
-		term.c_lflag &= ~(ICANON | ECHO);
-		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
-		enabled = false;
-	} else {
-		term.c_lflag |= (ICANON | ECHO);
-		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
-		enabled = true;
-	}
+    if (enabled) {
+        term.c_lflag &= ~(ICANON | ECHO);
+        tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+        enabled = false;
+    } else {
+        term.c_lflag |= (ICANON | ECHO);
+        tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+        enabled = true;
+    }
 }
 
 char* readPassword() {
+    ToggleConsole();
 
-	ToggleConsole();
+    char c, *password = (char*)malloc(MaxStringLength * sizeof(char));
 
-	char c, *string = (char*)malloc(MaxStringLength * sizeof(char));
+    int passwordLength = 0;
+    while ((c = getchar()) != '\n') {
+        if (c != backspace) {
+            password[passwordLength++] = c;
+            putchar('*');
+        } else if (passwordLength > 0) {
+            printf("\b \b"); // Moves the cursor back by one position
+            passwordLength--;
+        }
+    }
+    password[passwordLength++] = '\0';
+    putchar('\n');
 
-	int stringLength = 0;
-	while ((c = getchar()) != '\n') {
-		if (c == backspace && stringLength > 0) {
-			printf("\b \b"); // Moves the cursor back by one position
-			stringLength--;
-		} else if (c != backspace) {
-			string[stringLength++] = c;
-			putchar('*');
-		}
-	}
-	putchar('\n');
+    password = (char*)realloc(password, passwordLength * sizeof(char));
 
-	string[stringLength++] = '\0';
-	string = (char*)realloc(string, stringLength * sizeof(char));
+    ToggleConsole();
 
-	ToggleConsole();
-
-	return string;
+    return password;
 }
 
 void CadastrarSenha() {
-	system("clear");
-	printf("------- Cadastrando uma nova senha -------\n\n");
+    system("clear");
+    printf("------- Cadastrando uma nova senha -------\n\n");
 
-	String password;
-	String passwordConfirmation;
-	bool divergent = false;
-	int chances = 0;
+    String password;
+    String passwordConfirmation;
+    bool   divergent = false;
+    int    chances   = 0;
 
-	do {
-		if (divergent) {
-			// system("clear");
-			printf("\nSenhas divergentes, tente novamente [%d/3]: \n", ++chances);
-		}
+    do {
+        if (divergent) {
+            // system("clear");
+            printf("\nSenhas divergentes, tente novamente [%d/3]: \n", ++chances);
+        }
 
-		printf("Digite sua senha: ");
-		password = readPassword();
+        printf("Digite sua senha: ");
+        password = readPassword();
 
-		printf("Confirme sua senha: ");
-		passwordConfirmation = readPassword();
+        printf("Confirme sua senha: ");
+        passwordConfirmation = readPassword();
 
-		divergent = strcmp(password, passwordConfirmation);
+        divergent = strcmp(password, passwordConfirmation);
 
-	} while (divergent && chances < 3);
+    } while (divergent && chances < 3);
 
-	system("clear");
+    system("clear");
 
-	if (divergent) {
-		printf("------- Falha no cadastro da senha! -------\n\n");
-	} else {
-		printf("------- Senha cadastrada com sucesso! -------\n\n");
-	}
+    if (divergent) {
+        printf("------- Falha no cadastro da senha! -------\n\n");
+    } else {
+        printf("------- Senha cadastrada com sucesso! -------\n\n");
+    }
 
-	FILE* passwordStorage = fopen("password.dat", "w");
-	fprintf(passwordStorage, "%s", password);
+    FILE* passwordStorage = fopen("password.dat", "w");
+    fprintf(passwordStorage, "%s", password);
 
-	fclose(passwordStorage);
-	free(password);
-	free(passwordConfirmation);
+    fclose(passwordStorage);
+    free(password);
+    free(passwordConfirmation);
 }
 
 void ValidarSenha() {
+    FILE*  passwordStorage = fopen("password.dat", "r");
+    String password        = getstr(passwordStorage);
+    fclose(passwordStorage);
 
-	FILE* passwordStorage = fopen("password.dat", "r");
-	String password = getstr(passwordStorage);
-	fclose(passwordStorage);
+    String passwordValidation;
+    bool   invalid = false;
+    int    chances = 0;
 
-	String passwordValidation;
-	bool invalid = false;
-	int chances = 0;
+    system("clear");
+    printf("------- Validar uma senha cadastrada -------\n\n");
 
-	system("clear");
-	printf("------- Validar uma senha cadastrada -------\n\n");
+    do {
+        if (invalid) {
+            printf("Senha incorreta! Tente novamente [%d/3]: ", ++chances);
+        } else {
+            printf("Digite sua senha: ");
+        }
 
-	do {
+        passwordValidation = readPassword();
 
-		if (invalid) {
-			printf("Senha incorreta! Tente novamente [%d/3]: ", ++chances);
-		} else {
-			printf("Digite sua senha: ");
-		}
+        invalid = (strcmp(password, passwordValidation));
 
-		passwordValidation = readPassword();
+    } while (invalid && chances < 3);
 
-		invalid = (strcmp(password, passwordValidation));
+    system("clear");
 
-	} while (invalid && chances < 3);
-
-	system("clear");
-
-	if (invalid) {
-		printf("------- Validação mal-sucedida! -------\n\n");
-	} else {
-		printf("------- Validação bem-sucedida! -------\n\n");
-	}
+    if (invalid) {
+        printf("------- Validação mal-sucedida! -------\n\n");
+    } else {
+        printf("------- Validação bem-sucedida! -------\n\n");
+    }
 }
 
 int LendoEscolha() {
-	int escolha;
-	bool invalid = false;
+    int  escolha;
+    bool invalid = false;
 
-	do {
-		if (invalid) printf("Valor inválido, tente novamente: ");
-		scanf("%d%*c", &escolha); // %d%*c will clear the STDIN
-	} while ((invalid = escolha < 0 || escolha > 2));
+    do {
+        if (invalid) {
+            printf("Valor inválido, tente novamente: ");
+        }
+        scanf("%d%*c", &escolha); // %d%*c will clear the STDIN
+    } while ((invalid = escolha < 0 || escolha > 2));
 
-	return escolha;
+    return escolha;
 }
 
 int MenuDeOpcoes() {
-	printf("0 - Sair do programa.\n");
-	printf("1 - Cadastrar uma nova senha.\n");
-	printf("2 - Validar uma senha cadastrada.\n");
-	printf("Escolha uma das opções acima: ");
+    printf("0 - Sair do programa.\n");
+    printf("1 - Cadastrar uma nova senha.\n");
+    printf("2 - Validar uma senha cadastrada.\n");
+    printf("Escolha uma das opções acima: ");
 
-	int escolha = LendoEscolha();
+    int escolha = LendoEscolha();
 
-	switch (escolha) {
-	case 1:
-		CadastrarSenha();
-		break;
-	case 2:
-		ValidarSenha();
-		break;
-	}
+    switch (escolha) {
+    case 1:
+        CadastrarSenha();
+        break;
+    case 2:
+        ValidarSenha();
+        break;
+    }
 
-	return escolha;
+    return escolha;
 }
 
 int main() {
+    while (MenuDeOpcoes()) continue;
 
-	while (MenuDeOpcoes())
-		;
+    puts("\n------- | FIM DO PROGRAMA | -------\n");
 
-	puts("\n------- | FIM DO PROGRAMA | -------\n");
-
-	return 0;
+    return 0;
 }
