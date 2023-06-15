@@ -1,13 +1,28 @@
 #include <biblioteca_c.h>
 #include <termios.h>
 
-char* readPassword() {
-	struct termios term;
-	tcgetattr(fileno(stdin), &term);
+// Toggles the visibility of the input characters.
+void ToggleConsole() {
 
-	// Disable terminal buffering and echoing
-	term.c_lflag &= ~(ICANON | ECHO);
-	tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+	static bool enabled = true;
+
+	static struct termios term;
+
+	if (enabled) {
+		tcgetattr(fileno(stdin), &term);
+		term.c_lflag &= ~(ICANON | ECHO);
+		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+		enabled = false;
+	} else {
+		term.c_lflag |= (ICANON | ECHO);
+		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+		enabled = true;
+	}
+}
+
+char* readPassword() {
+
+	ToggleConsole();
 
 	char c, *string = (char*)malloc(MaxStringLength * sizeof(char));
 
@@ -22,14 +37,12 @@ char* readPassword() {
 			putchar('*');
 		}
 	}
-	printf("\n");
+	putchar('\n');
 
-	string[stringLength] = '\0';
+	string[stringLength++] = '\0';
 	string = (char*)realloc(string, stringLength * sizeof(char));
 
-	// Restore terminal buffering and echoing
-	term.c_lflag |= (ICANON | ECHO);
-	tcsetattr(fileno(stdin), TCSAFLUSH, &term);
+	ToggleConsole();
 
 	return string;
 }
