@@ -146,6 +146,7 @@ int ReadingChoice() {
 }
 
 int OptionsMenu() {
+
 	puts("0 - Sair do programa.");
 	puts("1 - Cadastrar uma nova senha.");
 	puts("2 - Validar uma senha cadastrada.");
