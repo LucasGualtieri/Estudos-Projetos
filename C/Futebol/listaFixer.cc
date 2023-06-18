@@ -48,12 +48,9 @@ string NomeDoJogador(fstream& listaIn) {
 		}
 	}
 
-	if (nomeJogador.length() > 0) {
-		trim(nomeJogador);
-	} else {
-		return "FIM";
-	}
-
+	if (nomeJogador.length() <= 0) return "FIM";
+	
+	trim(nomeJogador);
 	return nomeJogador;
 }
 
@@ -98,6 +95,6 @@ int main() {
 
 	listaJogadores.print();
 
-	cout << "\n******* | FIM DO PROGRAMA | *******\n\n";
+	cout << "\n------- | FIM DO PROGRAMA | -------\n\n";
 	return 0;
 }
