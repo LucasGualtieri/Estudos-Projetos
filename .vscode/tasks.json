@@ -9,13 +9,13 @@
 				"-g",
 				"${file}",
 				"-I",
-				"/home/lucas/PC-HOME/CC-PUC/Bibliotecas",
+				"../../CC-PUC/Bibliotecas/",
 				"-o",
-				"/home/lucas/PC-HOME/OutputExe/${fileBasenameNoExtension}.exe",
+				"../../OutputExe/${fileBasenameNoExtension}.exe",
 				"&&",
 				"clear",
 				"&&",
-				"/home/lucas/PC-HOME/OutputExe/${fileBasenameNoExtension}.exe"
+				"../../OutputExe/${fileBasenameNoExtension}.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -33,9 +33,9 @@
 				"-g",
 				"${file}",
 				"-I",
-				"/home/lucas/PC-HOME/CC-PUC/Bibliotecas",
+				"../../CC-PUC/Bibliotecas/",
 				"-o",
-				"/home/lucas/PC-HOME/OutputExe/${fileBasenameNoExtension}.exe" // .exe optional
+				"../../OutputExe/${fileBasenameNoExtension}.exe" // .exe optional
 			],
 			"options": {
 				"cwd": "${fileDirname}"

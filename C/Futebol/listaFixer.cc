@@ -10,19 +10,6 @@ char getCharacter(fstream& file) {
 	return c;
 }
 
-string readTilC(fstream& file, char targetCharacter) {
-	string str;
-	char currentCharacter;
-
-	while (file.get(currentCharacter)) {
-		str += currentCharacter;
-
-		if (currentCharacter == targetCharacter) break;
-	}
-
-	return str;
-}
-
 bool isOneOf(char c, const string str) {
 	for (int i = 0; i < str.length(); i++) {
 		if (str.at(i) == c) return true;
@@ -71,7 +58,8 @@ template <>
 void List<string>::print(bool printIndices) {
 
 	fstream listaIn("lista.in");
-	string cabecalho = readTilC(listaIn, ':');
+	string cabecalho;
+	getline(listaIn, cabecalho, ':');
 	listaIn.close();
 
 	ofstream listaOut("lista.out");
