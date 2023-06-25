@@ -75,11 +75,17 @@ struct JSON {
 };
 typedef JSON* JSON;
 
-JSON JSONParse() {
+JSON JSONParse(char* const jsonFileDir) {
+	FILE* jsonFile = fopen(jsonFileDir, "r");
+
 	JSON json = (JSON)malloc(sizeof(JSON));
 	json->key = KeyValues(); // Essa função deverá reallocar conforme novas keys forem sendo "achadas"
 
 	// json->key = (Key*)malloc(N * sizeof(Key));
+
+	fclose(jsonFile);
+
+	return json;
 }
 
 void PessoaDados(Pessoa* pessoa, JSON json) {
@@ -91,7 +97,7 @@ void PessoaDados(Pessoa* pessoa, JSON json) {
 		} else if (!strcmp(json->key[i]->name, "altura")) {
 			pessoa->alturaCm = json->key[i]->Value;
 		} else if (!strcmp(json->key[i]->name, "jogos favoritos")) {
-			for (int j = 0; !json->key[i]->Values[j]; j++) {
+			for (int j = 0; j < json->key[i]->length; j++) {
 				pessoa->jogosFavoritos[j] = json->key[i]->Values[j];
 			}
 		} else {
@@ -102,17 +108,15 @@ void PessoaDados(Pessoa* pessoa, JSON json) {
 
 void PessoaDados2(Pessoa* pessoa, JSON json) {
 	pessoa->nome			  = json->key[0]->Value;
-	pessoa->idade			  = json->key[1]->Value;
-	pessoa->alturaCm		  = json->key[2]->Value;
+	pessoa->idade			  = atoi(json->key[1]->Value);
+	pessoa->alturaCm		  = atoi(json->key[2]->Value);
 	pessoa->jogosFavoritos[0] = json->key[3]->Values[0];
 	pessoa->jogosFavoritos[1] = json->key[3]->Values[1];
 }
 
 int main() {
 
-	FILE* jsonFile = fopen("pessoa.json", "r");
-	JSON  json	   = JSONParse(); // Dynamically allocated and NULL/nullptr terminated array of dynamically allocated and NULL/nullptr terminated arrays of strings;
-
+	JSON   json = JSONParse("pessoa.json"); // Dynamically allocated and NULL/nullptr terminated array of dynamically allocated and NULL/nullptr terminated arrays of strings;
 	Pessoa lucas;
 
 	// PessoaDados(&lucas, json);
@@ -124,8 +128,7 @@ int main() {
 	printf("lucas.jogosFavoritos[0]: %s\n", lucas.jogosFavoritos[0]);
 	printf("lucas.jogosFavoritos[1]: %s\n", lucas.jogosFavoritos[1]);
 
-	fclose(jsonFile);
-	jsonClose(json);
+	JSONClose(json);
 
 	puts("\n------- | FIM DO PROGRAMA | -------\n");
 	return 0;
