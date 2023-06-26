@@ -17,58 +17,6 @@ typedef struct JSON {
 	Key* key;
 } JSON;
 
-// string getTillSubstr(fstream& jsonFile, string substr) {
-// 	string aux, str;
-
-// 	while (aux != substr) {
-// 		aux.erase();
-// 		while (aux.length() < substr.length() && !jsonFile.eof()) {
-// 			aux += jsonFile.get();
-// 		}
-// 		str += aux;
-// 		cout << "'" << aux << "'" << endl;
-// 	}
-
-// 	return str;
-// }
-
-// vector<string> Values(fstream& jsonFile) {
-// 	vector<string> array;
-
-// 	// slkdjfl
-
-// 	int	 singleOrArray = 0; // 1 == single 2 == array
-// 	char c;
-// 	while (!singleOrArray && !jsonFile.eof()) {
-// 		if ((c = jsonFile.get()) == '[') {
-// 			singleOrArray = 1;
-
-// 		} else if (c == '\"') {
-// 			singleOrArray = 2;
-// 			string value  = getTillSubstr(jsonFile, "\",");
-// 			cout << "Value: {" << value << " }" << endl;
-// 			ReplaceAll(value, "\"',", "");
-// 			trim(value);
-// 			cout << "Value: {" << value << " }" << endl;
-// 			array.push_back(value);
-// 		}
-// 	}
-
-// 	return array;
-// }
-
-String teste(FILE* jsonFile) {
-	String key, aux;
-
-	// while (*jsonFile)
-
-	// getline(jsonFile, key, ':');
-	// ReplaceAll(key, "\"':\n{", "");
-	// trim(key, '\t');
-
-	return key;
-}
-
 String const KeyName(FILE* jsonFile) {
 	char c;
 	while (!strchr("\"'[}", (c = getc(jsonFile))) && !feof(jsonFile)) continue;
@@ -97,6 +45,7 @@ String* Values(Key* key, FILE* jsonFile) {
 		string			 = (String)realloc(string, strsize(string));
 		arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
 		arrayOfValues[0] = string;
+		key->value		 = string;
 	} else if (c == '[') { // Achei melhor especificar
 		bool stop = false;
 		getc(jsonFile);
@@ -107,7 +56,7 @@ String* Values(Key* key, FILE* jsonFile) {
 			string						   = (String)realloc(string, strsize(string));
 			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
 			arrayOfValues[key->length - 1] = string;
-			printf("String: %s\n", string);
+			// printf("String: %s\n", string);
 			while (!strchr("\"'", (c = getc(jsonFile))) && !feof(jsonFile)) {
 				if (c == ']') {
 					stop = true;
@@ -131,7 +80,6 @@ Key KeyValues(FILE* jsonFile) {
 
 	key.name   = KeyName(jsonFile);
 	key.values = Values(&key, jsonFile);
-	// key.value  = key.values[0];
 
 	return key;
 }
