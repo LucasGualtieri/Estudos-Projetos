@@ -48,17 +48,25 @@ void PessoaPrint(Pessoa lucas) {
 
 int main() {
 
-	JSON   json = JSONParse("pessoa.json");
+	JSON   json = JSONParse("ackbar.txt");
 	Pessoa lucas;
 
-	// JSONPrint(json);
+	JSONPrint(json);
 
-	PessoaDados(&lucas, json);
+	// PessoaDados(&lucas, json);
 	// PessoaDados2(&lucas, json);
-	PessoaPrint(lucas);
+	// PessoaPrint(lucas);
 
 	JSONClose(json);
 
 	puts("\n------- | FIM DO PROGRAMA | -------\n");
 	return 0;
 }
+
+// TODO
+// fazer funcionar o scanf para " e ' // DONE!
+// Entender pq o films: [...] tá quebrando o código // DONE!
+// Conferir se o JSONClose() está 100% // DONE!
+// Fazer ser possivel ler valor com , ("chave": "val1, val2") // DONE!
+// Fazer o ackbar.txt funcionar // O problema está nos [] dar um jeito neles
+// Melhorar a altura para mudar as virgulas 1,87

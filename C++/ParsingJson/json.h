@@ -23,7 +23,7 @@ String const KeyName(FILE* jsonFile) {
 
 	String string = (String)malloc(50 * sizeof(char));
 
-	fscanf(jsonFile, "%[^\"]", string);
+	fscanf(jsonFile, "%[^\"']", string);
 	getc(jsonFile);
 
 	string = (String)realloc(string, strsize(string));
@@ -40,7 +40,7 @@ String* Values(Key* key, FILE* jsonFile) {
 
 	if (c == '\'' || c == '\"') {
 		string = (String)malloc(50 * sizeof(char));
-		fscanf(jsonFile, "%[^\"]", string);
+		fscanf(jsonFile, "%[^\"']", string);
 		getc(jsonFile);
 		string			 = (String)realloc(string, strsize(string));
 		arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
@@ -51,8 +51,11 @@ String* Values(Key* key, FILE* jsonFile) {
 		getc(jsonFile);
 		do {
 			string = (String)malloc(50 * sizeof(char));
-			fscanf(jsonFile, "%[^\"]", string);
+			fscanf(jsonFile, "%[^\"']", string);
 			getc(jsonFile);
+
+			// if (!strlen(string)) stop = true;
+
 			string						   = (String)realloc(string, strsize(string));
 			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
 			arrayOfValues[key->length - 1] = string;
@@ -111,8 +114,8 @@ JSON JSONParse(const char* jsonFileDir) {
 
 void JSONClose(JSON json) {
 	for (int i = 0; i < json.length; i++) {
+		free(json.key[i].name);
 		for (int j = 0; j < json.key[i].length; j++) {
-			free(json.key[i].name);
 			free(json.key[i].values[j]);
 		}
 		free(json.key[i].values);
