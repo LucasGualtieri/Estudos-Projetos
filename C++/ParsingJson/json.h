@@ -24,6 +24,7 @@ String const KeyName(FILE* jsonFile) {
 	String string = (String)malloc(50 * sizeof(char));
 
 	fscanf(jsonFile, "%[^\"']", string);
+	// if (DEBUGGING) printf("String: %s\n", string);
 	getc(jsonFile);
 
 	string = (String)realloc(string, strsize(string));
@@ -41,6 +42,7 @@ String* Values(Key* key, FILE* jsonFile) {
 	if (c == '\'' || c == '\"') {
 		string = (String)malloc(50 * sizeof(char));
 		fscanf(jsonFile, "%[^\"']", string);
+		if (DEBUGGING) printf("String: %s\n", string);
 		getc(jsonFile);
 		string			 = (String)realloc(string, strsize(string));
 		arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
@@ -48,10 +50,17 @@ String* Values(Key* key, FILE* jsonFile) {
 		key->value		 = string;
 	} else if (c == '[') { // Achei melhor especificar
 		bool stop = false;
-		getc(jsonFile);
+		if (getc(jsonFile) == ']') {
+			string = (String)malloc(sizeof(char));
+			strcpy(string, "");
+			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
+			arrayOfValues[key->length - 1] = string;
+			return arrayOfValues;
+		}
 		do {
 			string = (String)malloc(50 * sizeof(char));
 			fscanf(jsonFile, "%[^\"']", string);
+			if (DEBUGGING) printf("String: %s\n", string);
 			getc(jsonFile);
 
 			// if (!strlen(string)) stop = true;
@@ -59,17 +68,14 @@ String* Values(Key* key, FILE* jsonFile) {
 			string						   = (String)realloc(string, strsize(string));
 			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
 			arrayOfValues[key->length - 1] = string;
-			// printf("String: %s\n", string);
 			while (!strchr("\"'", (c = getc(jsonFile))) && !feof(jsonFile)) {
 				if (c == ']') {
 					stop = true;
 					break;
 				}
 			}
-		} while (!stop);
+		} while (!stop && !feof(jsonFile));
 	}
-
-	if (strlen(string) == 0) key->length = 0;
 
 	// printf("strlen(string): %d\n", strlen(string));
 
@@ -81,7 +87,8 @@ String* Values(Key* key, FILE* jsonFile) {
 Key KeyValues(FILE* jsonFile) {
 	Key key = {0};
 
-	key.name   = KeyName(jsonFile);
+	key.name = KeyName(jsonFile);
+	if (DEBUGGING) printf("key.name: %s\n", key.name);
 	key.values = Values(&key, jsonFile);
 
 	return key;
@@ -116,6 +123,7 @@ void JSONClose(JSON json) {
 	for (int i = 0; i < json.length; i++) {
 		free(json.key[i].name);
 		for (int j = 0; j < json.key[i].length; j++) {
+			if (DEBUGGING) printf("json.key[%d].length: %d\n", i, json.key[i].length);
 			free(json.key[i].values[j]);
 		}
 		free(json.key[i].values);

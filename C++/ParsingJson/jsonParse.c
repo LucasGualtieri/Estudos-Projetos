@@ -33,7 +33,7 @@ void PessoaDados(Pessoa* pessoa, JSON json) {
 void PessoaDados2(Pessoa* pessoa, JSON json) {
 	pessoa->nome			  = json.key[0].value;
 	pessoa->idade			  = atoi(json.key[1].value);
-	pessoa->alturaM			  = atof(json.key[2].value);
+	pessoa->alturaM			  = atof(ReplaceAll(json.key[2].value, ",", "."));
 	pessoa->jogosFavoritos[0] = json.key[3].values[0];
 	pessoa->jogosFavoritos[1] = json.key[3].values[1];
 }
@@ -41,21 +41,21 @@ void PessoaDados2(Pessoa* pessoa, JSON json) {
 void PessoaPrint(Pessoa lucas) {
 	printf("lucas.nome: \"%s\"\n", lucas.nome);
 	printf("lucas.idade: %d\n", lucas.idade);
-	printf("lucas.alturaM: %g\n", lucas.alturaM); // NOTE - Melhorar a altura para mudar as virgulas 1,87
+	printf("lucas.alturaM: %g\n", lucas.alturaM);
 	printf("lucas.jogosFavoritos[0]: \"%s\"\n", lucas.jogosFavoritos[0]);
 	printf("lucas.jogosFavoritos[1]: \"%s\"\n", lucas.jogosFavoritos[1]);
 }
 
 int main() {
 
-	JSON   json = JSONParse("ackbar.txt");
+	JSON   json = JSONParse("pessoa.json");
 	Pessoa lucas;
 
-	JSONPrint(json);
+	// JSONPrint(json);
 
 	// PessoaDados(&lucas, json);
-	// PessoaDados2(&lucas, json);
-	// PessoaPrint(lucas);
+	PessoaDados2(&lucas, json);
+	PessoaPrint(lucas);
 
 	JSONClose(json);
 
@@ -64,9 +64,9 @@ int main() {
 }
 
 // TODO
+// Continuar entendendo os replaceall()
 // fazer funcionar o scanf para " e ' // DONE!
-// Entender pq o films: [...] tá quebrando o código // DONE!
 // Conferir se o JSONClose() está 100% // DONE!
 // Fazer ser possivel ler valor com , ("chave": "val1, val2") // DONE!
-// Fazer o ackbar.txt funcionar // O problema está nos [] dar um jeito neles
-// Melhorar a altura para mudar as virgulas 1,87
+// Fazer o ackbar.txt funcionar // O problema está nos [] dar um jeito neles // DONE!
+// Melhorar a altura para mudar as virgulas 1,87 // DONE!
