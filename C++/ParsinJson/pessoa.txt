@@ -1,0 +1,1 @@
+{"nome": "Lucas Gualtieri", "idade": "83", "altura": "180", "jogos favoritos": "CS:GO"}
