@@ -87,23 +87,36 @@ String* Values(Key* key, FILE* jsonFile) {
 	char c;
 	while (!strchr("\"'[}", (c = getc(jsonFile))) && !feof(jsonFile)) continue;
 
-	String* arrayOfValues = (String*)malloc(1 * sizeof(String));
+	String* arrayOfValues = NULL;
+	String	string;
 
-	String string = (String)malloc(50 * sizeof(char));
 	if (c == '\'' || c == '\"') {
+		string = (String)malloc(50 * sizeof(char));
 		fscanf(jsonFile, "%[^\"]", string);
 		getc(jsonFile);
-	} else {
-		// printf("Ola\n");
+		string			 = (String)realloc(string, strsize(string));
+		arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
+		arrayOfValues[0] = string;
+	} else if (c == '[') { // Achei melhor especificar
+		bool stop = false;
 		getc(jsonFile);
-		// Toda uma lógica
+		do {
+			string = (String)malloc(50 * sizeof(char));
+			fscanf(jsonFile, "%[^\"]", string);
+			getc(jsonFile);
+			string						   = (String)realloc(string, strsize(string));
+			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
+			arrayOfValues[key->length - 1] = string;
+			printf("String: %s\n", string);
+			while (!strchr("\"'", (c = getc(jsonFile))) && !feof(jsonFile)) {
+				if (c == ']') {
+					stop = true;
+					break;
+				}
+			}
+		} while (!stop);
 	}
 
-	string = (String)realloc(string, strsize(string));
-
-	arrayOfValues[0] = string;
-
-	key->length = 1;
 	if (strlen(string) == 0) key->length = 0;
 
 	// printf("strlen(string): %d\n", strlen(string));
@@ -112,48 +125,6 @@ String* Values(Key* key, FILE* jsonFile) {
 
 	return arrayOfValues;
 }
-
-/*
-	String* Values(Key* key, FILE* jsonFile) {
-		char c;
-		while (!strchr("\"'[}", (c = getc(jsonFile))) && !feof(jsonFile)) continue;
-
-		String* arrayOfValues;
-		String	string;
-
-		if (c == '\'' || c == '\"') {
-			string = (String)malloc(50 * sizeof(char));
-			fscanf(jsonFile, "%[^\"]", string);
-			getc(jsonFile);
-			string			 = (String)realloc(string, strsize(string));
-			arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
-			arrayOfValues[0] = string;
-		} else if (c == '[') { // Achei melhor especificar
-			bool stop = false;
-			do {
-				string = (String)malloc(50 * sizeof(char));
-				fscanf(jsonFile, "%[^\"]", string);
-				string			 = (String)realloc(string, strsize(string));
-				arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
-				arrayOfValues[0] = string;
-				while (!strchr("\"', ", (c = getc(jsonFile))) && !feof(jsonFile)) {
-					if (c == ']') {
-						stop = true;
-						break;
-					}
-				}
-			} while (!stop);
-		}
-
-		if (strlen(string) == 0) key->length = 0;
-
-		// printf("strlen(string): %d\n", strlen(string));
-
-		// printf("string: %s\n", string);
-
-		return arrayOfValues;
-	}
-*/
 
 Key KeyValues(FILE* jsonFile) {
 	Key key = {0};
