@@ -3,29 +3,28 @@
 
 #include <biblioteca_c.h>
 
-typedef char* String;
+// Em C++ e Java posso botar esses métodos todos KeyName, values, etc tudo dentro da classe
 
 typedef struct Key {
-	int		length;
-	String	name;
-	String	value;
-	String* values; // char** se der pau // NULL by default Will have the same value as value but value will be NULL if there's more than one
+	int		length; // Número de valores
+	String	name;	// A string que representa o nome da chave
+	String	value;	// String que aponta para o primeiro valor do vetor de valores
+	String* values; // Vetor dinâmicamente allocado de valores
 } Key;
 
 typedef struct JSON {
-	int	 length;
-	Key* key;
+	int	 length; // Número de chaves e seus respectivos valores
+	Key* key;	 // Vetor dinâmicamente allocado de Keys
 } JSON;
 
-String const KeyName(FILE* jsonFile) {
-	char c;
-	while (!strchr("\"'[}", (c = getc(jsonFile))) && !feof(jsonFile)) continue;
+String KeyName(FILE* jsonFile) {
+
+	while (!strchr("\"'[}", getc(jsonFile)) && !feof(jsonFile)) continue;
 
 	String string = (String)malloc(50 * sizeof(char));
 
-	fscanf(jsonFile, "%[^\"']", string);
+	fscanf(jsonFile, "%[^\"']%*c", string);
 	// if (DEBUGGING) printf("String: %s\n", string);
-	getc(jsonFile);
 
 	string = (String)realloc(string, strsize(string));
 
@@ -41,44 +40,45 @@ String* Values(Key* key, FILE* jsonFile) {
 
 	if (c == '\'' || c == '\"') {
 		string = (String)malloc(50 * sizeof(char));
-		fscanf(jsonFile, "%[^\"']", string);
+
+		fscanf(jsonFile, "%[^\"']%*c", string);
 		if (DEBUGGING) printf("String: %s\n", string);
-		getc(jsonFile);
+
 		string			 = (String)realloc(string, strsize(string));
 		arrayOfValues	 = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
-		arrayOfValues[0] = string;
-		key->value		 = string;
+		arrayOfValues[0] = key->value = string;
+
 	} else if (c == '[') { // Achei melhor especificar
-		bool stop = false;
+
 		if (getc(jsonFile) == ']') {
 			string = (String)malloc(sizeof(char));
 			strcpy(string, "");
 			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
-			arrayOfValues[key->length - 1] = string;
+			arrayOfValues[key->length - 1] = key->value = string;
 			return arrayOfValues;
 		}
+
+		bool stop = false;
 		do {
 			string = (String)malloc(50 * sizeof(char));
-			fscanf(jsonFile, "%[^\"']", string);
-			if (DEBUGGING) printf("String: %s\n", string);
-			getc(jsonFile);
+			fscanf(jsonFile, "%[^\"']%*c", string);
+			// if (DEBUGGING) printf("String: %s\n", string);
 
 			// if (!strlen(string)) stop = true;
 
 			string						   = (String)realloc(string, strsize(string));
 			arrayOfValues				   = (String*)realloc(arrayOfValues, ++key->length * sizeof(String));
 			arrayOfValues[key->length - 1] = string;
-			while (!strchr("\"'", (c = getc(jsonFile))) && !feof(jsonFile)) {
-				if (c == ']') {
-					stop = true;
-					break;
-				}
-			}
+
+			while (!strchr("\"']", (c = getc(jsonFile))) && !feof(jsonFile)) continue;
+			if (c == ']') stop = true;
+
 		} while (!stop && !feof(jsonFile));
+
+		key->value = arrayOfValues[0];
 	}
 
 	// printf("strlen(string): %d\n", strlen(string));
-
 	// printf("string: %s\n", string);
 
 	return arrayOfValues;
@@ -88,7 +88,7 @@ Key KeyValues(FILE* jsonFile) {
 	Key key = {0};
 
 	key.name = KeyName(jsonFile);
-	if (DEBUGGING) printf("key.name: %s\n", key.name);
+	// if (DEBUGGING) printf("key.name: %s\n", key.name);
 	key.values = Values(&key, jsonFile);
 
 	return key;
@@ -111,8 +111,6 @@ JSON JSONParse(const char* jsonFileDir) {
 
 		json.key[json.length - 1] = newKey;
 	}
-
-	// printf("json.length: %d\n", json.length);
 
 	fclose(jsonFile);
 
