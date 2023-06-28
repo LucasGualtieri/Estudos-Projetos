@@ -51,7 +51,8 @@ int main() {
 	JSON   json = JSONParse("pessoa.json");
 	Pessoa lucas;
 
-	// JSONPrint(json);
+	JSONPrint(json);
+	printf("-------------------------------------\n");
 
 	// PessoaDados(&lucas, json);
 	PessoaDados2(&lucas, json);

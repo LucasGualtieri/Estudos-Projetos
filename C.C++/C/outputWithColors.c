@@ -13,21 +13,33 @@
 	escape sequences to print colored output in C:
 */
 
-#define ANSI_COLOR_RED "\x1b[31m"
-#define ANSI_COLOR_GREEN "\x1b[32m"
-#define ANSI_COLOR_YELLOW "\x1b[33m"
-#define ANSI_COLOR_BLUE "\x1b[34m"
-#define ANSI_COLOR_MAGENTA "\x1b[35m"
-#define ANSI_COLOR_CYAN "\x1b[36m"
-#define ANSI_COLOR_RESET "\x1b[0m"
+// #define ANSI_COLOR_RED "\x1b[31m"
+// printf(RED "This text is red.\n" RESET);
+
+#define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
+#define YELLOW "\x1b[33m"
+#define BLUE "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN "\x1b[36m"
+#define RESET "\x1b[0m"
+
+void printColor(const char* msg, const char* color) {
+	printf("%s%s%s", color, msg, RESET);
+}
+
+void printColorLn(const char* msg, const char* color) {
+	printf("%s%s%s\n", color, msg, RESET);
+}
 
 int main() {
-	printf(ANSI_COLOR_RED "This text is red.\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_GREEN "This text is green.\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_YELLOW "This text is yellow.\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_BLUE "This text is blue.\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_MAGENTA "This text is magenta.\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_CYAN "This text is cyan.\n" ANSI_COLOR_RESET);
+
+	printColorLn("This text is red.", RED);
+	printColorLn("This text is green.", GREEN);
+	printColorLn("This text is yellow.", YELLOW);
+	printColorLn("This text is blue.", BLUE);
+	printColorLn("This text is magenta.", MAGENTA);
+	printColorLn("This text is cyan.", CYAN);
 
 	return 0;
 }

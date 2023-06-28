@@ -47,8 +47,8 @@ char* readPassword() {
 }
 
 void CadastrarSenha() {
-	system("clear");
-	puts("------- Cadastrando uma nova senha -------\n");
+	clrscreen();
+	puts(BOLD "------- Cadastrando uma nova senha -------\n" RESET);
 
 	String password;
 	String passwordConfirmation;
@@ -58,7 +58,8 @@ void CadastrarSenha() {
 	do {
 
 		if (divergent) {
-			printf("\nSenhas divergentes, tente novamente [%d/3]: \n", ++chances);
+			printColor("\nSenhas divergentes, ", RED);
+			printf("tente novamente [%d/3]: \n", ++chances);
 		}
 
 		printf("Digite sua senha: ");
@@ -69,28 +70,22 @@ void CadastrarSenha() {
 
 		divergent = strcmp(password, passwordConfirmation);
 
-		if (divergent) {
-			free(password);
-			free(passwordConfirmation);
-		}
+		if (divergent) free(password);
+		free(passwordConfirmation);
 
 	} while (divergent && chances < 3);
 
-	system("clear");
-
+	clrscreen();
 	if (divergent) {
-		puts("------- Falha no cadastro da senha! -------\n");
+		printColorLn(BOLD "------- Falha no cadastro da senha! -------\n", RED);
 		return;
 	}
-
-	puts("------- Senha cadastrada com sucesso! -------\n");
+	printColorLn(BOLD "------- Senha cadastrada com sucesso! -------\n", GREEN);
 
 	FILE* passwordStorage = fopen("password.dat", "w");
 	fprintf(passwordStorage, "%s", password);
-
 	fclose(passwordStorage);
 	free(password);
-	free(passwordConfirmation);
 }
 
 void ValidarSenha() {
@@ -102,14 +97,15 @@ void ValidarSenha() {
 	bool   invalid = false;
 	int	   chances = 0;
 
-	system("clear");
-	puts("------- Validar uma senha cadastrada -------\n");
+	clrscreen();
+	puts(BOLD "------- Validar uma senha cadastrada -------\n" RESET);
 
 	do {
 		if (!invalid) {
 			printf("Digite sua senha: ");
 		} else {
-			printf("Senha incorreta! Tente novamente [%d/3]: ", ++chances);
+			printColorBold("Senha incorreta! ", RED);
+			printf("Tente novamente [%d/3]: ", ++chances);
 		}
 
 		passwordValidation = readPassword();
@@ -121,12 +117,11 @@ void ValidarSenha() {
 
 	free(password);
 
-	system("clear");
-
+	clrscreen();
 	if (invalid) {
-		puts("------- Validação mal-sucedida! -------\n");
+		printColorLn(BOLD "------- Validação mal-sucedida! -------\n", RED);
 	} else {
-		puts("------- Validação bem-sucedida! -------\n");
+		printColorLn(BOLD "------- Validação bem-sucedida! -------\n", GREEN);
 	}
 }
 
@@ -139,7 +134,7 @@ int ReadingChoice() {
 			printf("Valor inválido, tente novamente: ");
 		}
 		scanf("%d", &choice);
-		flushStdin(0);
+		flush(0);
 	} while ((invalid = choice < 0 || choice > 2));
 
 	return choice;
@@ -148,7 +143,8 @@ int ReadingChoice() {
 int OptionsMenu() {
 
 	puts("0 - Sair do programa.");
-	puts("1 - Cadastrar uma nova senha.");
+	puts("1 - Cadastrar uma senha.");
+	// puts("2 - Cadastrar uma senha com criptografia.");
 	puts("2 - Validar uma senha cadastrada.");
 	printf("Escolha uma das opções acima: ");
 
@@ -157,7 +153,10 @@ int OptionsMenu() {
 	switch (escolha) {
 	case 1:
 		CadastrarSenha();
-		break;
+	// 	break;
+	// case 2:
+	// 	// CadastrarSenhaCript();
+	// 	break;
 	case 2:
 		ValidarSenha();
 		break;

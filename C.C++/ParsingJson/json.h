@@ -13,7 +13,7 @@ typedef struct Key {
 } Key;
 
 typedef struct JSON {
-	int	 length; // Número de chaves e seus respectivos valores
+	int	 length; // Número de chaves. E seus respectivos valores
 	Key* key;	 // Vetor dinâmicamente allocado de Keys
 } JSON;
 
