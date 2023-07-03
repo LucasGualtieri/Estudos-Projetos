@@ -58,7 +58,7 @@ void CadastrarSenha() {
 	do {
 
 		if (divergent) {
-			printColor("\nSenhas divergentes, ", RED);
+			printColorBold("\nSenhas divergentes, ", RED);
 			printf("tente novamente [%d/3]: \n", ++chances);
 		}
 
@@ -153,10 +153,10 @@ int OptionsMenu() {
 	switch (escolha) {
 	case 1:
 		CadastrarSenha();
-	// 	break;
-	// case 2:
-	// 	// CadastrarSenhaCript();
-	// 	break;
+		// 	break;
+		// case 2:
+		// 	// CadastrarSenhaCript();
+		break;
 	case 2:
 		ValidarSenha();
 		break;
