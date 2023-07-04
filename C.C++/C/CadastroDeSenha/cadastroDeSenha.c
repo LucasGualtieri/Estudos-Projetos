@@ -50,8 +50,8 @@ void CadastrarSenha() {
 	clrscreen();
 	puts(BOLD "------- Cadastrando uma nova senha -------\n" RESET);
 
-	String password;
-	String passwordConfirmation;
+	string password;
+	string passwordConfirmation;
 	bool   divergent = false;
 	int	   chances	 = 0;
 
@@ -90,10 +90,10 @@ void CadastrarSenha() {
 
 void ValidarSenha() {
 	FILE*  passwordStorage = fopen("password.dat", "r");
-	String password		   = getstr(passwordStorage);
+	string password		   = getstr(passwordStorage);
 	fclose(passwordStorage);
 
-	String passwordValidation;
+	string passwordValidation;
 	bool   invalid = false;
 	int	   chances = 0;
 

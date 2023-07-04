@@ -5,3 +5,4 @@ Trabalho prático Naizes:
 Pesquisar pra entender melhor esse trem de stack e heap e (RAM?)
 Perguntar pro theoldo o que ele pensa sobre C++
 O que é const char* const
+MEXER NAS LOGICAS DOS OPERADORES > e <
