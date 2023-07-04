@@ -2,14 +2,14 @@
 
 int SizeOfStr(const char* string) {
 	int length = 0;
-	while (string[length++] != '\0') { }
+	while (string[length++] != '\0') continue;
 	return length;
 }
 
 class String {
 	char* buffer;
 
-public:
+  public:
 	String(const char* str) {
 		// cout << "Constructor being called" << endl;
 
@@ -17,7 +17,9 @@ public:
 		this->buffer = new char[SizeOfStr(str)];
 
 		// Copy the string
-		strcpy(this->buffer, str);
+		for (int i = 0; i < SizeOfStr(str); i++) {
+			buffer[i] = str[i];
+		}
 	}
 
 	String() {
@@ -25,11 +27,14 @@ public:
 		// cout << "Constructor empty param being called" << endl;
 	}
 
+	~String() {
+		// cout << "Descructor being called" << endl;
+		delete[] this->buffer;
+	}
+
 	int length() {
 		int cont = 0;
-		for (int i = 0; buffer[i] != '\0'; i++) {
-			cont++;
-		}
+		while (buffer[cont] != '\0') cont++;
 		return cont;
 	}
 
@@ -43,14 +48,17 @@ public:
 			return *this;
 		}
 
-		// Deallocate existing data if any
-		delete[] this->buffer;
-
-		// Allocate memory for the new string
-		this->buffer = new char[SizeOfStr(str)];
+		if (buffer) {
+			// Deallocate existing data if any
+			delete[] this->buffer;
+			// Allocate memory for the new string
+			this->buffer = new char[SizeOfStr(str)];
+		}
 
 		// Copy the string
-		strcpy(this->buffer, str);
+		for (int i = 0; i < SizeOfStr(str); i++) {
+			buffer[i] = str[i];
+		}
 
 		return *this; // Return the assigned object
 	}
@@ -64,7 +72,7 @@ public:
 
 		delete[] object.buffer;
 
-		object.buffer = new char[2000];
+		object.buffer = new char[2'000];
 
 		Cin >> object.buffer;
 
@@ -80,34 +88,31 @@ public:
 		return Cin;
 	}
 
-	~String() {
-		// cout << "Descructor being called" << endl;
-		delete[] this->buffer;
+	char operator[](size_t index) {
+		if (index >= length()) {
+			throw string("Error: Index [" + to_string(index) + "] is out of bounds!");
+		}
+
+		return buffer[index];
 	}
+
+	bool operator==(String compare) {
+		}
 };
 
 int main() {
 
-	{
-		// String nome = "Lucas Gualtieri";
-		String nome;
-		// nome = "Lucas Gualtieri";
-		cin >> nome; // Ainda não consegui fazer funcionar. // Parece que agora consegui
+	// String nome = "Lucas Gualtieri";
+	String nome;
+	// nome = "Lucas Gualtieri";
+	cin >> nome; // Ainda não consegui fazer funcionar. // Parece que agora consegui
 
-		cout << "Nome: " << nome << endl;
-		cout << nome.length() << endl;
-		nome = "Lucas Gualtieri";
-		cout << nome << endl;
-	}
+	cout << "Nome: " << nome << endl;
+	cout << nome.length() << endl;
+	nome = "Lucas Gualtieri";
+	cout << nome << endl;
 
-	// { // Outros estudos.
-	// 	char c = '4';
-	// 	int idade = ctoi(c);
-	// 	cout << idade << endl;
-
-	// 	cout << Rand(4) << endl;
-	// }
-
+	cout << nome[1] << endl;
 	cout << "\n******* | FIM DO PROGRAMA | *******\n\n";
 	return 0;
 }
