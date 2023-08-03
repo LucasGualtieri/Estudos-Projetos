@@ -68,9 +68,9 @@ class String {
 		return cont;
 	}
 
-	// char* getString() {
-	// 	return buffer;
-	// }
+	char** getBuffer() {
+		return &buffer;
+	}
 
 	String& operator=(const char* const str) {
 		// cout << "operator=" << endl;
@@ -93,7 +93,7 @@ class String {
 		return *this; // Return the assigned object
 	}
 
-	String& operator=(String& str) {
+	String& operator=(String str) {
 		// cout << "operator=" << endl;
 
 		// Check for self-assignment
@@ -114,7 +114,7 @@ class String {
 		return *this; // Return the assigned object
 	}
 
-	friend ostream& operator<<(ostream& cout, String& object) {
+	friend ostream& operator<<(ostream& cout, String object) {
 		cout << object.buffer;
 		return cout;
 	}
@@ -166,7 +166,7 @@ class String {
 	}
 
 	// Fazer os overloads
-	String& operator+=(String& concat) {
+	String& operator+=(String concat) {
 		size_t sizeofconcat = concat.length() + 1, initialLen = this->length();
 
 		this->buffer = (char*)realloc(buffer, initialLen + sizeofconcat);
@@ -178,7 +178,6 @@ class String {
 		return *this;
 	}
 
-	// Fazer os overloads
 	String& operator+=(const char* const concat) {
 
 		size_t sizeofconcat = SizeOfStr(concat), initialLen = this->length();
@@ -201,6 +200,51 @@ class String {
 		this->buffer[initialLen + 1] = 0;
 
 		return *this;
+	}
+
+	String operator+(String concat) {
+
+		String copy = *this;
+
+		size_t sizeofconcat = concat.length(), initialLen = copy.length();
+
+		copy.buffer = (char*)realloc(copy.buffer, initialLen + sizeofconcat + 1);
+
+		int i;
+		for (i = 0; i < sizeofconcat; i++) {
+			copy.buffer[initialLen + i] = concat[i];
+		}
+		copy.buffer[sizeofconcat + initialLen + 1] = 0;
+
+		return copy;
+	}
+
+	String operator+(const char* const concat) {
+
+		String copy = *this;
+
+		size_t sizeofconcat = SizeOfStr(concat), initialLen = copy.length();
+
+		copy.buffer = (char*)realloc(copy.buffer, initialLen + sizeofconcat);
+
+		for (int i = 0; i <= sizeofconcat; i++) {
+			copy.buffer[initialLen + i] = concat[i];
+		}
+
+		return copy;
+	}
+
+	String operator+(char c) {
+
+		String copy = *this;
+
+		size_t initialLen = copy.length();
+
+		copy.buffer					= (char*)realloc(copy.buffer, initialLen + 1);
+		copy.buffer[initialLen]		= c;
+		copy.buffer[initialLen + 1] = 0;
+
+		return copy;
 	}
 
 	bool operator>(String& compare) {
@@ -243,13 +287,6 @@ void stringcopy(char* str, const String& toBeCopied) {
 	str[toBeCopied.length()] = 0;
 }
 
-// void stringcopy(char* str, String& toBeCopied) {
-// 	for (int i = 0; i < toBeCopied.length(); i++) {
-// 		str[i] = toBeCopied[i];
-// 	}
-// 	str[toBeCopied.length()] = 0;
-// }
-
 template <typename T>
 void insertionSort(T* array, size_t size) {
 
@@ -279,6 +316,44 @@ void SelectionSort(T* array, size_t size) {
 }
 
 int main() {
+
+	{
+		String str1 = "Lucas";
+		String str2 = " Firace";
+
+		if (str1 == str2) cout << "Ola mundo" << endl;
+
+		cout << str1 + 'c' << endl;
+		cout << str1 + " Gualtieri" << endl;
+		cout << str1 + str2 << endl;
+		cout << str1 + ' ' + "Gualtieri" + str2 << endl;
+
+		str2 = str1 + ' ' + "Gualtieri" + str2;
+
+		cout << str2 << endl;
+	}
+
+	{
+		String teste			= "Juju C";
+		*teste.getBuffer()		= (char*)realloc(*teste.getBuffer(), teste.length() + 6 + 1 * sizeof(char));
+		size_t end				= teste.length();
+		*teste.getBuffer()[end] = 'F'; // Crashes and I don't know why
+		// *teste.getBuffer()[end + 1] = 'i';
+		// *teste.getBuffer()[end + 2] = 'r';
+		// *teste.getBuffer()[end + 3] = 'a';
+		// *teste.getBuffer()[end + 4] = 'c';
+		// *teste.getBuffer()[end + 5] = 'e';
+		// *teste.getBuffer()[end + 6] = 0;
+
+		cout << teste << endl;
+	}
+
+	{
+		// 	String str;
+
+		// 	cin >> str;
+		// 	cout << str << endl;
+	}
 
 	String vetor[3]{"ABC", "AAA", "AAAB"};
 
