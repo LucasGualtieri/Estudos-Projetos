@@ -7,18 +7,16 @@
 void ToggleConsoleVisibility() {
 	static bool enabled = true;
 
-	static struct termios term;
+	struct termios term;
 	tcgetattr(fileno(stdin), &term);
 
-	if (enabled) {
+	if (!(enabled = !enabled)) {
 		term.c_lflag &= ~(ICANON | ECHO);
-		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
-		enabled = false;
 	} else {
 		term.c_lflag |= (ICANON | ECHO);
-		tcsetattr(fileno(stdin), TCSAFLUSH, &term);
-		enabled = true;
 	}
+
+	tcsetattr(fileno(stdin), TCSAFLUSH, &term);
 }
 
 char* readPassword() {
