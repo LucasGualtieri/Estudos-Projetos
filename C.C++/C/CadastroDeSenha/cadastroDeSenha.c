@@ -133,7 +133,7 @@ int ReadingChoice() {
 		}
 		scanf("%d", &choice);
 		flush(0);
-	} while ((invalid = choice < 0 || choice > 2));
+	} while ((invalid = choice < 0 || 2 < choice));
 
 	return choice;
 }
