@@ -1,8 +1,18 @@
+# The oreder of stuff makes is relevant
+
+*
+!/**/
+!*.*
+
 *.exe
 *.o
 *.class
-*replay_pid*
 *.Identifier
-*tempCodeRunnerFile.c
-*tempCodeRunnerFile.cc
-*tempCodeRunnerFile.cpp
+
+# *replay_pid*
+# *tempCodeRunnerFile.c
+
+# # Ignore all
+# *
+# # Unignore all with extensions
+# !*.*
