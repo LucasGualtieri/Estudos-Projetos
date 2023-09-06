@@ -33,7 +33,7 @@ class SubstrNReplace {
 		for (int i = 0; i < strLen; i++) {
 			if (i < strLen - baseStrLen && isEqual(baseStr, substr(i, i + baseStrLen, str))) {
 				aux += newStr;
-				i += baseStrLen - 1; // Talvez não tenha o -1
+				i += baseStrLen - 1;
 			} else {
 				aux += str.charAt(i);
 			}
@@ -42,7 +42,6 @@ class SubstrNReplace {
 	}
 
 	public static void main(String[] args) {
-		// Exemplo de uso String nome = replaceAll("()", " ", "Lucas()Gualtieri()Firace");
 		// Deve retornar Lucas Gualtieri Firace
 		String nome = replaceAll("()", " ", "Lucas()Gualtieri()Firace");
 		System.out.printf("Nome: %s\n", nome);
