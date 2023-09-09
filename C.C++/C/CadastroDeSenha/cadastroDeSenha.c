@@ -92,14 +92,14 @@ void ValidarSenha() {
 	fclose(passwordStorage);
 
 	string passwordValidation;
-	bool   invalid = false;
+	bool   valid = true;
 	int	   chances = 0;
 
 	clrscreen();
 	puts(BOLD "------- Validar uma senha cadastrada -------\n" RESET);
 
 	do {
-		if (!invalid) {
+		if (valid) {
 			printf("Digite sua senha: ");
 		} else {
 			printColorBold("Senha incorreta! ", RED);
@@ -108,15 +108,15 @@ void ValidarSenha() {
 
 		passwordValidation = readPassword();
 
-		invalid = strcmp(password, passwordValidation);
+		valid = !strcmp(password, passwordValidation);
 
 		free(passwordValidation);
-	} while (invalid && chances < 3);
+	} while (!valid && chances < 3);
 
 	free(password);
 
 	clrscreen();
-	if (invalid) {
+	if (!valid) {
 		printColorLn(BOLD "------- Validação mal-sucedida! -------\n", RED);
 	} else {
 		printColorLn(BOLD "------- Validação bem-sucedida! -------\n", GREEN);
