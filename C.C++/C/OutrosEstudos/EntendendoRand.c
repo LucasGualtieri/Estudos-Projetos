@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+// clear && gcc EntendendoRand.c && ./a.out
+
+#define RANDOM(minRange, maxRange) (rand() % ((maxRange + 1) - minRange)) + minRange
+
 int main() {
 
 	srand(0);
@@ -34,5 +38,15 @@ int main() {
 	printf("Rand: %d\n", rand() % 10);
 	printf("Rand: %d\n", rand() % 10);
 	printf("Rand: %d\n", rand() % 10);
+
+	printf("-----------------\n");
+
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
+	printf("RANDOM: %d\n", RANDOM(3, 10));
 
 }
