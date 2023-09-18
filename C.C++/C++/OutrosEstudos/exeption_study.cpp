@@ -29,7 +29,7 @@ int main() {
 		cout << half(0) << endl;
 	} catch (const char* erro) {
 		cout << "Erro: " << erro << endl;
-	} catch (...) { // Não entendo bem essa parte. Parte opcional
+	} catch (...) { // Acontece em cascata, como um if-else, equivalente ao else. Finally em java
 		cout << "Erro inesperado ocorreu!" << endl;
 	}
 
