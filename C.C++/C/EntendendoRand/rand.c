@@ -1,2 +1,4 @@
 // Remove the 'static' keyword from the bar function
-void bar();
+static void bar() {
+	printf("teste\n");
+}

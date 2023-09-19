@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "rand.h"
+#include "rand.c"
 
 void main() {
 	bar();
