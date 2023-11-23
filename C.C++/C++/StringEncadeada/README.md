@@ -1,0 +1,1 @@
+Classe String implementada usando uma lista encadeada (duplamente???) de caracteres
