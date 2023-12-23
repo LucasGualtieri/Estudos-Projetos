@@ -1,7 +1,10 @@
-#include <biblioteca_c.h>
+#include "biblioteca_c.h"
 #include <termios.h>
 
 #define backspace 127
+#define enter '\n'
+
+// clear && gcc cadastroDeSenha.c && ./a.out 
 
 // Toggles the visibility of the input characters.
 void ToggleConsoleVisibility() {
@@ -22,13 +25,13 @@ void ToggleConsoleVisibility() {
 char* readPassword() {
 	ToggleConsoleVisibility();
 
-	char c, *password = (char*)malloc(MaxStringLength * sizeof(char));
+	char c, *password = (char*)malloc(STR_MAX_LEN * sizeof(char));
 
 	int passwordLength = 0;
-	while ((c = getchar()) != '\n') {
+	while ((c = getchar()) != enter) {
 		if (c != backspace) {
-			password[passwordLength++] = c;
 			putchar('*');
+			password[passwordLength++] = c;
 		} else if (passwordLength > 0) {
 			printf("\b \b"); // Moves the cursor back by one position
 			passwordLength--;
