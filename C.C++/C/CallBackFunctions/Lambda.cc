@@ -15,7 +15,7 @@ typedef struct Objeto {
 
 int main() {
 	int array1[] = { 1, 2, 3 };
-	Objeto array2[] = { {"Lucas", 21}, {"Gualtieri", 22} };
+	Objeto array2[] = {{"Lucas", 21}, {"Gualtieri", 22}};
 
 	forEach(array1, 3, ([](int n) {
 		printf("Number: %d\n", n);
