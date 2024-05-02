@@ -2,6 +2,8 @@
 #include <utility>
 // #include <concepts>
 
+// falta implementar os destrutores
+
 using namespace std;
 
 typedef const char* const literal;
@@ -10,6 +12,7 @@ typedef const char* const literal;
 
 template <typename T>
 class Stack {
+
   private:
   public:
 	class Cell {
@@ -29,12 +32,29 @@ class Stack {
 
 	Cell* top;
   
+	void freeStack(Cell* cell) {
+		while (cell != nullptr) {
+			Cell* next = cell->bottom;
+			delete cell;
+			cell = next;
+		}
+	}
+
+
 	Stack() : top(nullptr) {}
+	~Stack() {
+		freeStack(top);
+	}
 
-	// Inserts an element to the top of the stack.
-	bool push(T value) {
+	/**
+	 * Inserts an element to the top of the stack.
+	 * 
+	 * @param element item of type T.
+	 * @return True if the insertion is successful, otherwise, false.
+	 */
+	bool push(T element) {
 
-		Cell* newCell = new Cell(value, top);
+		Cell* newCell = new Cell(element, top);
 
 		if (newCell == nullptr) return false;
 
@@ -106,20 +126,26 @@ class BST {
   public:
 	BST() : root(nullptr) {}
 
-	template<typename... Values>
-	bool insert(Values... args) {
+	/**
+	 * Inserts an arbitrary length list of items into the tree. If the insertion of any of the elements fails, none of the items are inserted.
+	 * 
+	 * @param items List of N items of type T.
+	 * @return True if the insertion of all elements was successful, otherwise, false.
+	 */
+	template<typename... Items>
+	bool insert(Items... list) {
 
 		bool result = true;
 
-		auto insertList = [&](const T& arg) {
-			if (!insert(arg)) result = false;
+		auto insertList = [&](const T& item) {
+			if (!insert(item)) result = false;
 		};
 
-		auto removeList = [&](const T& arg) { remove(arg); };
+		auto removeList = [&](const T& item) { remove(item); };
 
-		(insertList(args), ...);
+		(insertList(list), ...);
 
-		if (!result) (removeList(args), ...);
+		if (!result) (removeList(list), ...);
 
 		return result;
 	}

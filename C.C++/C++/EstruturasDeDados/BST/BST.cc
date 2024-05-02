@@ -2,6 +2,8 @@
 #include <utility>
 // #include <concepts>
 
+// falta implementar os destrutores
+
 using namespace std;
 
 typedef const char* const literal;
