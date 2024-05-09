@@ -12,24 +12,25 @@ using namespace std;
 typedef unsigned long long bigInt;
 typedef unordered_map<int, bigInt> Hash;
 
+auto contains = [](int n, Hash hash) { return hash.find(n) != hash.end(); };
+
 bigInt fibonacci(bigInt n, Hash& hash) {
 
-	if (n == 0 || n == 1) return n;
-
-	if (hash.find(n - 1) == hash.end()) {
+	if (!contains(n - 1, hash)) {
 		hash[n - 1] = fibonacci(n - 1, hash);
 	}
 
-	if (hash.find(n - 2) == hash.end()) {
+	if (!contains(n - 2, hash)) {
 		hash[n - 2] = fibonacci(n - 2, hash);
 	}
 
 	return hash[n - 1] + hash[n - 2];
 }
 
-bigInt fibonacci(bigInt nth) {
+bigInt fibonacci(bigInt n) {
+	if (n <= 1) return n;
 	Hash hash{{0, 0}, {1, 1}};
-	return fibonacci(nth, hash);
+	return fibonacci(n, hash);
 }
 
 bigInt fibonacciTradicional(bigInt n) {
@@ -57,16 +58,20 @@ void foo(int i, bigInt (*fn) (bigInt), string str, FILE* file) {
 
 int main() {
 	
-	FILE* file = fopen("grafico.csv", "w");
-
-	fprintf(file, "i, Otimizado, Tradicional\n");
-
-	for (int i = 0; i < 42; i++) {
-		foo(i, fibonacci, "Otimizado", file);
-		cout << "----------------------" << endl;
-		foo(i, fibonacciTradicional, "Tradicional", file);
-		cout << "==================================\n" << endl;
+	for (int i = 0; i < 100; i++) {
+		cout << fibonacci(i) << endl;
 	}
 
-	fclose(file);
+	// FILE* file = fopen("grafico.csv", "w");
+
+	// fprintf(file, "i, Otimizado, Tradicional\n");
+
+	// for (int i = 0; i < 42; i++) {
+	// 	foo(i, fibonacci, "Otimizado", file);
+	// 	cout << "----------------------" << endl;
+	// 	foo(i, fibonacciTradicional, "Tradicional", file);
+	// 	cout << "==================================\n" << endl;
+	// }
+
+	// fclose(file);
 }
