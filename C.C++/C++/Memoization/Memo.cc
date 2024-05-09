@@ -9,8 +9,8 @@
 
 using namespace std;
 
-typedef unordered_map<int, int> Hash;
 typedef unsigned long long bigInt;
+typedef unordered_map<int, bigInt> Hash;
 
 bigInt fibonacci(bigInt n, Hash& hash) {
 
@@ -37,33 +37,35 @@ bigInt fibonacciTradicional(bigInt n) {
   return fibonacciTradicional(n - 1) + fibonacciTradicional(n - 2);
 }
 
-int main() {
+void foo(int i, bigInt (*fn) (bigInt), string str, FILE* file) {
+	
+	static int aux = 0;
+	aux++;
+
 	Timer timer;
 
-	bigInt x;
+	timer.start();
+	bigInt resultado = fn(i);
+	timer.stop();
 
+	printf("Fibonacci%s(%d): %lld\n", str.c_str(), i, resultado);
+	cout << "Tempo decorrido: " << timer << endl;
+
+	if (aux % 2 != 0) fprintf(file, "%d, %lf, ", i, timer.result());
+	else fprintf(file, "%lf\n", timer.result());
+}
+
+int main() {
+	
 	FILE* file = fopen("grafico.csv", "w");
 
-	fprintf(file, "o, v\n");
+	fprintf(file, "i, Otimizado, Tradicional\n");
 
-	for (int i = 0; i < 30; i++) {
-		timer.start();
-		x = fibonacci(i);
-		timer.stop();
-
-		cout << "Fib(i): " << x << endl;
-		cout << timer << endl;
-		fprintf(file, "%lf, ", timer.result());
-
-		timer.start();
-		x = fibonacciTradicional(i);
-		timer.stop();
-
-		cout << "Fib(i): " << x << endl;
-		cout << timer << endl;
-		fprintf(file, "%lf\n", timer.result());
-
+	for (int i = 0; i < 42; i++) {
+		foo(i, fibonacci, "Otimizado", file);
 		cout << "----------------------" << endl;
+		foo(i, fibonacciTradicional, "Tradicional", file);
+		cout << "==================================\n" << endl;
 	}
 
 	fclose(file);

@@ -4,6 +4,7 @@
 #include <chrono>
 #include <iostream>
 #include <thread>
+#include <iomanip> 
 
 using namespace std::chrono;
 
@@ -23,12 +24,12 @@ class Timer {
 	}
 
 	double result() const {
-		duration<double, std::micro> time_span = duration_cast<duration<double, std::micro>>(end - beginning);
-		return time_span.count();
+		duration<double> duration = end - beginning;
+		return duration.count();
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const Timer& t) {
-		os << t.result();
+		os << std::fixed << std::setprecision(6) << t.result();
 		return os;
 	}
 
