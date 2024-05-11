@@ -36,9 +36,7 @@ class Matrix {
 		return 0 <= i && i < height && 0 <= j && j < width;
 	}
 
-	vector<T>& operator[](int i) {
-		return matrix[i];
-	}
+	vector<T>& operator[](int i) { return matrix[i]; }
 
 	string toString() const {
 
