@@ -12,25 +12,25 @@ using namespace std;
 typedef unsigned long long bigInt;
 typedef unordered_map<int, bigInt> Hash;
 
-auto contains = [](int n, Hash hash) { return hash.find(n) != hash.end(); };
+auto contains = [](int n, Hash memo) { return memo.find(n) != memo.end(); };
 
-bigInt fibonacci(bigInt n, Hash& hash) {
+bigInt fibonacci(bigInt n, Hash& memo) {
 
-	if (!contains(n - 1, hash)) {
-		hash[n - 1] = fibonacci(n - 1, hash);
+	if (!contains(n - 1, memo)) {
+		memo[n - 1] = fibonacci(n - 1, memo);
 	}
 
-	if (!contains(n - 2, hash)) {
-		hash[n - 2] = fibonacci(n - 2, hash);
+	if (!contains(n - 2, memo)) {
+		memo[n - 2] = fibonacci(n - 2, memo);
 	}
 
-	return hash[n - 1] + hash[n - 2];
+	return memo[n - 1] + memo[n - 2];
 }
 
 bigInt fibonacci(bigInt n) {
 	if (n <= 1) return n;
-	Hash hash{{0, 0}, {1, 1}};
-	return fibonacci(n, hash);
+	Hash memo{{0, 0}, {1, 1}};
+	return fibonacci(n, memo);
 }
 
 bigInt fibonacciTradicional(bigInt n) {
