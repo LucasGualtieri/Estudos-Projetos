@@ -2,10 +2,8 @@
 #include <unordered_map>
 #include <unistd.h>
 #include "timer.hpp"
-#include <stdio.h>
-#include <stdlib.h>
 
-// clear && g++ Memo.cc && ./a.out
+// clear && g++ -std=c++2b Memo.cc && ./a.out
 
 using namespace std;
 
@@ -19,7 +17,7 @@ bool contains(Key key, Hash hash) {
 
 bigInt fibonacci(bigInt n, Hash& memo) {
 
-	if (!contains(n - 1, memo)) {
+	if (!memo.contains(n - 1)) { // Only works in c++ 23
 		memo[n - 1] = fibonacci(n - 1, memo);
 	}
 
