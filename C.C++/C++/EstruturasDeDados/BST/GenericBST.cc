@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <utility>
 #include <sstream>
 // #include <concepts>
@@ -185,10 +186,7 @@ class BST {
 		return status;
 	}
 
-	string toString() const {
-
-		string result = "{ ";
-
+	void InOrderTraversal(auto fn) const {
 		Stack<pair<Node*, int>> stack;
 
 		stack.push(pair(root, 0));
@@ -206,7 +204,7 @@ class BST {
 			}
 
 			else if (pathStatus == 1) {
-				result += *node + ", ";
+				fn(node);
 				// Sets right path as taken
 				pathStatus = 2;
 				stack.push(pair(node->right, 0));
@@ -214,6 +212,15 @@ class BST {
 
 			else if (pathStatus == 2) stack.pop();
 		}
+	}
+
+	string toString() const {
+
+		string result = "{ ";
+
+		InOrderTraversal([&result](Node* node) {
+			result += *node + ", ";
+		});
 
 		int len = result.length();
 		if (len > 2) result.erase(len - 2, 1);
@@ -296,6 +303,7 @@ int main() {
 
 	ageTree.insert(21, 22, 19, 35, 21, 20, 21);
 
+	cout << ageTree << endl;
 	cout << ageTree << endl;
 
 }
