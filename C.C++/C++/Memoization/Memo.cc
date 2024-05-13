@@ -12,7 +12,10 @@ using namespace std;
 typedef unsigned long long bigInt;
 typedef unordered_map<int, bigInt> Hash;
 
-auto contains = [](int n, Hash memo) { return memo.find(n) != memo.end(); };
+template <typename Hash, typename Key>
+bool contains(Key key, Hash hash) {
+	return hash.find(key) != hash.end();
+}
 
 bigInt fibonacci(bigInt n, Hash& memo) {
 
