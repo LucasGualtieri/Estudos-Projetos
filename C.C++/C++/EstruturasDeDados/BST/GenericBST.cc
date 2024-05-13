@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <utility>
 // #include <concepts>
 
@@ -104,12 +105,16 @@ class BST {
 			this->right = right;
 		}
 
-		friend string& operator+=(const string& str, const Node& node) {
-			return str += node.value;
+		friend string& operator+=(string& str, const Node& node) {
+			ostringstream os;
+			os << node.value;
+			return str += os.str();
 		}
 
         friend string operator+(const Node node, const string& str) {
-            return node.value + str;
+            ostringstream os;
+			os << node.value;
+			return os.str() + str;
         }
 
 		bool operator<(Node node) {
@@ -189,10 +194,7 @@ class BST {
 		return status;
 	}
 
-	string toString() const {
-
-		string result = "{ ";
-
+	void InOrderTraversal(auto fn) const {
 		Stack<pair<Node*, int>> stack;
 
 		stack.push(pair(root, 0));
@@ -210,7 +212,7 @@ class BST {
 			}
 
 			else if (pathStatus == 1) {
-				result += *node + ", ";
+				fn(node);
 				// Sets right path as taken
 				pathStatus = 2;
 				stack.push(pair(node->right, 0));
@@ -218,6 +220,15 @@ class BST {
 
 			else if (pathStatus == 2) stack.pop();
 		}
+	}
+
+	string toString() const {
+
+		string result = "{ ";
+
+		InOrderTraversal([&result](Node* node) {
+			result += *node + ", ";
+		});
 
 		int len = result.length();
 		if (len > 2) result.erase(len - 2, 1);
@@ -268,6 +279,11 @@ class Person {
 		return compareTo(p) > 0;
 	}
 
+	friend ostream& operator<<(ostream& os, const Person& p) {
+		os << p.to_string();
+		return os;
+	}
+
 };
 
 int main() {
@@ -290,6 +306,6 @@ int main() {
 
 	ageTree.insert(21, 22, 19, 35, 21, 20, 21);
 
-	// cout << ageTree << endl;
+	cout << ageTree << endl;
 
 }
