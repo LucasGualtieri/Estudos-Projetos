@@ -1,5 +1,6 @@
 #include <iostream>
 #include <utility>
+#include <sstream>
 // #include <concepts>
 
 // falta implementar os destrutores
@@ -32,18 +33,9 @@ class Stack {
 
 	Cell* top;
   
-	void freeStack(Cell* cell) {
-		while (cell != nullptr) {
-			Cell* next = cell->bottom;
-			delete cell;
-			cell = next;
-		}
-	}
-
-
 	Stack() : top(nullptr) {}
 	~Stack() {
-		freeStack(top);
+		while (!empty()) pop();
 	}
 
 	/**
@@ -104,12 +96,16 @@ class BST {
 			this->right = right;
 		}
 
-		friend string& operator+=(const string& str, const Node& node) {
-			return str += node.value;
+		friend string& operator+=(string& str, const Node& node) {
+			ostringstream oss;
+			oss << node.value;
+			return str += oss.str();
 		}
 
         friend string operator+(const Node node, const string& str) {
-            return node.value + str;
+			ostringstream oss;
+			oss << node.value;
+            return oss.str() + str;
         }
 
 		bool operator<(Node node) {
@@ -232,32 +228,37 @@ class BST {
 };
 
 class Person {
-  private:
-	string nome;
-
   public:
+	string nome;
+	int ID;
 
-	Person() : nome("null") {}
-	Person(string nome) : nome(nome) {}
+	Person() : nome("null"), ID(-1) {}
+	Person(string nome, int ID) : nome(nome), ID(ID) {}
 
-	string to_string() const {
-		return nome;
+	static int compare(Person p1, Person p2) {
+		return p1.compareTo(p2);
+	}
+
+	string str() const {
+		return "[ " + nome + ", " + to_string(ID) + " ]";
 	}
 
 	int compareTo(Person p) {
 		return nome.compare(p.nome);
+		// return (nome.compare(p.nome) > 0) - (nome.compare(p.nome) < 0);
+		// return ID - p.ID;
 	}
 
 	friend string& operator+=(string& str, const Person& p) {
-		return str += p.to_string();
+		return str += p.str();
 	}
 
 	friend string operator+(const string& str, const Person& p) {
-		return str + p.to_string();
+		return str + p.str();
 	}
 
 	friend string operator+(const Person& p, const string& str) {
-		return p.to_string() + str;
+		return p.str() + str;
 	}
 
 	bool operator<(Person p) {
@@ -268,6 +269,11 @@ class Person {
 		return compareTo(p) > 0;
 	}
 
+	friend ostream& operator<<(ostream& os, const Person& p) {
+		os << p.str();
+		return os;
+	}
+
 };
 
 int main() {
@@ -275,13 +281,13 @@ int main() {
 	BST<Person> personTree;
 
 	personTree.insert(
-		Person("Beatriz"),
-		Person("Lucas"),
-		Person("Gabriel"),
-		Person("Felipe"),
-		Person("Arjuna"),
-		Person("Gontcha"),
-		Person("Igor")
+		Person("Beatriz", 1),
+		Person("Lucas", 2),
+		Person("Gabriel", 3),
+		Person("Felipe", 4),
+		Person("Arjuna", 5),
+		Person("Gontcha", 6),
+		Person("Igor", 7)
 	);
 
 	cout << personTree << endl;
@@ -290,6 +296,6 @@ int main() {
 
 	ageTree.insert(21, 22, 19, 35, 21, 20, 21);
 
-	// cout << ageTree << endl;
+	cout << ageTree << endl;
 
 }
