@@ -27,6 +27,9 @@ typedef struct Aluno {
 
 procedure swap(void* v1, void* v2, size_t size);
 procedure selectionSort(void*, size_t, size_t, int (compare)(const void*, const void*));
+void quickSortRec(int left, int right, size_t size, int (compare)(const void*, const void*), void* array);
+void quickSortRecAlternate(int left, int right, size_t size, int (compare)(const void*, const void*), void* array);
+void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, const void*));
 
 Aluno* montarArray(int n) {
 
@@ -67,28 +70,6 @@ procedure arrayPrint(void* array, size_t n, size_t size, char* (toString)(const 
 	for (int i = 0; i < n; i++) {
 		printf("%s\n", toString(array + i * size));
 	}
-}
-
-void quickSortRec(int left, int right, size_t size, int (compare)(const void*, const void*), void* array) {
-	
-	int i = left, j = right;
-	void* pivo = (array + ((right + left) / 2) * size);
-
-	while (i <= j) {
-		while (compare(array + i * size, pivo) < 0) i++;
-		while (compare(array + j * size, pivo) > 0) j--;
-		if (i <= j) {
-			swap(array + i * size, array + j * size, size);
-			i++; j--;
-		}
-	}
-
-	if (left < j) quickSortRec(left, j, size, compare, array);
-	if (i < right) quickSortRec(i, right, size, compare, array);
-}
-
-void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, const void*)) {
-    quickSortRec(0, n - 1, size, compare, array);
 }
 
 int main() {
@@ -143,4 +124,43 @@ procedure selectionSortAlternate(void* array, size_t n, size_t size, int (compar
 
 		swap(array + i * size, array + menor * size, size);
 	}
+}
+
+void quickSortRec(int left, int right, size_t size, int (compare)(const void*, const void*), void* array) {
+	
+	int i = left, j = right;
+	void* pivo = (array + ((right + left) / 2) * size);
+
+	byte* arrayByte = (byte*) array;
+
+	while (i <= j) {
+		while (compare(&arrayByte[i * size], pivo) < 0) i++;
+		while (compare(&arrayByte[j * size], pivo) > 0) j--;
+		if (i <= j) swap(&arrayByte[i++ * size], &arrayByte[j-- * size], size);
+	}
+
+	if (left < j) quickSortRec(left, j, size, compare, array);
+	if (i < right) quickSortRec(i, right, size, compare, array);
+}
+
+void quickSortRecAlternate(int left, int right, size_t size, int (compare)(const void*, const void*), void* array) {
+	
+	int i = left, j = right;
+	void* pivo = (array + ((right + left) / 2) * size);
+
+	while (i <= j) {
+		while (compare(array + i * size, pivo) < 0) i++;
+		while (compare(array + j * size, pivo) > 0) j--;
+		if (i <= j) {
+			swap(array + i * size, array + j * size, size);
+			i++; j--;
+		}
+	}
+
+	if (left < j) quickSortRec(left, j, size, compare, array);
+	if (i < right) quickSortRec(i, right, size, compare, array);
+}
+
+void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, const void*)) {
+    quickSortRec(0, n - 1, size, compare, array);
 }
