@@ -2,20 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define procedure void
-
 // clear && gcc GenericSorting.c && ./a.out
 
 /*
-	5
-	Lucas S 1
-	Arjuna N 1
-	Igor O 3
-	Gontcha O 3
-	Gustavin L 3
+5
+Lucas S 1
+Arjuna N 1
+Igor O 3
+Gontcha O 3
+Gustavin L 3
 */
 
-#define deref(x) (*(Aluno *)x)
+#define procedure void
+#define deref(x) (*(Aluno*)x)
 
 typedef unsigned char byte;
 
@@ -79,14 +78,14 @@ int main() {
 	scanf("%d", &n);
 	Aluno *alunos = montarArray(n);
 
-	// qsort(alunos, n, sizeof(Aluno), compareTo);
+	qsort(alunos, n, sizeof(Aluno), compareTo);
 	// selectionSort(alunos, n, sizeof(Aluno), compareTo);
-	quickSort(alunos, n, sizeof(Aluno), compareTo);
+	// quickSort(alunos, n, sizeof(Aluno), compareTo);
 	arrayPrint(alunos, n, sizeof(Aluno), toString);
 }
 
 procedure swap(void* v1, void* v2, size_t size) {
-	char buffer[size];
+	void* buffer[size];
 	memcpy(buffer, v1, size);
 	memcpy(v1, v2, size);
 	memcpy(v2, buffer, size);
@@ -162,5 +161,5 @@ void quickSortRecAlternate(int left, int right, size_t size, int (compare)(const
 }
 
 void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, const void*)) {
-    quickSortRec(0, n - 1, size, compare, array);
+	quickSortRec(0, n - 1, size, compare, array);
 }
