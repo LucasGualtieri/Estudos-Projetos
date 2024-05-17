@@ -32,7 +32,7 @@ void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, co
 
 Aluno* montarArray(int n) {
 
-	Aluno* alunos = (Aluno*) malloc(n * sizeof(Aluno));
+	Aluno* alunos = (Aluno*)malloc(n * sizeof(Aluno));
 
 	for (size_t i = 0; i < n; i++) {
 		Aluno a;
@@ -76,7 +76,7 @@ int main() {
 	int n = 0;
 
 	scanf("%d", &n);
-	Aluno *alunos = montarArray(n);
+	Aluno* alunos = montarArray(n);
 
 	qsort(alunos, n, sizeof(Aluno), compareTo);
 	// selectionSort(alunos, n, sizeof(Aluno), compareTo);

@@ -37,11 +37,11 @@ void main() {
 	}
 }
 
-procedure swap(void* v1, void* v2, size_t size) {
+procedure swap(void* x, void* y, size_t size) {
 	void* buffer[size];
-	memcpy(buffer, v1, size);
-	memcpy(v1, v2, size);
-	memcpy(v2, buffer, size);
+	memcpy(buffer, x, size);
+	memcpy(x, y, size);
+	memcpy(y, buffer, size);
 }
 
 void quickSortRec(int left, int right, size_t size, int (compare)(const void*, const void*), void* array) {
