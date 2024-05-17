@@ -9,8 +9,8 @@ using namespace std;
 
 template <typename T>
 void registerIsland(int i, int j, T& matrix) {
-	if (matrix.inBounds(i, j) && matrix[i][j] == '*') {
-		matrix[i][j] = '-';
+	if (matrix.inBounds(i, j) && matrix[i][j] == 1) {
+		matrix[i][j] = 0;
 		registerIsland(i + 1, j, matrix);
 		registerIsland(i - 1, j, matrix);
 		registerIsland(i, j + 1, matrix);
@@ -25,7 +25,7 @@ int islandCounter(T matrix) {
 
 	for (int i = 0; i < matrix.height; i++) {
 		for (int j = 0; j < matrix.width; j++) {
-			if (matrix[i][j] == '*') {
+			if (matrix[i][j] == 1) {
 				counter++;
 				registerIsland(i, j, matrix);
 			}
@@ -37,13 +37,13 @@ int islandCounter(T matrix) {
 
 int main() {
 
-	Matrix<char> m = {
-		{ '*', '*', '-', '-', '-', '-' },
-		{ '*', '*', '-', '-', '-', '-' },
-		{ '-', '-', '-', '-', '-', '-' },
-		{ '-', '-', '-', '-', '-', '-' },
-		{ '-', '*', '-', '-', '*', '*' },
-		{ '-', '-', '-', '-', '*', '*' },
+	Matrix<int> m = {
+		{ 1, 1, 0, 0, 0, 0 },
+		{ 1, 1, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0 },
+		{ 0, 1, 0, 0, 1, 1 },
+		{ 0, 0, 0, 0, 1, 1 },
 	};
 
 	cout << m << endl;

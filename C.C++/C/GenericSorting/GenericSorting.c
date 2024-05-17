@@ -5,12 +5,12 @@
 // clear && gcc GenericSorting.c && ./a.out
 
 /*
-5
-Lucas S 1
-Arjuna N 1
-Igor O 3
-Gontcha O 3
-Gustavin L 3
+	5
+	Lucas S 1
+	Arjuna N 1
+	Igor O 3
+	Gontcha O 3
+	Gustavin L 3
 */
 
 #define procedure void
@@ -32,7 +32,7 @@ void quickSort(void* array, size_t n, size_t size, int (compare)(const void*, co
 
 Aluno* montarArray(int n) {
 
-	Aluno *alunos = (Aluno *)malloc(n * sizeof(Aluno));
+	Aluno* alunos = (Aluno*) malloc(n * sizeof(Aluno));
 
 	for (size_t i = 0; i < n; i++) {
 		Aluno a;
@@ -82,6 +82,8 @@ int main() {
 	// selectionSort(alunos, n, sizeof(Aluno), compareTo);
 	// quickSort(alunos, n, sizeof(Aluno), compareTo);
 	arrayPrint(alunos, n, sizeof(Aluno), toString);
+
+	free(alunos);
 }
 
 procedure swap(void* v1, void* v2, size_t size) {
