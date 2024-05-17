@@ -3,6 +3,8 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <stack>
+#include <utility>
 
 // clear && g++ chuva.cc && ./a.out < pub.in > result.txt
  
@@ -60,10 +62,11 @@ class Matrix {
 	}
 };
 
+void pause();
+int readInt();
+void clear_screen();
 void buildMatrix(Matrix<char>& matrix);
 int findStartingPoint(const Matrix<char>& matrix);
-void pause();
-void clear_screen();
 
 void floodMatrix(int i, int j, Matrix<char>& matrix) {
 
@@ -72,7 +75,7 @@ void floodMatrix(int i, int j, Matrix<char>& matrix) {
 	matrix[i][j] = 'o';
 
 	clear_screen();
-	// printf("matrix[%d][%d]\n", i, j);
+	// printf("i[%d] - j[%d]\n", i, j);
 	cout << matrix;
 	pause();
 
@@ -90,24 +93,81 @@ void floodMatrix(int i, int j, Matrix<char>& matrix) {
 
 void floodMatrix(Matrix<char>& matrix) {
 	int j = findStartingPoint(matrix);
+	
+	clear_screen();
+	// printf("i[%d] - j[%d]\n", i, j);
+	cout << matrix;
+	pause();
+
 	matrix[0][j] = '.';
+
 	floodMatrix(0, j, matrix);	
+}
+
+void floodMatrixIte(Matrix<char>& matrix) {
+
+	int i = 0, j = findStartingPoint(matrix);
+
+	cout << matrix;
+	pause();
+
+	matrix[i][j] = '.';
+
+	stack<pair<int, int>> s;
+
+	do {
+
+		if (!matrix.inBounds(i, j) || matrix[i][j] == 'o') {
+			// Backtracking
+			i = s.top().first;
+			j = s.top().second;
+			s.pop();
+			continue;
+		}
+
+		matrix[i][j] = 'o';
+
+		clear_screen();
+		// printf("i[%d] - j[%d]\n", i, j);
+		cout << matrix;
+		pause();
+
+		if (matrix.inBounds(i + 1, j) && matrix[i + 1][j] == '.') {
+			i++; // Going down
+		}
+
+		// Continue flooding only if there are more levels to go down.
+		else if (i < matrix.height - 1) {
+			s.push(pair(i, j + 1)); // Saving to go right later.
+			j--; // Going left;
+		}
+
+		else if (s.empty()) break;
+
+	} while (!s.empty() || i < matrix.height); // Possivelmente é uma codição falha
 }
 
 int main() {
 
-	int n, m;
-	cin >> n >> m;
+	int n = readInt(), m = readInt();
 
 	Matrix<char> matrix(n, m);
 
 	buildMatrix(matrix);
 
 	floodMatrix(matrix);
+	// floodMatrixIte(matrix);
 
 	// cout << matrix << endl;
 
 	return 0;
+}
+
+int readInt() {
+	int n;
+	cin >> n;
+	// cin.ignore(2, '\n');
+	return n;
 }
 
 void buildMatrix(Matrix<char>& matrix) {
