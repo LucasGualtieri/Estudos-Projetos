@@ -119,8 +119,7 @@ void floodMatrixIte(Matrix<char>& matrix) {
 
 		if (!matrix.inBounds(i, j) || matrix[i][j] == 'o') {
 			// Backtracking
-			i = s.top().first;
-			j = s.top().second;
+			tie(i, j) = s.top();
 			s.pop();
 			continue;
 		}
@@ -155,8 +154,8 @@ int main() {
 
 	buildMatrix(matrix);
 
-	floodMatrix(matrix);
-	// floodMatrixIte(matrix);
+	// floodMatrix(matrix);
+	floodMatrixIte(matrix);
 
 	// cout << matrix << endl;
 
