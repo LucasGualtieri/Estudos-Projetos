@@ -9,8 +9,11 @@
 // clear && g++ chuva.cc && ./a.out < pub.in > result.txt
  
 #define procedure void
+#define DELAY 250
 
 using namespace std;
+using namespace this_thread;
+using namespace chrono;
 
 template <typename T>
 class Matrix {
@@ -129,7 +132,9 @@ void floodMatrixIte(Matrix<char>& matrix) {
 		clear_screen();
 		// printf("i[%d] - j[%d]\n", i, j);
 		cout << matrix;
-		pause();
+		sleep_for(milliseconds(DELAY));
+		// pause();
+		cout << endl;
 
 		if (matrix.inBounds(i + 1, j) && matrix[i + 1][j] == '.') {
 			i++; // Going down
