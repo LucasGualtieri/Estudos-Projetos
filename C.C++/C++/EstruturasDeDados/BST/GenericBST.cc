@@ -2,6 +2,10 @@
 #include <sstream>
 #include <utility>
 #include <sstream>
+#include <vector>
+#include <cmath>
+#include "../Stack.hpp"
+#include "../Queue.hpp"
 // #include <concepts>
 
 // falta implementar os destrutores
@@ -10,72 +14,7 @@ using namespace std;
 
 typedef const char* const literal;
 
-// clear && g++ BST.cc && ./a.out
-
-template <typename T>
-class Stack {
-
-  private:
-  public:
-	class Cell {
-	  private:
-	  public:
-
-		T value;
-		Cell* bottom;
-
-		Cell(T value, Cell* bottom) {
-			this->value = value;
-			this->bottom = bottom;
-		}
-
-		// T Value() { return value; }
-	};
-
-	Cell* top;
-  
-	Stack() : top(nullptr) {}
-	~Stack() {
-		while (!empty()) pop();
-	}
-
-	/**
-	 * Inserts an element to the top of the stack.
-	 * 
-	 * @param element item of type T.
-	 * @return True if the insertion is successful, otherwise, false.
-	 */
-	bool push(T element) {
-
-		Cell* newCell = new Cell(element, top);
-
-		if (newCell == nullptr) return false;
-
-		top = newCell;
-
-		return true;
-	}
-
-	// Removes the element at the top of the stack and returns it.
-	T pop() {
-
-		Cell* removedCell = top;
-		T removedValue = top->value;
-
-		top = top->bottom;
-
-		delete removedCell;
-
-		return removedValue;
-	}
-
-	// Returns a reference to the element at the top of the stack without removing it.
-	T& peek() { return this->top->value; }
-
-	// Checks whether the stack is empty.
-	bool empty() { return top == nullptr; }
-
-};
+// clear && g++ GenericBST.cc -std=c++20 && ./a.out
 
 template <typename T>
 class BST {
@@ -122,6 +61,11 @@ class BST {
 
   public:
 	BST() : root(nullptr) {}
+
+	template<typename... Items>
+	BST(Items... list) : root(nullptr) {
+		insert(list...);
+	}
 
 	/**
 	 * Inserts an arbitrary length list of items into the tree. If the insertion of any of the elements fails, none of the items are inserted.
@@ -186,6 +130,24 @@ class BST {
 		return status;
 	}
 
+  public:
+	int getHeight() {
+		if (this->root == nullptr) return 0;
+		return getHeight(0, this->root);
+	}
+
+	int getHeight(int height, Node* node) {
+
+		if (node != nullptr) {
+			height++;
+			int leftHeight = getHeight(height, node->left);
+			int rightHeight = getHeight(height, node->right);
+			height = leftHeight > rightHeight ? leftHeight : rightHeight;
+		}
+
+		return height;
+	}
+
 	void InOrderTraversal(auto fn) const {
 		Stack<pair<Node*, int>> stack;
 
@@ -213,6 +175,34 @@ class BST {
 			else if (pathStatus == 2) stack.pop();
 		}
 	}
+
+	vector<vector<T>> levelOrder() {
+
+		vector<vector<int>> levels(getHeight());
+
+		Queue<Node*> queue(root);
+		int level = 0, elementsCount = queue.size();
+
+		while (!queue.empty()) {
+
+			Node* node = queue.pop();
+			elementsCount--;
+
+			if (node == nullptr) continue;
+
+			queue.push(node->left);
+			queue.push(node->right);
+
+			levels[level].push_back(node->value);
+
+			if (elementsCount == 0) {
+				elementsCount = queue.size();
+				level++;
+			}
+		}
+
+		return levels;
+    }
 
 	string toString() const {
 
@@ -283,27 +273,49 @@ class Person {
 
 };
 
+string printLevels(vector<vector<int>> levels) {
+
+	string result;
+
+	for (int i = 0; i < levels.size(); i++) {
+
+		result += "Level: " + to_string(i) + " { ";
+
+		for (int x : levels[i]) {
+			result += to_string(x) + ", ";
+		}
+
+		int len = result.length();
+		if (len > 2) result.erase(len - 2, 1);
+
+		result += "}\n";
+	}
+
+	return result;
+}
+
 int main() {
 
-	BST<Person> personTree;
+	// BST<Person> personTree;
 
-	personTree.insert(
-		Person("Beatriz", 1),
-		Person("Lucas", 2),
-		Person("Gabriel", 3),
-		Person("Felipe", 4),
-		Person("Arjuna", 5),
-		Person("Gontcha", 6),
-		Person("Igor", 7)
-	);
+	// personTree.insert(
+	// 	Person("Beatriz", 1),
+	// 	Person("Lucas", 2),
+	// 	Person("Gabriel", 3),
+	// 	Person("Felipe", 4),
+	// 	Person("Arjuna", 5),
+	// 	Person("Gontcha", 6),
+	// 	Person("Igor", 7)
+	// );
 
-	cout << personTree << endl;
+	// cout << personTree << endl;
 
-	BST<int> ageTree;
+	BST<int> tree(5, 3, 7, 4, 2, 6, 8, 9, 10, 11, 0);
 
-	ageTree.insert(21, 22, 19, 35, 21, 20, 21);
+	cout << tree << endl;
 
-	cout << ageTree << endl;
-	cout << ageTree << endl;
+	vector<vector<int>> levels = tree.levelOrder();
+
+	cout << printLevels(levels) << endl;
 
 }
