@@ -188,12 +188,12 @@ class BST {
 			Node* node = queue.pop();
 			elementsCount--;
 
-			if (node == nullptr) continue;
+			if (node != nullptr) {
+				queue.push(node->left);
+				queue.push(node->right);
 
-			queue.push(node->left);
-			queue.push(node->right);
-
-			levels[level].push_back(node->value);
+				levels[level].push_back(node->value);
+			}
 
 			if (elementsCount == 0) {
 				elementsCount = queue.size();
