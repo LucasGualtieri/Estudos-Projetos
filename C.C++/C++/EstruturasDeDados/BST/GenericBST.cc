@@ -131,21 +131,21 @@ class BST {
 	}
 
   public:
-	int getHeight() {
+	int height() {
 		if (this->root == nullptr) return 0;
-		return getHeight(0, this->root);
+		return height(0, this->root);
 	}
 
-	int getHeight(int height, Node* node) {
+	int height(int level, Node* node) {
 
 		if (node != nullptr) {
-			height++;
-			int leftHeight = getHeight(height, node->left);
-			int rightHeight = getHeight(height, node->right);
-			height = leftHeight > rightHeight ? leftHeight : rightHeight;
+			level++;
+			int leftLevel = height(level, node->left);
+			int rightLevel = height(level, node->right);
+			level = leftLevel > rightLevel ? leftLevel : rightLevel;
 		}
 
-		return height;
+		return level;
 	}
 
 	void InOrderTraversal(auto fn) const {
@@ -178,31 +178,55 @@ class BST {
 
 	vector<vector<T>> levelOrder() {
 
-		vector<vector<int>> levels(getHeight());
+		vector<vector<int>> levels(height());
 
 		Queue<Node*> queue(root);
-		int level = 0, elementsCount = queue.size();
+		int level = 0;
 
 		while (!queue.empty()) {
 
-			Node* node = queue.pop();
-			elementsCount--;
+			for (int i = queue.size(); i > 0; i--) {
+				Node* node = queue.pop();
 
-			if (node != nullptr) {
-				queue.push(node->left);
-				queue.push(node->right);
+				if (node->left) queue.push(node->left);
+				if (node->right) queue.push(node->right);
 
 				levels[level].push_back(node->value);
 			}
 
-			if (elementsCount == 0) {
-				elementsCount = queue.size();
-				level++;
-			}
+			level++;
 		}
 
 		return levels;
     }
+
+	// vector<vector<T>> levelOrder() {
+
+	// 	vector<vector<int>> levels(getHeight());
+
+	// 	Queue<Node*> queue(root);
+	// 	int level = 0, elementsCount = queue.size();
+
+	// 	while (!queue.empty()) {
+
+	// 		Node* node = queue.pop();
+	// 		elementsCount--;
+
+	// 		if (node != nullptr) {
+	// 			queue.push(node->left);
+	// 			queue.push(node->right);
+
+	// 			levels[level].push_back(node->value);
+	// 		}
+
+	// 		if (elementsCount == 0) {
+	// 			elementsCount = queue.size();
+	// 			level++;
+	// 		}
+	// 	}
+
+	// 	return levels;
+	// }
 
 	string toString() const {
 
@@ -310,7 +334,7 @@ int main() {
 
 	// cout << personTree << endl;
 
-	BST<int> tree(5, 3, 7, 4, 2, 6, 8, 9, 10, 11, 0);
+	BST<int> tree(5, 3, 7, 2, 4, 6, 8, 9, 10, 11, 0);
 
 	cout << tree << endl;
 

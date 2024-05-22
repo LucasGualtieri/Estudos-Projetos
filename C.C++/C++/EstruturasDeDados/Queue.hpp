@@ -87,7 +87,7 @@ class Queue {
 	}
 
 	// Returns a reference to the element at the first of the Queue without removing it.
-	T& peek() { return this->first->next->value; }
+	T& peek() { return this->first->value; }
 
 	// Checks whether the Queue is empty.
 	bool empty() { return size() == 0; }
