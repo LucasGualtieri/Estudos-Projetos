@@ -24,6 +24,10 @@ class Stack {
 	Cell* top;
   
 	Stack() : top(nullptr) {}
+	Stack(T value) : top(nullptr) {
+		push(value);
+	}
+
 	~Stack() {
 		while (!empty()) pop();
 	}

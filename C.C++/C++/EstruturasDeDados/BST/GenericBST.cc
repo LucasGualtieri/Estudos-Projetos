@@ -148,6 +148,34 @@ class BST {
 		return level;
 	}
 
+	void DFSTraversal(auto fn) { // Same as InOrder
+
+		Stack<Node*> stack(root);
+
+		while (!stack.empty()) {
+
+			Node* node = stack.pop();
+			fn(node->value);
+
+			if (node->right) stack.push(node->right);
+			if (node->left) stack.push(node->left);
+		}
+	}
+	
+	void BFSTraversal(auto fn) { // Same as InOrder
+
+		Queue<Node*> queue(root);
+
+		while (!queue.empty()) {
+
+			Node* node = queue.pop();
+			fn(node->value);
+
+			if (node->left) queue.push(node->left);
+			if (node->right) queue.push(node->right);
+		}
+	}
+
 	void InOrderTraversal(auto fn) const {
 		Stack<pair<Node*, int>> stack;
 
@@ -334,12 +362,24 @@ int main() {
 
 	// cout << personTree << endl;
 
-	BST<int> tree(5, 3, 7, 2, 4, 6, 8, 9, 10, 11, 0);
+	BST<int> tree(5, 3, 7, 1, 4, 6, 8);
 
 	cout << tree << endl;
 
 	vector<vector<int>> levels = tree.levelOrder();
 
 	cout << printLevels(levels) << endl;
+
+	cout << "{ ";
+	tree.DFSTraversal([](int x) {
+		cout << x << ", ";
+	});
+	cout << "}" << endl;
+
+	cout << "{ ";
+	tree.BFSTraversal([](int x) {
+		cout << x << ", ";
+	});
+	cout << "}" << endl;
 
 }
