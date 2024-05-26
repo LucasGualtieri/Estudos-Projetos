@@ -78,15 +78,30 @@ class BST {
 
 		bool result = true;
 
-		auto insertList = [&](const T& item) {
-			if (!insert(item)) result = false;
-		};
+		vector<T> listOfItems = {list...};
 
-		auto removeList = [&](const T& item) { remove(item); };
+		// auto insertList = [&](const T& item) {
+		// 	if (!insert(item)) result = false;
+		// };
 
-		(insertList(list), ...);
+		for (const T& x : listOfItems) {
+			if (!insert(x)) {
+				result = false;
+				break;
+			}
+		}
 
-		if (!result) (removeList(list), ...);
+		// auto removeList = [&](const T& item) { remove(item); };
+
+		// (insertList(list), ...);
+		// if (!result) (removeList(list), ...);
+
+		if (!result) {
+			for (const T& x : listOfItems) {
+				remove(x);
+				// if (!remove(x)) result = false;
+			}
+		}
 
 		return result;
 	}
@@ -194,13 +209,71 @@ class BST {
 			}
 
 			else if (pathStatus == 1) {
-				fn(node);
+				fn(node->value);
 				// Sets right path as taken
 				pathStatus = 2;
 				stack.push(pair(node->right, 0));
 			}
 
 			else if (pathStatus == 2) stack.pop();
+		}
+	}
+	
+	void PreOrderTraversal(auto fn) const {
+		Stack<pair<Node*, int>> stack;
+
+		stack.push(pair(root, 0));
+
+		while (!stack.empty()) {
+
+			auto& [node, pathStatus] = stack.peek();
+
+			if (node == nullptr) stack.pop();
+
+			else if (pathStatus == 0) {
+				fn(node->value);
+				// Sets left path as taken
+				pathStatus = 1;
+				stack.push(pair(node->left, 0));
+			}
+
+			else if (pathStatus == 1) {
+				// Sets right path as taken
+				pathStatus = 2;
+				stack.push(pair(node->right, 0));
+			}
+
+			else if (pathStatus == 2) stack.pop();
+		}
+	}
+	
+	void PostOrderTraversal(auto fn) const {
+		Stack<pair<Node*, int>> stack;
+
+		stack.push(pair(root, 0));
+
+		while (!stack.empty()) {
+
+			auto& [node, pathStatus] = stack.peek();
+
+			if (node == nullptr) stack.pop();
+
+			else if (pathStatus == 0) {
+				// Sets left path as taken
+				pathStatus = 1;
+				stack.push(pair(node->left, 0));
+			}
+
+			else if (pathStatus == 1) {
+				// Sets right path as taken
+				pathStatus = 2;
+				stack.push(pair(node->right, 0));
+			}
+
+			else if (pathStatus == 2) {
+				fn(node->value);
+				stack.pop();
+			}
 		}
 	}
 
@@ -364,10 +437,27 @@ int main() {
 
 	BST<int> tree(5, 3, 7, 1, 4, 6, 8);
 
-	cout << tree << endl;
+	// cout << tree << endl;
+
+	cout << "In order { ";
+	tree.InOrderTraversal([](int x) {
+		cout << x << ", ";
+	});
+	cout << "}" << endl;
+
+	cout << "Pre order { ";
+	tree.PreOrderTraversal([](int x) {
+		cout << x << ", ";
+	});
+	cout << "}" << endl;
+
+	cout << "Post order { ";
+	tree.PostOrderTraversal([](int x) {
+		cout << x << ", ";
+	});
+	cout << "}\n" << endl;
 
 	vector<vector<int>> levels = tree.levelOrder();
-
 	cout << printLevels(levels) << endl;
 
 	cout << "{ ";
