@@ -1,3 +1,5 @@
+package Java;
+
 public class passagemDeParametros {
 	public static void teste(int teste) {
 		teste = 20;

@@ -1,3 +1,5 @@
+package Java;
+
 // import TrabalhosPraticos.Lib;
 
 // clear && javac SubstrNReplace.java && java SubstrNReplace.java
