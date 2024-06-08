@@ -6,8 +6,8 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
-#define GRAVITY 1
-#define JUMP_VELOCITY -15
+#define GRAVITY_ACCEL 1
+#define JUMP_VELOCITY 15
 
 #define FPS 60
 
@@ -27,9 +27,10 @@ void SDLQuit(SDL_Renderer* renderer, SDL_Window* window) {
 }
 
 SDL_Window* WindowInit() {
+
 	SDL_Window* window = SDL_CreateWindow(
 		"SDL2 Window",									// Window title
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // Initial positions
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // X and Y coordinates
 		SCREEN_WIDTH, SCREEN_HEIGHT,					// Dimensions in pixels: w, h
 		SDL_WINDOW_SHOWN								// Window flags
 	);
@@ -58,8 +59,9 @@ SDL_Renderer* RendererInit(SDL_Window* window) {
 
 typedef struct {
 	SDL_Rect rect;
-	float velocityY;
-	bool moveRight, moveLeft, falling, onAir;
+	float velocityX, velocityY;
+	bool moveRight, moveLeft;
+	bool ascending, onAir;
 } Character;
 
 void handleCharacterEvents(SDL_Event event, Character* character) {
@@ -73,13 +75,16 @@ void handleCharacterEvents(SDL_Event event, Character* character) {
 				character->moveRight = true;
 			break;
 			case SDLK_SPACE:
-				if (!character->onAir) character->onAir = true;
+				if (!character->onAir) {
+					character->onAir = true;
+					character->ascending = true;
+					character->velocityY = JUMP_VELOCITY;
+				}
 			break;
 		}
 	}
-
-	// if (event.type == SDL_KEYUP) {
-	else {
+	
+	else if (event.type == SDL_KEYUP) {
 		switch (event.key.keysym.sym) {
 			case SDLK_a:
 				character->moveLeft = false;
@@ -93,29 +98,29 @@ void handleCharacterEvents(SDL_Event event, Character* character) {
 
 void updateCharacter(Character* character) {
 
-	int speed = 5;
+	if (character->moveLeft) character->rect.x -= character->velocityX;
 
-	if (character->moveLeft) character->rect.x -= speed;
-
-	if (character->moveRight) character->rect.x += speed;
+	if (character->moveRight) character->rect.x += character->velocityX;
 
 	if (character->onAir) {
-		if (!character->falling) {
-			character->falling = true;
-			character->velocityY = JUMP_VELOCITY;
+	
+		if (character->ascending) {
+			character->rect.y -= character->velocityY;
+			character->velocityY -= GRAVITY_ACCEL;
+			if (character->velocityY <= 0) {
+				character->ascending = false;
+				character->velocityY = 0;
+			}
 		}
-		character->onAir = false;
-	}
 
-	if (character->falling) {
-		character->rect.y += character->velocityY;
-		character->velocityY += GRAVITY;
-
-		if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
-			character->rect.y = SCREEN_HEIGHT - character->rect.h;
-			character->falling = false;
-			character->velocityY = 0;
+		else {
+			character->rect.y += character->velocityY;
+			character->velocityY += GRAVITY_ACCEL;
+			if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
+				character->onAir = false;
+			}
 		}
+
 	}
 }
 
@@ -137,22 +142,16 @@ void handleCharacter(Character* character, SDL_Renderer* renderer) {
 	renderCharacter(renderer, character);
 }
 
-Character newCharacter(int w, int h, int x, int y) {
-
-	Character character = {
-		.rect = {
-			.h = h, .w = w,
-			.x = x,
-			.y = y
-		},
-		.falling = false,
+Character newCharacter(int speed, int w, int h, int x, int y) {
+	return (Character){
+		.rect = { .x = x, .y = y, .h = h, .w = w },
+		.velocityX = speed,
 		.velocityY = 0,
 		.moveRight = false,
-		.onAir = false,
 		.moveLeft = false,
+		.onAir = false,
+		.ascending = false // Add logic to test if it is or not
 	};
-
-	return character;
 }
 
 int main() {
@@ -163,11 +162,10 @@ int main() {
 	SDL_Renderer* renderer = RendererInit(window);
 
 	bool quit = false;
-
 	SDL_Event event;
 
 	int w = 50, h = 150;
-	Character character = newCharacter(w, h, (SCREEN_WIDTH - w) / 2, SCREEN_HEIGHT - h);
+	Character character = newCharacter(5, w, h, (SCREEN_WIDTH - w) / 2, SCREEN_HEIGHT - h);
 
 	while (!quit) {
 		while (SDL_PollEvent(&event) != 0) {
