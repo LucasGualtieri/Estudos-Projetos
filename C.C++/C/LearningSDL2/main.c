@@ -3,16 +3,17 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+int SCREEN_WIDTH = 800;
+int SCREEN_HEIGHT = 600;
 
-#define GRAVITY_ACCEL 1
+#define GRAVITY 1
 #define JUMP_VELOCITY 15
 
 #define FPS 60
 
 // clear && gcc mainGPT.c -lSDL2 && ./a.out
 
+// Initialize SDL
 void SDLInit() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -20,19 +21,21 @@ void SDLInit() {
 	}
 }
 
+// Cleanup SDL
 void SDLQuit(SDL_Renderer* renderer, SDL_Window* window) {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
 
+// Initialize SDL Window
 SDL_Window* WindowInit() {
 
 	SDL_Window* window = SDL_CreateWindow(
 		"SDL2 Window",									// Window title
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // X and Y coordinates
 		SCREEN_WIDTH, SCREEN_HEIGHT,					// Dimensions in pixels: w, h
-		SDL_WINDOW_SHOWN								// Window flags
+		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE			// Window flags
 	);
 
 	if (window == NULL) {
@@ -44,6 +47,7 @@ SDL_Window* WindowInit() {
 	return window;
 }
 
+// Initialize SDL Renderer
 SDL_Renderer* RendererInit(SDL_Window* window) {
 
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -57,13 +61,15 @@ SDL_Renderer* RendererInit(SDL_Window* window) {
 	return renderer;
 }
 
+// Character struct to hold character properties
 typedef struct {
 	SDL_Rect rect;
 	float velocityX, velocityY;
 	bool moveRight, moveLeft;
-	bool ascending, onAir;
+	bool isAscending, isInAir;
 } Character;
 
+// Handle keyboard events
 void handleCharacterEvents(SDL_Event event, Character* character) {
 
 	if (event.type == SDL_KEYDOWN) {
@@ -75,9 +81,9 @@ void handleCharacterEvents(SDL_Event event, Character* character) {
 				character->moveRight = true;
 			break;
 			case SDLK_SPACE:
-				if (!character->onAir) {
-					character->onAir = true;
-					character->ascending = true;
+				if (!character->isInAir) {
+					character->isInAir = true;
+					character->isAscending = true;
 					character->velocityY = JUMP_VELOCITY;
 				}
 			break;
@@ -96,36 +102,41 @@ void handleCharacterEvents(SDL_Event event, Character* character) {
 	}
 }
 
+// Update character position and state
 void updateCharacter(Character* character) {
 
-	if (character->moveLeft) character->rect.x -= character->velocityX;
+	if (character->moveLeft) {
+		character->rect.x -= character->velocityX;
+	}
 
-	if (character->moveRight) character->rect.x += character->velocityX;
+	else if (character->moveRight) {
+		character->rect.x += character->velocityX;
+	}
 
-	if (character->onAir) {
-	
-		if (character->ascending) {
+	if (character->isInAir) {
+
+		if (character->isAscending) {
 			character->rect.y -= character->velocityY;
-			character->velocityY -= GRAVITY_ACCEL;
+			character->velocityY -= GRAVITY;
 			if (character->velocityY <= 0) {
-				character->ascending = false;
+				character->isAscending = false;
+			}
+		}
+		
+		else {
+			character->rect.y += character->velocityY;
+			character->velocityY += GRAVITY;
+			if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
+				character->rect.y = SCREEN_HEIGHT - character->rect.h;
+				character->isInAir = false;
 				character->velocityY = 0;
 			}
 		}
-
-		else {
-			character->rect.y += character->velocityY;
-			character->velocityY += GRAVITY_ACCEL;
-			if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
-				character->onAir = false;
-			}
-		}
-
 	}
 }
 
+// Render character on screen
 void renderCharacter(SDL_Renderer* renderer, Character* character) {
-
 	// Render the white "canvas"
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
@@ -137,11 +148,13 @@ void renderCharacter(SDL_Renderer* renderer, Character* character) {
 	SDL_RenderPresent(renderer);
 }
 
+// Handle character updates and rendering
 void handleCharacter(Character* character, SDL_Renderer* renderer) {
 	updateCharacter(character);
 	renderCharacter(renderer, character);
 }
 
+// Create a new character
 Character newCharacter(int speed, int w, int h, int x, int y) {
 	return (Character){
 		.rect = { .x = x, .y = y, .h = h, .w = w },
@@ -149,11 +162,26 @@ Character newCharacter(int speed, int w, int h, int x, int y) {
 		.velocityY = 0,
 		.moveRight = false,
 		.moveLeft = false,
-		.onAir = false,
-		.ascending = false // Add logic to test if it is or not
+		.isInAir = false,
+		.isAscending = false
 	};
 }
 
+// Handle window events, including resizing
+void handleWindowEvent(SDL_Event event, Character* character) {
+
+	if (event.type == SDL_WINDOWEVENT) {
+		if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+			SCREEN_WIDTH = event.window.data1;
+			SCREEN_HEIGHT = event.window.data2;
+			character->isInAir = true;
+			character->isAscending = false;
+			// character->rect.x = (SCREEN_WIDTH - character->rect.w) / 2;
+		}
+	}
+}
+
+// Main function
 int main() {
 
 	SDLInit();
@@ -171,6 +199,7 @@ int main() {
 		while (SDL_PollEvent(&event) != 0) {
 			if (event.type == SDL_QUIT) quit = true;
 			handleCharacterEvents(event, &character);
+			handleWindowEvent(event, &character);
 		}
 
 		handleCharacter(&character, renderer);
