@@ -7,8 +7,11 @@
 #define SCREEN_HEIGHT 600
 
 #define GRAVITY 1
+#define JUMP_VELOCITY -15
 
-// clear && gcc main.c -lSDL2 && ./a.out
+#define FPS 60
+
+// clear && gcc mainGPT.c -lSDL2 && ./a.out
 
 void SDLInit() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -24,7 +27,6 @@ void SDLQuit(SDL_Renderer* renderer, SDL_Window* window) {
 }
 
 SDL_Window* WindowInit() {
-
 	SDL_Window* window = SDL_CreateWindow(
 		"SDL2 Window",									// Window title
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // Initial positions
@@ -43,7 +45,7 @@ SDL_Window* WindowInit() {
 
 SDL_Renderer* RendererInit(SDL_Window* window) {
 
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	if (renderer == NULL) {
 		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -56,87 +58,101 @@ SDL_Renderer* RendererInit(SDL_Window* window) {
 
 typedef struct {
 	SDL_Rect rect;
-	bool jumping, goingUp;
+	float velocityY;
+	bool moveRight, moveLeft, falling, onAir;
 } Character;
 
-void moveCharacter(Character* character, int speed, int acceleration, SDL_Event event) {
+void handleCharacterEvents(SDL_Event event, Character* character) {
 
 	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
-		case SDLK_a:
-			character->rect.x -= speed;
+			case SDLK_a:
+				character->moveLeft = true;
 			break;
-		case SDLK_d:
-			character->rect.x += speed;
+			case SDLK_d:
+				character->moveRight = true;
+			break;
+			case SDLK_SPACE:
+				if (!character->onAir) character->onAir = true;
+			break;
+		}
+	}
+
+	// if (event.type == SDL_KEYUP) {
+	else {
+		switch (event.key.keysym.sym) {
+			case SDLK_a:
+				character->moveLeft = false;
+			break;
+			case SDLK_d:
+				character->moveRight = false;
 			break;
 		}
 	}
 }
 
-void jumpCharacter(Character* character, SDL_Renderer* renderer, SDL_Event event) {
+void updateCharacter(Character* character) {
 
-	static int velocity = 10; // Initial jump impulse
-	static int maxHeight = 30;
+	int speed = 5;
 
-	if (
-		!character->jumping
-		&& event.type == SDL_KEYDOWN
-		&& event.key.keysym.sym == SDLK_SPACE
-	) {
-		character->jumping = character->goingUp = true;
-		maxHeight += character->rect.h;
-		// printf("maxHeight: %d\n", maxHeight);
-	}
+	if (character->moveLeft) character->rect.x -= speed;
 
-	if (character->goingUp == true) {
-		// printf("character->rect.y: %d\n", character->rect.y);
-		character->rect.y -= velocity;
-		velocity += GRAVITY;
-		if (character->rect.y <= maxHeight) {
-			character->goingUp = false;
-			velocity = 10;
+	if (character->moveRight) character->rect.x += speed;
+
+	if (character->onAir) {
+		if (!character->falling) {
+			character->falling = true;
+			character->velocityY = JUMP_VELOCITY;
 		}
+		character->onAir = false;
 	}
 
-	else if (character->jumping) {
-		
+	if (character->falling) {
+		character->rect.y += character->velocityY;
+		character->velocityY += GRAVITY;
+
 		if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
-			character->jumping = false;
-			// character->rect.y = (character->rect.y - SCREEN_HEIGHT) / 2;
-		}
-
-		else {
-			character->rect.y += velocity;
-			velocity += GRAVITY;
+			character->rect.y = SCREEN_HEIGHT - character->rect.h;
+			character->falling = false;
+			character->velocityY = 0;
 		}
 	}
 }
 
-void mainCharacter(SDL_Event event, SDL_Renderer* renderer, SDL_Window* window) {
+void renderCharacter(SDL_Renderer* renderer, Character* character) {
 
-	const int h = 150, w = 50;
-
-	static Character character = {
-		.jumping = false,
-		.rect = {
-			.h = h, .w = w,				 // Dimensions in pixels
-			.x = (SCREEN_WIDTH - w) / 2, // X coordinate (Center)
-			.y = SCREEN_HEIGHT - h,		 // Y coordinate (Bottom)
-		},
-	};
-
-	moveCharacter(&character, 5, 1, event);
-	jumpCharacter(&character, renderer, event);
-
-	// Setting the color of the "Canvas"
+	// Render the white "canvas"
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
 
-	// Setting and Rendering the color of the Rectangle
+	// Render the Character
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(renderer, &character.rect);
+	SDL_RenderFillRect(renderer, &character->rect);
 
 	SDL_RenderPresent(renderer);
+}
+
+void handleCharacter(Character* character, SDL_Renderer* renderer) {
+	updateCharacter(character);
+	renderCharacter(renderer, character);
+}
+
+Character newCharacter(int w, int h, int x, int y) {
+
+	Character character = {
+		.rect = {
+			.h = h, .w = w,
+			.x = x,
+			.y = y
+		},
+		.falling = false,
+		.velocityY = 0,
+		.moveRight = false,
+		.onAir = false,
+		.moveLeft = false,
+	};
+
+	return character;
 }
 
 int main() {
@@ -146,20 +162,22 @@ int main() {
 	SDL_Window* window = WindowInit();
 	SDL_Renderer* renderer = RendererInit(window);
 
-	SDL_Event event;
 	bool quit = false;
 
+	SDL_Event event;
+
+	int w = 50, h = 150;
+	Character character = newCharacter(w, h, (SCREEN_WIDTH - w) / 2, SCREEN_HEIGHT - h);
+
 	while (!quit) {
-
 		while (SDL_PollEvent(&event) != 0) {
-
 			if (event.type == SDL_QUIT) quit = true;
-			
-			else {
-				// All the entities
-				mainCharacter(event, renderer, window);
-			}
+			handleCharacterEvents(event, &character);
 		}
+
+		handleCharacter(&character, renderer);
+
+		SDL_Delay(1000 / FPS); // Delay to cap the frame rate at ~FPS
 	}
 
 	SDLQuit(renderer, window);
