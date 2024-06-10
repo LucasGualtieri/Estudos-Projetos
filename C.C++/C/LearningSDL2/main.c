@@ -11,7 +11,7 @@ int SCREEN_HEIGHT = 600;
 
 #define FPS 60
 
-// clear && gcc mainGPT.c -lSDL2 && ./a.out
+// clear && gcc main.c -lSDL2 && ./a.out
 
 // Initialize SDL
 void SDLInit() {
@@ -113,22 +113,25 @@ void updateCharacter(Character* character) {
 		character->rect.x += character->velocityX;
 	}
 
+	const int BOTTOM_OF_SCREEN = SCREEN_HEIGHT - character->rect.h;
+
 	if (character->isInAir) {
 
 		if (character->isAscending) {
 			character->rect.y -= character->velocityY;
 			character->velocityY -= GRAVITY;
 			if (character->velocityY <= 0) {
+				character->velocityY = 0;
 				character->isAscending = false;
 			}
 		}
-		
+
 		else {
 			character->rect.y += character->velocityY;
 			character->velocityY += GRAVITY;
-			if (character->rect.y >= SCREEN_HEIGHT - character->rect.h) {
-				character->rect.y = SCREEN_HEIGHT - character->rect.h;
+			if (character->rect.y >= BOTTOM_OF_SCREEN) {
 				character->isInAir = false;
+				character->rect.y = BOTTOM_OF_SCREEN;
 				character->velocityY = 0;
 			}
 		}
@@ -176,7 +179,6 @@ void handleWindowEvent(SDL_Event event, Character* character) {
 			SCREEN_HEIGHT = event.window.data2;
 			character->isInAir = true;
 			character->isAscending = false;
-			// character->rect.x = (SCREEN_WIDTH - character->rect.w) / 2;
 		}
 	}
 }
