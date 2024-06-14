@@ -23,20 +23,25 @@ void ToggleConsoleVisibility() {
 }
 
 char* readPassword() {
+
 	ToggleConsoleVisibility();
 
 	char c, *password = (char*)malloc(STR_MAX_LEN * sizeof(char));
-
 	int passwordLength = 0;
+
 	while ((c = getchar()) != enter) {
+
 		if (c != backspace) {
 			putchar('*');
 			password[passwordLength++] = c;
-		} else if (passwordLength > 0) {
+		}
+		
+		else if (passwordLength > 0) {
 			printf("\b \b"); // Moves the cursor back by one position
 			passwordLength--;
 		}
 	}
+
 	password[passwordLength++] = '\0';
 	putchar('\n');
 
