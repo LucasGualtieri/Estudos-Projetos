@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-
-// clear && gcc userInput.c -o userInput && ./userInput
-
-typedef char* String;
-
-#define STR_MAX_LEN 80
-#define INVALID 0
+#include "../include/user_input.h"
 
 String readString(String str) {
 
@@ -61,29 +51,4 @@ float readFloat(String str) {
 	} while (n == INVALID);
 
 	return n;
-}
-
-typedef struct {
-	// String nome; // Combado com o strdup somente se for haver uma rotina de close();
-	char nome[STR_MAX_LEN];
-	int idade;
-} Pessoa;
-
-int main() {
-
-	int n = readInt("Digite um número inteiro: ");
-	printf("n: %d\n", n);
-
-	float f = readFloat("Digite um número real: ");
-	printf("f: %f\n", f);
-
-	Pessoa p;
-
-	// p.lerNome("Digite seu nome: ", &p);
-
-	strcpy(p.nome, readString("Digite seu nome: "));
-
-	printf("p.nome: %s\n", p.nome);
-
-	return 0;
 }
