@@ -9,24 +9,18 @@ O sistema permite o cadastro, exclusão e geração de relatórios de clientes e
 - **Placas:** Lista simplesmente encadeada com inserção pelo início da lista.
 
 ## Funcionalidades
-1. Cadastro de clientes
-2. Cadastro de placas de veículos
-3. Exclusão de clientes e suas placas
-4. Exclusão de placas de veículos
-5. Geração de relatórios detalhados
+<ol>
+	<li>Cadastro de clientes</li>
+	<li>Cadastro de placas de veículos</li>
+	<li>Exclusão de clientes e suas placas</li>
+	<li>Exclusão de placas de veículos</li>
+	<li>Geração de relatórios detalhados</li>
+</ol>
 
-## Como Compilar
+## Como Compilar e rodar?
 Utilize o comando abaixo para compilar o projeto:
 ```bash
-make
-```
-## Como Compilar
-Como Executar
-Após a compilação, execute o binário gerado:
-
-```bash
-Copy code
-./bin/ControleEstacionamento
+make && clear && ./bin/SistemaEstacionamento
 ```
 
 ## Estrutura de Diretórios

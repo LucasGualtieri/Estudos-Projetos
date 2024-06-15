@@ -1,6 +1,6 @@
 #include "../utils/include/user_input.h"
 
-// make && clear && ./bin/programa
+// make && clear && ./bin/SistemaEstacionamento
 
 typedef struct {
 	// String nome; // Combado com o strdup somente se for haver uma rotina de close();
