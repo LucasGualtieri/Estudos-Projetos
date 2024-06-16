@@ -1,25 +1,25 @@
-// #ifndef LIB_C_LISTA
-// #define LIB_C_LISTA
+#ifndef LISTA_H
+#define LISTA_H
 
 // #include "LibTP03.h"
 
-// typedef struct Lista {
+typedef struct {
 
-// 	Jogador *array;
-// 	int maxSize, size;
+	// Jogador *array;
+	// int maxSize, size;
 
-// 	void (*Mostrar) (struct Lista);
+	// void (*Mostrar) (struct Lista);
 
-// 	void (*InserirInicio) (Jogador, struct Lista*);
-// 	void (*InserirFim) (Jogador, struct Lista*);
-// 	void (*Inserir) (String pos, Jogador, struct Lista*);
-// 	Jogador (*RemoverInicio) (struct Lista*);
-// 	Jogador (*RemoverFim) (struct Lista*);
-// 	Jogador (*Remover) (String pos, struct Lista*);
+	// void (*InserirInicio) (Jogador, struct Lista*);
+	// void (*InserirFim) (Jogador, struct Lista*);
+	// void (*Inserir) (String pos, Jogador, struct Lista*);
+	// Jogador (*RemoverInicio) (struct Lista*);
+	// Jogador (*RemoverFim) (struct Lista*);
+	// Jogador (*Remover) (String pos, struct Lista*);
 
-// 	void (*Close) (struct Lista*);
+	// void (*Close) (struct Lista*);
 
-// } Lista;
+} Lista;
 
 // void MostrarLista(Lista lista) {
 
@@ -161,4 +161,4 @@
 // 	return lista;
 // }
 
-// #endif
+#endif

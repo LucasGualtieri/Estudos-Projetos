@@ -8,13 +8,14 @@
 
 // clear && gcc userInput.c -o userInput && ./userInput
 
-#define STR_MAX_LEN 80
+#define STR_MAX_LEN 500
 #define INVALID 0
 
 typedef char* String;
 
-String readString(String str);
+String readString(int len, String str);
 int readInt(String str);
 float readFloat(String str);
+char readChar(String str);
 
 #endif

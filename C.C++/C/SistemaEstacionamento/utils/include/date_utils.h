@@ -1,9 +1,17 @@
 #ifndef DATE_UTILS_H
 #define DATE_UTILS_H
 
-int isLeapYear(int year);
-int isValidDate(int day, int month, int year);
-int isValidFormat(char *date);
-void getDateInput(char *date);
+#include <stdbool.h>
 
-#endif // DATE_UTILS_H
+#define ANO_ATUAL 2024
+
+typedef struct {
+	int dia, mes, ano;
+} Date;
+
+bool isLeapYear(int year);
+bool isValidDate(int day, int month, int year);
+bool isValidFormat(char *date);
+Date getDateInput();
+
+#endif
