@@ -4,14 +4,14 @@ SRCDIR = src
 UTILSDIR = utils/src
 BINDIR = bin
 
-# Lista de arquivos objeto
+# Lista de arquivos
 FILES =						\
 	$(BINDIR)/main.o		\
 	$(BINDIR)/clientes.o	\
 	$(BINDIR)/placas.o		\
 	$(BINDIR)/user_input.o	\
 
-all: $(BINDIR)/SistemaEstacionamento
+SistemaEstacionamento: $(BINDIR)/SistemaEstacionamento
 
 $(BINDIR)/SistemaEstacionamento: $(FILES)
 	$(COMPILER) $(FLAGS) $^ -o $@
@@ -28,5 +28,6 @@ $(BINDIR)/placas.o: $(SRCDIR)/placas.c
 $(BINDIR)/user_input.o: $(UTILSDIR)/user_input.c
 	$(COMPILER) $(FLAGS) -c $< -o $@
 
+# make clean para remover arquivos gerados durante o processo de compilação
 clean:
 	rm -f $(BINDIR)/*.o $(BINDIR)/SistemaEstacionamento
