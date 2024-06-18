@@ -6,6 +6,13 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Zipfs",
+			"request": "launch",
+			"mainClass": "Java.Zipfs",
+			"projectName": "Estudos-Projetos_b52b67e"
+		},
+		{
+			"type": "java",
 			"name": "Teste",
 			"request": "launch",
 			"mainClass": "Teste",

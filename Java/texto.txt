@@ -1,0 +1,89 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a HashMap and populate it with some key-value pairs
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("One", 1);
+        hashMap.put("Two", 2);
+        hashMap.put("Three", 3);
+
+        // Create a list to hold the pairs
+        List<Pair<String, Integer>> list = new ArrayList<>();
+
+        // Iterate through the HashMap entries and add them to the list
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            Pair<String, Integer> pair = new Pair<>(entry.getKey(), entry.getValue());
+            list.add(pair);
+        }
+
+        // Print the list
+        for (Pair<String, Integer> pair : list) {
+            System.out.println(pair);
+        }
+    }
+}
+
+// Pair class definition
+class Pair<K, V> {
+    private K key;
+    private V value;
+
+    // Constructor
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    // Getter for key
+    public K getKey() {
+        return key;
+    }
+
+    // Setter for key
+    public void setKey(K key) {
+        this.key = key;
+    }
+
+    // Getter for value
+    public V getValue() {
+        return value;
+    }
+
+    // Setter for value
+    public void setValue(V value) {
+        this.value = value;
+    }
+
+    // Override equals() method
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pair<?, ?> pair = (Pair<?, ?>) o;
+
+        if (key != null ? !key.equals(pair.key) : pair.key != null) return false;
+        return value != null ? value.equals(pair.value) : pair.value == null;
+    }
+
+    // Override hashCode() method
+    @Override
+    public int hashCode() {
+        int result = key != null ? key.hashCode() : 0;
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        return result;
+    }
+
+    // Override toString() method
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "key=" + key +
+                ", value=" + value +
+                '}';
+    }
+}
