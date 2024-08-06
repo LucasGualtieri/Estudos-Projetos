@@ -8,7 +8,7 @@ import java.time.Instant;
 public class Concat {
 
 	static class Timer {
-	
+
 		private Instant startTime, endTime;
 
 		public Timer() {}
@@ -32,12 +32,12 @@ public class Concat {
 				double timesFaster = time1 / time2;
 				System.out.printf("The builder time is %.0f times faster than the str time.\n", timesFaster);
 			}
-			
+
 			else if (time2 > time1) {
 				double timesSlower = time2 / time1;
 				System.out.printf("The builder time is %.0f times slower than the str time.\n", timesSlower);
 			}
-			
+
 			else System.out.println("Both times are equal.\n");
 		}
 
@@ -60,26 +60,26 @@ public class Concat {
 		for (int i = 10; i < 10_000_000; i *= 10) {
 
 			timer.start();
-			for (int j = 0; j < i; j++) str += "a";
-			timer.stop();
-
-			time1 = timer.time();
-
-			System.out.println("str: " + timer);
-
-			timer.start();
 			for (int j = 0; j < i; j++) builder.append("a");
 			builder.toString();
 			timer.stop();
 
-			time2 = timer.time();
+			time1 = timer.time();
 
 			System.out.println("builder: " + timer);
 
-			timer.compare(time1, time2);
+			timer.start();
+			for (int j = 0; j < i; j++) str += "a";
+			timer.stop();
+
+			time2 = timer.time();
+
+			System.out.println("str: " + timer);
+
+			timer.compare(time2, time1);
 
 			System.out.println("===========================================================");
-			
+
 		}
 
 	}
